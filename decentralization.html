@@ -1110,6 +1110,14 @@
           <li><a href="https://gc.nh.gov/bill_status/billinfo.aspx?id=377&inflect=2" target="_blank" rel="noopener noreferrer">HB 645 — Bill Status and Legislative History</a></li>
         </ul>
 
+        <h4>Scholarship</h4>
+        <ul>
+          <li>Oranburg, S.C. (2025). <em>Market Power and Governance Power: New Tools for Antitrust Enforcement in the Decentralized Gig Economy.</em> Competition Policy International. — Proposes the dual-metric framework (HHI + Nakamoto/Gini) and the four-quadrant organizational typology.</li>
+          <li>Oranburg, S.C. (2024). <em>Antitrust Law for Blockchain Technology.</em> 49 J. Corp. L. 379. — Precursor analysis of decentralized-distributed network structure.</li>
+          <li>Fritsch, R., M&uuml;ller, M. &amp; Wattenhofer, R. (2022). <em>Analyzing Voting Power in Decentralized Governance: Who Controls DAOs?</em> arXiv:2204.01176. — Empirical measurements: Compound Gini 0.987, NMC 8; Uniswap Gini 0.995, NMC 11.</li>
+          <li>Cong, L.W. et al. (2020). <em>Decentralized Governance in Blockchain-Based Organizations.</em> Oxford Review of Economic Policy 36(2). — Introduces the Nakamoto coefficient as a governance metric.</li>
+        </ul>
+
         <h4>Mathematical Foundations</h4>
         <ul>
           <li>Srinivasan, B. and Lee, L. (2017). <em>Quantifying Decentralization.</em> — The original formulation of the Nakamoto coefficient across multiple blockchain subsystems.</li>
@@ -1285,7 +1293,7 @@
         var fill = i < nc ? 'var(--gold)' : 'var(--blue-bright)';
         bars += '<rect x="' + bx + '" y="' + by + '" width="' + barW + '" height="' + bh.toFixed(1) + '" fill="' + fill + '" rx="1"/>';
         if (n <= 20 && barW >= 14) {
-          labels += '<text x="' + (bx + barW / 2) + '" y="' + (H - PB + 12) + '" text-anchor="middle" font-size="9" fill="var(--muted)">' + (i + 1) + '</text>';
+          labels += '<text x="' + (bx + barW / 2) + '" y="' + (H - PB + 12) + '" text-anchor="middle" font-size="12" fill="var(--muted)">' + (i + 1) + '</text>';
         }
       }
 
@@ -1296,18 +1304,18 @@
         if (t > maxVal * 1.1) return;
         var ty = PT + plotH - (t / maxVal) * plotH;
         axis += '<line x1="' + (PL - 3) + '" y1="' + ty + '" x2="' + (W - PR) + '" y2="' + ty + '" stroke="var(--border)" stroke-width="0.5"/>';
-        axis += '<text x="' + (PL - 5) + '" y="' + (ty + 4) + '" text-anchor="end" font-size="9" fill="var(--muted)">' + t + '%</text>';
+        axis += '<text x="' + (PL - 5) + '" y="' + (ty + 4) + '" text-anchor="end" font-size="12" fill="var(--muted)">' + t + '%</text>';
       });
 
       /* 50% line */
       var y50 = PT + plotH - (50 / maxVal) * plotH;
-      var line50 = maxVal >= 50 ? '<line x1="' + PL + '" y1="' + y50 + '" x2="' + (W - PR) + '" y2="' + y50 + '" stroke="var(--gold-light)" stroke-width="1" stroke-dasharray="4"/><text x="' + (W - PR - 2) + '" y="' + (y50 - 3) + '" text-anchor="end" font-size="9" fill="var(--gold-light)">50%</text>' : '';
+      var line50 = maxVal >= 50 ? '<line x1="' + PL + '" y1="' + y50 + '" x2="' + (W - PR) + '" y2="' + y50 + '" stroke="var(--gold-light)" stroke-width="1" stroke-dasharray="4"/><text x="' + (W - PR - 2) + '" y="' + (y50 - 3) + '" text-anchor="end" font-size="12" fill="var(--gold-light)">50%</text>' : '';
 
       var svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">'
         + axis + line50 + bars + labels
         + '<line x1="' + PL + '" y1="' + PT + '" x2="' + PL + '" y2="' + (PT + plotH) + '" stroke="var(--border)" stroke-width="1"/>'
         + '<line x1="' + PL + '" y1="' + (PT + plotH) + '" x2="' + (W - PR) + '" y2="' + (PT + plotH) + '" stroke="var(--border)" stroke-width="1"/>'
-        + '<text x="' + (PL + plotW / 2) + '" y="' + (H - 2) + '" text-anchor="middle" font-size="9" fill="var(--muted)">Holder rank (largest first)</text>'
+        + '<text x="' + (PL + plotW / 2) + '" y="' + (H - 2) + '" text-anchor="middle" font-size="12" fill="var(--muted)">Holder rank (largest first)</text>'
         + '</svg>';
 
       document.getElementById('bar-chart').innerHTML = svg;
@@ -1351,9 +1359,9 @@
       [0, 0.25, 0.5, 0.75, 1].forEach(function(t) {
         var ty = PT + (1 - t) * plotH;
         axis += '<line x1="' + (PL - 3) + '" y1="' + ty + '" x2="' + (W - PR) + '" y2="' + ty + '" stroke="var(--border)" stroke-width="0.5"/>';
-        axis += '<text x="' + (PL - 5) + '" y="' + (ty + 4) + '" text-anchor="end" font-size="9" fill="var(--muted)">' + (t * 100).toFixed(0) + '%</text>';
+        axis += '<text x="' + (PL - 5) + '" y="' + (ty + 4) + '" text-anchor="end" font-size="12" fill="var(--muted)">' + (t * 100).toFixed(0) + '%</text>';
         var tx = PL + t * plotW;
-        axis += '<text x="' + tx + '" y="' + (PT + plotH + 12) + '" text-anchor="middle" font-size="9" fill="var(--muted)">' + (t * 100).toFixed(0) + '%</text>';
+        axis += '<text x="' + tx + '" y="' + (PT + plotH + 12) + '" text-anchor="middle" font-size="12" fill="var(--muted)">' + (t * 100).toFixed(0) + '%</text>';
       });
 
       /* Gini label */
@@ -1366,8 +1374,8 @@
         + '<path d="' + lorenzPath + '" stroke="var(--accent)" stroke-width="2" fill="none"/>'
         + '<line x1="' + PL + '" y1="' + PT + '" x2="' + PL + '" y2="' + (PT + plotH) + '" stroke="var(--border)" stroke-width="1"/>'
         + '<line x1="' + PL + '" y1="' + (PT + plotH) + '" x2="' + (W - PR) + '" y2="' + (PT + plotH) + '" stroke="var(--border)" stroke-width="1"/>'
-        + '<text x="' + (PL + plotW / 2) + '" y="' + (H - 2) + '" text-anchor="middle" font-size="9" fill="var(--muted)">Cumulative share of holders (smallest first)</text>'
-        + '<text x="12" y="' + (PT + plotH / 2) + '" text-anchor="middle" font-size="9" fill="var(--muted)" transform="rotate(-90 12,' + (PT + plotH / 2) + ')">Cumulative share of tokens</text>'
+        + '<text x="' + (PL + plotW / 2) + '" y="' + (H - 2) + '" text-anchor="middle" font-size="12" fill="var(--muted)">Cumulative share of holders (smallest first)</text>'
+        + '<text x="12" y="' + (PT + plotH / 2) + '" text-anchor="middle" font-size="12" fill="var(--muted)" transform="rotate(-90 12,' + (PT + plotH / 2) + ')">Cumulative share of tokens</text>'
         + gLabel
         + '</svg>';
 
