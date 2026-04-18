@@ -449,6 +449,17 @@
       }
     }
 
+    /* ---------- Cross-Link Banner ---------- */
+    .crosslink {
+      background: linear-gradient(135deg, var(--blue-deep), #1a4a7a);
+      padding: 0.45rem var(--space-md); text-align: center;
+      font-family: var(--font-body); font-size: 0.85rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .crosslink a { color: var(--accent-2); font-weight: 500; }
+    .crosslink a:hover { color: #fff; }
+    .crosslink.hidden { display: none; }
+
     /* ---------- Toast ---------- */
     .toast {
       position: fixed; bottom: var(--space-xl); left: 50%; transform: translateX(-50%) translateY(80px);
@@ -524,6 +535,11 @@
       </div>
     </div>
   </nav>
+
+  <!-- Cross-link banner -->
+  <div class="crosslink" id="crosslinkBanner">
+    See also: <a href="https://oranburg.law/calculating-decentralization/">Calculating Decentralization</a> &mdash; how to measure the statutory requirements &sect; 301-B:15(j)-(k)
+  </div>
 
   <!-- Project banner -->
   <div class="project-banner" id="projectBanner">
