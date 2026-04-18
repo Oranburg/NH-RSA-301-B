@@ -414,8 +414,8 @@
       <div class="toc-tools">
         <button onclick="openAbout()">&#9432; About this project</button>
         <a href="rsa-301b.md" download="RSA-301-B.md">&#11015; Download statute text</a>
-        <a href="https://github.com/Oranburg/NH-RSA-301-B" target="_blank">&#128279; GitHub repository</a>
-        <a href="https://github.com/Oranburg/NH-RSA-301-B/issues" target="_blank">&#9998; Report issue</a>
+        <a href="https://github.com/Oranburg/NH-RSA-301-B" target="_blank" rel="noopener noreferrer">&#128279; GitHub repository</a>
+        <a href="https://github.com/Oranburg/NH-RSA-301-B/issues" target="_blank" rel="noopener noreferrer">&#9998; Report issue</a>
       </div>
     </aside>
 
@@ -534,7 +534,7 @@
       .then(function(md) {
         // Strip YAML frontmatter if present
         md = md.replace(/^---[\s\S]*?---\s*/, '');
-        marked.setOptions({ breaks: false, gfm: true });
+        marked.use({ breaks: false, gfm: true });
         var html = marked.parse(md);
         document.getElementById('statuteContent').innerHTML = html;
         buildTOC();
@@ -582,6 +582,8 @@
           var url = window.location.origin + window.location.pathname + '#' + h.id;
           navigator.clipboard.writeText(url).then(function() {
             showToast('Link copied: ' + h.id);
+          }).catch(function() {
+            showToast('Copy: ' + url);
           });
         });
       });
