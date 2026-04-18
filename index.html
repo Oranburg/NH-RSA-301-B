@@ -308,6 +308,47 @@
       font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent);
     }
 
+    /* ---------- Defined Terms ---------- */
+    .defined-term {
+      cursor: help;
+      border-bottom: 1px dotted var(--accent-2);
+      transition: background 0.2s;
+    }
+    .defined-term:hover {
+      background: rgba(232, 197, 96, 0.15);
+    }
+    .def-tooltip {
+      display: none; position: fixed; z-index: 800;
+      background: var(--bg-secondary); border: 1px solid var(--accent-2);
+      border-radius: var(--radius-md); box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      max-width: 420px; width: 90vw; overflow: hidden;
+    }
+    .def-tooltip.visible { display: block; }
+    .def-tooltip-header {
+      background: var(--blue-deep); color: var(--accent-2); padding: 0.5rem 0.75rem;
+      font-family: var(--font-headline); font-size: 0.85rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .def-tooltip-header small {
+      font-family: var(--font-body); font-size: 0.75rem; font-weight: 400;
+      color: var(--muted); text-transform: none; letter-spacing: 0;
+    }
+    .def-tooltip-close {
+      background: none; border: none; color: var(--accent-2); font-size: 1.2rem;
+      cursor: pointer; padding: 0; line-height: 1;
+    }
+    .def-tooltip-close:hover { color: #fff; }
+    .def-tooltip-body {
+      padding: 0.75rem; font-family: var(--font-accent); font-size: 0.95rem;
+      line-height: 1.6; color: var(--text); max-height: 300px; overflow-y: auto;
+    }
+    .def-tooltip-body .def-goto {
+      display: inline-block; margin-top: 0.5rem;
+      font-family: var(--font-body); font-size: 0.8rem; color: var(--accent);
+    }
+    .def-tooltip-body .def-goto:hover { color: var(--accent-2); }
+
     /* ---------- Toast ---------- */
     .toast {
       position: fixed; bottom: var(--space-xl); left: 50%; transform: translateX(-50%) translateY(80px);
@@ -391,7 +432,7 @@
       <div class="banner-text">
         <h2>Open Statute Project</h2>
         <p>This is the full text of <strong>N.H. Rev. Stat. Ann. ch. 301-B</strong>, New Hampshire's Decentralized Autonomous Organization Act, enacted by HB 645 (2024, ch. 263). The statute establishes DAOs as legal entities in New Hampshire with the <strong>UNH InterOperability Laboratory</strong> designated as the registry administrator.</p>
-        <p><strong>Collaborate.</strong> This is a public repository. Open issues on GitHub to suggest annotations, report errors, or propose complementary tools for the DAO registry implementation.</p>
+        <p><strong>Interactive.</strong> Hover over any <span class="defined-term" style="cursor:default;">defined term</span> to see its statutory definition from &sect; 301-B:5. <strong>Collaborate</strong> via GitHub to suggest annotations, report errors, or propose tools for the DAO registry implementation.</p>
         <div class="banner-actions">
           <button class="banner-btn banner-btn-primary" onclick="openAbout()">About This Project</button>
           <a class="banner-btn" href="rsa-301b.md" download="RSA-301-B.md">&#11015; Download Markdown</a>
@@ -464,6 +505,18 @@
         </p>
         <p style="font-size:0.9rem; color:var(--muted);">Maintained by <a href="https://oranburg.law">Seth C. Oranburg</a>, Professor of Law, UNH Franklin Pierce School of Law. Built for the NH DAO Registry Design Sprint.</p>
       </div>
+    </div>
+  </div>
+
+  <!-- Defined-term tooltip -->
+  <div class="def-tooltip" id="defTooltip">
+    <div class="def-tooltip-header">
+      <span id="defTermName"></span>
+      <button class="def-tooltip-close" onclick="closeDefTooltip()">&times;</button>
+    </div>
+    <div class="def-tooltip-body">
+      <div id="defTermBody"></div>
+      <a class="def-goto" href="#sec-5" onclick="closeDefTooltip()">View all definitions &rarr; &sect; 301-B:5</a>
     </div>
   </div>
 
@@ -541,6 +594,7 @@
         setupScrollSpy();
         setupProgressBar();
         addSectionAnchors();
+        annotateDefinedTerms();
       })
       .catch(function(err) {
         document.getElementById('statuteContent').innerHTML =
@@ -637,9 +691,181 @@
       setTimeout(function() { toast.classList.remove('visible'); }, 3000);
     }
 
-    // Close modal on Escape
+    // ========== Defined-Term Glossary (from RSA 301-B:5) ==========
+    var defined_terms = {
+      "administrator": "A person, irrespective of title, that is appointed in a manner specified in the bylaws to make discretionary decisions, either individually or collectively with other administrators, on behalf of the New Hampshire DAO with regard to specific, predefined operations of the New Hampshire DAO.",
+      "blockchain": "Any technology where data is shared across a network to create a public ledger of verified transactions, linked using cryptography to maintain integrity, and distributed among participants in an automated fashion; and composed of source code that is publicly available.",
+      "blockchain protocol": "Any executable software deployed to a blockchain composed of source code that is publicly available and accessible, including a smart contract or any network of smart contracts.",
+      "blockchain system": "Any blockchain or blockchain protocol.",
+      "bylaws": "The rules and regulations that govern the methods, mechanisms and procedures followed by a DAO and by which developers, participants and administrators interact and make decisions.",
+      "contentious fork": "A hard fork that results in 2 divergent and potentially competing blockchains.",
+      "decentralized autonomous organization": "An enterprise defined in accordance with a smart contract or network of smart contracts deployed on a permissionless blockchain that implements a coordinated project or undertaking among participants.",
+      "DAO": "An enterprise defined in accordance with a smart contract or network of smart contracts deployed on a permissionless blockchain that implements a coordinated project or undertaking among participants.",
+      "decentralized network": "A blockchain system in which no person had unilateral authority to control or materially alter functionality, restrict use, or held 20% or more of related digital assets during the previous 12-month period.",
+      "decentralized governance system": "A rules-based system permitting persons using the blockchain system to form consensus or reach agreement in the development, management, or administration of such blockchain system.",
+      "developer": "A person involved in the development or maintenance of the DAO, whether through the contribution of software code, design, business, legal, or ancillary support.",
+      "digital asset": "Any fungible digital representation of value that can be exclusively possessed and transferred, person to person, without necessary reliance on an intermediary, and is recorded on a blockchain system.",
+      "dispute resolution mechanism": "An on-chain alternative dispute resolution system, such as arbitration, expert determination, or an on-chain alternative court system. Any award, decision, or judgment shall be accorded the same status as an international arbitral award.",
+      "failure event": "A DAO encountering a technical bug or exploit which renders the DAO non-operational or fundamentally changes the expected operation of the DAO.",
+      "GUI": "A graphical user interface, publicly accessible by all DAO members and participants, through which users interact with computer software via visual indicator representations.",
+      "hard fork": "A blockchain software upgrade that is not compatible with previous versions of the blockchain software, and therefore requires all users to upgrade.",
+      "legal representative": "A person who is appointed and authorized by a New Hampshire DAO in a manner specified in the bylaws to perform functions, activities and operations on behalf of the New Hampshire DAO in off-chain interactions.",
+      "majority chain": "The version of the chain accepted by more than 50 percent of the blockchain\u2019s validators following a hard fork.",
+      "minority chain": "The version of the chain that is not the majority chain following a hard fork.",
+      "New Hampshire DAO": "A decentralized autonomous organization that is listed on the New Hampshire DAO registry.",
+      "New Hampshire DAO registry": "The registry established and administered in accordance with RSA 301-B:14.",
+      "off-chain": "Any action or transaction that is not on-chain.",
+      "on-chain": "Any action or transaction that is recorded and verified on a blockchain according to a blockchain protocol\u2019s consensus mechanism.",
+      "on-chain contribution": "Any token segregated and locked in one of the DAO\u2019s smart contracts for the purpose of member buy-in to the DAO and the provision of withdrawable capital.",
+      "open-source format": "Software that is within the open-source definition as established and maintained by the Open Source Initiative.",
+      "participant": "Unless the bylaws provide otherwise, any person who is entitled under the bylaws to exercise governance rights in a DAO.",
+      "permissionless blockchain": "A blockchain system that allows any person to transact and produce blocks in accordance with the blockchain protocol, whereby the validity of the block is not determined by the identity of the producer.",
+      "proposal": "A suggestion for actions to be taken by the DAO, to be decided on in accordance with the bylaws of the DAO.",
+      "public address": "A unique, durable identifier that person(s) can transact with on a permissionless blockchain.",
+      "public forum": "A freely accessible online environment that is commonly used for the exercise of speech and public debate.",
+      "public signaling": "A declaration authorized by way of proposal by the DAO in a public forum.",
+      "registry administrator": "The person, including the University of New Hampshire Interoperability Laboratory, or any other entity authorized by the secretary of state to administer the New Hampshire DAO registry.",
+      "registered agent": "The person appointed by a New Hampshire DAO in accordance with RSA 301-B:9.",
+      "related digital asset": "A digital asset that is intrinsically linked to a blockchain system, including where its value is generated by programmatic functioning, represents voting rights, or is issued through programmatic functioning of the blockchain system.",
+      "quality assurance testing": "Software code of the DAO has undergone security review according to industry standards including standards that may be designed, developed and tested by the registry administrator.",
+      "smart contract": "Software code deployed in a blockchain system that consists of a set of predefined and deterministic instructions and conditions that may be executed in a decentralized manner. Execution produces a change in the blockchain state.",
+      "token": "A record on a permissionless blockchain, typically representing an asset, participation right, or other entitlement.",
+      "transaction": "A new entry in a permissionless blockchain, often but not exclusively, recording a change in ownership of an asset or participation in a DAO."
+    };
+
+    // ========== Annotate Defined Terms ==========
+    function annotateDefinedTerms() {
+      var content = document.getElementById('statuteContent');
+      // Skip the definitions section itself (sec-5) to avoid recursive marking
+      var paragraphs = content.querySelectorAll('p');
+
+      // Sort terms by length descending so longer phrases match first
+      var termKeys = Object.keys(defined_terms).sort(function(a, b) {
+        return b.length - a.length;
+      });
+
+      // Build a single regex matching all terms (case-insensitive, word-boundary)
+      var escapedTerms = termKeys.map(function(t) {
+        return t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      });
+      var termRegex = new RegExp('\\b(' + escapedTerms.join('|') + ')\\b', 'gi');
+
+      paragraphs.forEach(function(p) {
+        // Skip paragraphs inside the definitions section
+        var inDefSection = false;
+        var el = p;
+        while (el && el !== content) {
+          if (el.previousElementSibling && el.previousElementSibling.id === 'sec-5') {
+            // We're in the section right after sec-5 heading, which IS the definitions
+            inDefSection = true; break;
+          }
+          el = el.parentElement;
+        }
+
+        // Walk text nodes only (preserve existing HTML structure)
+        var walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT, null, false);
+        var textNodes = [];
+        while (walker.nextNode()) textNodes.push(walker.currentNode);
+
+        textNodes.forEach(function(node) {
+          // Skip if already inside a defined-term span or a heading
+          if (node.parentElement.classList && node.parentElement.classList.contains('defined-term')) return;
+          if (node.parentElement.tagName === 'H1' || node.parentElement.tagName === 'H2') return;
+
+          var text = node.textContent;
+          if (!termRegex.test(text)) return;
+          termRegex.lastIndex = 0; // reset
+
+          var frag = document.createDocumentFragment();
+          var lastIndex = 0;
+          var match;
+          termRegex.lastIndex = 0;
+
+          while ((match = termRegex.exec(text)) !== null) {
+            // Add text before match
+            if (match.index > lastIndex) {
+              frag.appendChild(document.createTextNode(text.substring(lastIndex, match.index)));
+            }
+            // Create the defined-term span
+            var span = document.createElement('span');
+            span.className = 'defined-term';
+            span.setAttribute('tabindex', '0');
+            span.setAttribute('role', 'button');
+            span.setAttribute('aria-label', 'Definition: ' + match[0]);
+            span.setAttribute('data-term', match[0].toLowerCase());
+            span.textContent = match[0];
+            frag.appendChild(span);
+            lastIndex = termRegex.lastIndex;
+          }
+          // Add remaining text
+          if (lastIndex < text.length) {
+            frag.appendChild(document.createTextNode(text.substring(lastIndex)));
+          }
+          node.parentNode.replaceChild(frag, node);
+        });
+      });
+
+      // Add event listeners
+      content.addEventListener('click', function(e) {
+        var term = e.target.closest('.defined-term');
+        if (term) showDefTooltip(term);
+      });
+      content.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          var term = e.target.closest('.defined-term');
+          if (term) { e.preventDefault(); showDefTooltip(term); }
+        }
+      });
+    }
+
+    // ========== Show/Close Definition Tooltip ==========
+    function showDefTooltip(el) {
+      var termKey = el.getAttribute('data-term');
+      var def = defined_terms[termKey];
+      if (!def) return;
+
+      document.getElementById('defTermName').innerHTML =
+        '<span>' + el.textContent + '</span> <small>&sect; 301-B:5</small>';
+      document.getElementById('defTermBody').textContent = def;
+
+      var tooltip = document.getElementById('defTooltip');
+      tooltip.classList.add('visible');
+
+      // Position near the element
+      var rect = el.getBoundingClientRect();
+      var top = rect.bottom + 8;
+      var left = rect.left;
+
+      // Keep within viewport
+      if (top + 200 > window.innerHeight) top = rect.top - 220;
+      if (top < 8) top = 8;
+      if (left + 420 > window.innerWidth) left = window.innerWidth - 430;
+      if (left < 8) left = 8;
+
+      tooltip.style.top = top + 'px';
+      tooltip.style.left = left + 'px';
+    }
+
+    function closeDefTooltip() {
+      document.getElementById('defTooltip').classList.remove('visible');
+    }
+
+    // Close tooltip on outside click
+    document.addEventListener('click', function(e) {
+      var tooltip = document.getElementById('defTooltip');
+      if (tooltip.classList.contains('visible') &&
+          !tooltip.contains(e.target) &&
+          !e.target.classList.contains('defined-term')) {
+        closeDefTooltip();
+      }
+    });
+
+    // Close modal/tooltip on Escape
     document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeAbout();
+      if (e.key === 'Escape') {
+        closeDefTooltip();
+        closeAbout();
+      }
     });
   </script>
 </body>
