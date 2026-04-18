@@ -349,6 +349,106 @@
     }
     .def-tooltip-body .def-goto:hover { color: var(--accent-2); }
 
+    /* ---------- Internal Cross-References ---------- */
+    .xref-internal {
+      color: var(--accent); border-bottom: 1px dashed var(--accent);
+      cursor: pointer; transition: color 0.2s;
+    }
+    .xref-internal:hover { color: var(--accent-2); border-bottom-color: var(--accent-2); }
+
+    /* ---------- Section Metadata Panel ---------- */
+    .section-panel {
+      display: none; position: fixed; z-index: 800;
+      background: var(--bg-secondary); border: 1px solid var(--accent);
+      border-radius: var(--radius-md); box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      max-width: 520px; width: 90vw; overflow: hidden;
+    }
+    .section-panel.visible { display: block; }
+    .section-panel-header {
+      background: var(--blue-deep); color: #fff; padding: 0.6rem 0.75rem;
+      font-family: var(--font-headline); font-size: 0.9rem; font-weight: 600;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .section-panel-close {
+      background: none; border: none; color: #fff; font-size: 1.2rem;
+      cursor: pointer; padding: 0; line-height: 1;
+    }
+    .section-panel-close:hover { color: var(--accent-2); }
+    .section-panel-body {
+      padding: 0.75rem; font-family: var(--font-body); font-size: 0.88rem;
+      line-height: 1.55; color: var(--text); max-height: 400px; overflow-y: auto;
+    }
+    .section-panel-body h4 {
+      font-family: var(--font-headline); font-size: 0.82rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-2);
+      margin: 0.8rem 0 0.3rem; padding: 0;
+    }
+    .section-panel-body h4:first-child { margin-top: 0; }
+    .section-panel-body .meta-line {
+      font-size: 0.82rem; color: var(--muted); margin: 0.15rem 0;
+    }
+    .concept-pill {
+      display: inline-block; font-size: 0.72rem; padding: 0.1rem 0.45rem;
+      border-radius: 10px; border: 1px solid var(--border); color: var(--accent);
+      margin: 0.15rem 0.2rem 0.15rem 0; font-family: var(--font-mono);
+    }
+    .comparable-row {
+      display: flex; gap: 0.5rem; align-items: baseline;
+      padding: 0.25rem 0; border-bottom: 1px solid var(--border);
+      font-size: 0.82rem;
+    }
+    .comparable-row:last-child { border-bottom: none; }
+    .comparable-jur {
+      font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700;
+      min-width: 28px; text-align: center; padding: 0.1rem 0.3rem;
+      border-radius: 3px; flex-shrink: 0;
+    }
+    .jur-wy { background: #8B6914; color: #fff; }
+    .jur-ut { background: #BE3A34; color: #fff; }
+    .jur-vt { background: #2E6B3E; color: #fff; }
+    .comparable-note { color: var(--muted); font-size: 0.78rem; }
+    .commission-item {
+      font-size: 0.82rem; padding: 0.2rem 0;
+    }
+    .commission-item .comm-date {
+      font-family: var(--font-mono); color: var(--accent); font-size: 0.78rem;
+    }
+
+    /* ---------- Comparable Badges on Headings ---------- */
+    .comparable-badges { display: inline-flex; gap: 0.25rem; margin-left: 0.5rem; vertical-align: middle; }
+    .comp-badge {
+      display: inline-block; font-size: 0.6rem; padding: 0.08rem 0.35rem;
+      border-radius: 3px; font-family: var(--font-mono); font-weight: 700;
+      cursor: pointer; vertical-align: middle; letter-spacing: 0.02em;
+    }
+
+    /* ---------- Sidebar Commission Context ---------- */
+    .toc-commission {
+      margin-top: var(--space-md); padding-top: var(--space-md);
+      border-top: 1px solid var(--border);
+    }
+    .toc-commission-heading {
+      font-family: var(--font-headline); font-size: 0.78rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--muted); margin: 0 0 var(--space-xs);
+    }
+    .toc-commission a {
+      display: block; padding: 0.25rem 0.5rem; font-size: 0.78rem;
+      color: var(--muted); transition: color 0.2s;
+    }
+    .toc-commission a:hover { color: var(--accent); }
+    .toc-commission .comm-badge {
+      font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent);
+    }
+
+    @media (max-width: 900px) {
+      .section-panel {
+        position: fixed; bottom: 0; left: 0; right: 0; top: auto;
+        max-width: 100%; width: 100%; border-radius: var(--radius-md) var(--radius-md) 0 0;
+        max-height: 60vh;
+      }
+    }
+
     /* ---------- Toast ---------- */
     .toast {
       position: fixed; bottom: var(--space-xl); left: 50%; transform: translateX(-50%) translateY(80px);
@@ -508,6 +608,15 @@
     </div>
   </div>
 
+  <!-- Section metadata panel -->
+  <div class="section-panel" id="sectionPanel">
+    <div class="section-panel-header">
+      <span id="sectionPanelTitle"></span>
+      <button class="section-panel-close" onclick="closeSectionPanel()">&times;</button>
+    </div>
+    <div class="section-panel-body" id="sectionPanelBody"></div>
+  </div>
+
   <!-- Defined-term tooltip -->
   <div class="def-tooltip" id="defTooltip">
     <div class="def-tooltip-header">
@@ -578,28 +687,34 @@
       tocOverlay.classList.remove('visible');
     });
 
-    // ========== Fetch and Render Markdown ==========
-    fetch('rsa-301b.md')
-      .then(function(res) {
-        if (!res.ok) throw new Error('Failed to load');
-        return res.text();
-      })
-      .then(function(md) {
-        // Strip YAML frontmatter if present
-        md = md.replace(/^---[\s\S]*?---\s*/, '');
-        marked.use({ breaks: false, gfm: true });
-        var html = marked.parse(md);
-        document.getElementById('statuteContent').innerHTML = html;
-        buildTOC();
-        setupScrollSpy();
-        setupProgressBar();
-        addSectionAnchors();
-        annotateDefinedTerms();
-      })
-      .catch(function(err) {
-        document.getElementById('statuteContent').innerHTML =
-          '<p style="color:var(--accent-2);text-align:center;padding:2rem;">Error loading statute text. Please try refreshing.</p>';
-      });
+    // ========== Fetch Markdown + Enrichment ==========
+    var _enrichment = null;
+
+    Promise.all([
+      fetch('rsa-301b.md').then(function(r) { return r.ok ? r.text() : Promise.reject('md'); }),
+      fetch('enrichment.json').then(function(r) { return r.ok ? r.json() : null; }).catch(function() { return null; })
+    ]).then(function(results) {
+      var md = results[0];
+      _enrichment = results[1];
+
+      md = md.replace(/^---[\s\S]*?---\s*/, '');
+      marked.use({ breaks: false, gfm: true });
+      var html = marked.parse(md);
+      document.getElementById('statuteContent').innerHTML = html;
+      buildTOC();
+      setupScrollSpy();
+      setupProgressBar();
+      addSectionAnchors();
+      linkInternalRefs();
+      annotateDefinedTerms();
+      if (_enrichment) {
+        addComparableBadges();
+        addCommissionSidebar();
+      }
+    }).catch(function(err) {
+      document.getElementById('statuteContent').innerHTML =
+        '<p style="color:var(--accent-2);text-align:center;padding:2rem;">Error loading statute text. Please try refreshing.</p>';
+    });
 
     // ========== Build TOC ==========
     function buildTOC() {
@@ -628,19 +743,224 @@
       });
     }
 
-    // ========== Section anchor click-to-copy ==========
+    // ========== Section anchor click → metadata panel (shift+click → copy URL) ==========
     function addSectionAnchors() {
       var headings = document.querySelectorAll('.statute-content h2');
       headings.forEach(function(h) {
-        h.addEventListener('click', function() {
-          var url = window.location.origin + window.location.pathname + '#' + h.id;
-          navigator.clipboard.writeText(url).then(function() {
-            showToast('Link copied: ' + h.id);
-          }).catch(function() {
-            showToast('Copy: ' + url);
-          });
+        h.addEventListener('click', function(e) {
+          if (e.shiftKey) {
+            // Shift+click: copy URL (original behavior)
+            var url = window.location.origin + window.location.pathname + '#' + h.id;
+            navigator.clipboard.writeText(url).then(function() {
+              showToast('Link copied: ' + h.id);
+            }).catch(function() {
+              showToast('Copy: ' + url);
+            });
+          } else if (_enrichment) {
+            openSectionPanel(h);
+          }
         });
       });
+    }
+
+    // ========== Internal Cross-Reference Links ==========
+    function linkInternalRefs() {
+      var content = document.getElementById('statuteContent');
+      var walker = document.createTreeWalker(content, NodeFilter.SHOW_TEXT, null, false);
+      var textNodes = [];
+      while (walker.nextNode()) textNodes.push(walker.currentNode);
+
+      var refRegex = /RSA\s+301-B:(\d+)/g;
+      textNodes.forEach(function(node) {
+        if (node.parentElement.tagName === 'A' || node.parentElement.tagName === 'H2' || node.parentElement.tagName === 'H1') return;
+        var text = node.textContent;
+        if (!refRegex.test(text)) return;
+        refRegex.lastIndex = 0;
+
+        var frag = document.createDocumentFragment();
+        var lastIndex = 0;
+        var match;
+        refRegex.lastIndex = 0;
+        while ((match = refRegex.exec(text)) !== null) {
+          if (match.index > lastIndex) {
+            frag.appendChild(document.createTextNode(text.substring(lastIndex, match.index)));
+          }
+          var a = document.createElement('a');
+          a.href = '#sec-' + match[1];
+          a.className = 'xref-internal';
+          a.textContent = match[0];
+          a.title = 'Jump to \u00a7 301-B:' + match[1];
+          frag.appendChild(a);
+          lastIndex = refRegex.lastIndex;
+        }
+        if (lastIndex < text.length) {
+          frag.appendChild(document.createTextNode(text.substring(lastIndex)));
+        }
+        node.parentNode.replaceChild(frag, node);
+      });
+    }
+
+    // ========== Section Metadata Panel ==========
+    function openSectionPanel(heading) {
+      var secNum = heading.id.replace('sec-', '');
+      var data = _enrichment && _enrichment.sections ? _enrichment.sections[secNum] : null;
+      if (!data) return;
+
+      document.getElementById('sectionPanelTitle').textContent = data.number + ' ' + data.title;
+
+      var html = '';
+
+      // Meta
+      html += '<h4>Statute Info</h4>';
+      html += '<p class="meta-line">Effective: ' + data.effective_date + '</p>';
+      html += '<p class="meta-line">Bill: ' + data.bill_number + '</p>';
+
+      // Concepts
+      if (data.concepts.length > 0) {
+        html += '<h4>Key Concepts</h4><div>';
+        data.concepts.forEach(function(c) {
+          html += '<span class="concept-pill">' + c + '</span>';
+        });
+        html += '</div>';
+      }
+
+      // Internal refs
+      if (data.internal_refs.length > 0) {
+        html += '<h4>References to Other Sections</h4>';
+        data.internal_refs.forEach(function(ref) {
+          html += '<p class="meta-line"><a class="xref-internal" href="#sec-' + ref.target_section + '" onclick="closeSectionPanel()">\u00a7 301-B:' + ref.target_section + '</a>';
+          var secData = _enrichment.sections[String(ref.target_section)];
+          if (secData) html += ' &mdash; ' + secData.title;
+          html += '</p>';
+        });
+      }
+
+      // External refs
+      if (data.external_refs.length > 0) {
+        html += '<h4>External References</h4>';
+        html += '<p class="meta-line">' + data.external_refs.join(', ') + '</p>';
+      }
+
+      // Comparables
+      if (data.comparables.length > 0) {
+        html += '<h4>Comparable Provisions</h4>';
+        data.comparables.forEach(function(comp) {
+          var jurClass = comp.jurisdiction === 'Wyoming' ? 'jur-wy' : comp.jurisdiction === 'Utah' ? 'jur-ut' : 'jur-vt';
+          var jurCode = comp.jurisdiction === 'Wyoming' ? 'WY' : comp.jurisdiction === 'Utah' ? 'UT' : 'VT';
+          html += '<div class="comparable-row">';
+          html += '<span class="comparable-jur ' + jurClass + '">' + jurCode + '</span>';
+          html += '<div><strong>' + comp.citation + '</strong>';
+          if (comp.note) html += '<br><span class="comparable-note">' + comp.note + '</span>';
+          html += '</div></div>';
+        });
+      }
+
+      // Commission mentions
+      if (data.commission_mentions.length > 0) {
+        html += '<h4>Commission Discussion</h4>';
+        data.commission_mentions.forEach(function(cm) {
+          html += '<div class="commission-item">';
+          html += '<span class="comm-date">' + cm.date + '</span> &mdash; ';
+          html += cm.context;
+          html += '</div>';
+        });
+      }
+
+      document.getElementById('sectionPanelBody').innerHTML = html;
+
+      var panel = document.getElementById('sectionPanel');
+      panel.classList.add('visible');
+
+      // Position near heading (desktop) or bottom sheet (mobile handled by CSS)
+      if (window.innerWidth > 900) {
+        var rect = heading.getBoundingClientRect();
+        var top = rect.bottom + 8;
+        var left = rect.left;
+        if (top + 300 > window.innerHeight) top = Math.max(8, rect.top - 320);
+        if (left + 520 > window.innerWidth) left = window.innerWidth - 530;
+        if (left < 8) left = 8;
+        panel.style.top = top + 'px';
+        panel.style.left = left + 'px';
+      } else {
+        panel.style.top = '';
+        panel.style.left = '';
+      }
+    }
+
+    function closeSectionPanel() {
+      document.getElementById('sectionPanel').classList.remove('visible');
+    }
+
+    // ========== Comparable Badges on Headings ==========
+    function addComparableBadges() {
+      if (!_enrichment || !_enrichment.sections) return;
+      var headings = document.querySelectorAll('.statute-content h2');
+      headings.forEach(function(h) {
+        var secNum = h.id.replace('sec-', '');
+        var data = _enrichment.sections[secNum];
+        if (!data || !data.comparables || data.comparables.length === 0) return;
+
+        var badges = document.createElement('span');
+        badges.className = 'comparable-badges';
+        var jurisdictions = {};
+        data.comparables.forEach(function(c) { jurisdictions[c.jurisdiction] = true; });
+
+        if (jurisdictions['Wyoming']) {
+          var b = document.createElement('span');
+          b.className = 'comp-badge jur-wy';
+          b.textContent = 'WY';
+          b.title = 'Comparable provision in Wyoming';
+          b.onclick = function(e) { e.stopPropagation(); openSectionPanel(h); };
+          badges.appendChild(b);
+        }
+        if (jurisdictions['Utah']) {
+          var b = document.createElement('span');
+          b.className = 'comp-badge jur-ut';
+          b.textContent = 'UT';
+          b.title = 'Comparable provision in Utah';
+          b.onclick = function(e) { e.stopPropagation(); openSectionPanel(h); };
+          badges.appendChild(b);
+        }
+        if (jurisdictions['Vermont']) {
+          var b = document.createElement('span');
+          b.className = 'comp-badge jur-vt';
+          b.textContent = 'VT';
+          b.title = 'Comparable provision in Vermont';
+          b.onclick = function(e) { e.stopPropagation(); openSectionPanel(h); };
+          badges.appendChild(b);
+        }
+        h.appendChild(badges);
+      });
+    }
+
+    // ========== Commission Context in Sidebar ==========
+    function addCommissionSidebar() {
+      if (!_enrichment || !_enrichment.commission) return;
+      var meetings = _enrichment.commission.meetings.filter(function(m) {
+        return m.dao_sections_discussed && m.dao_sections_discussed.length > 0;
+      });
+      if (meetings.length === 0) return;
+
+      var container = document.createElement('div');
+      container.className = 'toc-commission';
+      var heading = document.createElement('p');
+      heading.className = 'toc-commission-heading';
+      heading.textContent = 'Commission Meetings';
+      container.appendChild(heading);
+
+      meetings.forEach(function(m) {
+        var a = document.createElement('a');
+        a.href = _enrichment.commission.website + '/Meetings/' + m.date + '+Regular+Meeting';
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        var sections = m.dao_sections_discussed.map(function(s) { return '\u00a7' + s; }).join(', ');
+        a.innerHTML = '<span class="comm-badge">' + m.date + '</span> ' + sections;
+        container.appendChild(a);
+      });
+
+      var sidebar = document.getElementById('tocSidebar');
+      var tools = sidebar.querySelector('.toc-tools');
+      sidebar.insertBefore(container, tools);
     }
 
     // ========== Scroll Spy ==========
@@ -850,7 +1170,7 @@
       document.getElementById('defTooltip').classList.remove('visible');
     }
 
-    // Close tooltip on outside click
+    // Close tooltips/panels on outside click
     document.addEventListener('click', function(e) {
       var tooltip = document.getElementById('defTooltip');
       if (tooltip.classList.contains('visible') &&
@@ -858,12 +1178,20 @@
           !e.target.classList.contains('defined-term')) {
         closeDefTooltip();
       }
+      var panel = document.getElementById('sectionPanel');
+      if (panel.classList.contains('visible') &&
+          !panel.contains(e.target) &&
+          e.target.tagName !== 'H2' &&
+          !e.target.classList.contains('comp-badge')) {
+        closeSectionPanel();
+      }
     });
 
-    // Close modal/tooltip on Escape
+    // Close modal/tooltip/panel on Escape
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
         closeDefTooltip();
+        closeSectionPanel();
         closeAbout();
       }
     });
