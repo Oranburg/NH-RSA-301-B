@@ -190,7 +190,7 @@
       scroll-margin-top: 70px;
     }
     .page-content h3 {
-      font-family: var(--font-headline); font-size: 1.2rem; font-weight: 500;
+      font-family: var(--font-headline); font-size: 1.2rem; font-weight: 600;
       margin: var(--space-2xl) 0 var(--space-sm); color: var(--text);
       scroll-margin-top: 70px;
     }
@@ -228,7 +228,7 @@
 
     /* ===== Value Cards ===== */
     .value-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: var(--space-md); margin: var(--space-xl) 0;
     }
     .value-card {
@@ -549,6 +549,71 @@
     details[open].hhi-section summary::before { transform: rotate(90deg); }
     details.hhi-section .hhi-body {
       padding: var(--space-xl); border-top: 1px solid var(--border);
+    }
+
+    /* ===== Defined Terms ===== */
+    .defined-term {
+      cursor: help;
+      border-bottom: 1px dotted var(--accent-2);
+      transition: background 0.2s;
+    }
+    .defined-term:hover { background: rgba(232, 197, 96, 0.15); }
+    .def-tooltip {
+      display: none; position: fixed; z-index: 800;
+      background: var(--bg-secondary); border: 1px solid var(--accent-2);
+      border-radius: var(--radius-md); box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      max-width: 440px; width: 90vw; overflow: hidden;
+    }
+    .def-tooltip.visible { display: block; }
+    .def-tooltip-header {
+      background: var(--blue-deep); color: var(--accent-2); padding: 0.5rem 0.75rem;
+      font-family: var(--font-headline); font-size: 0.85rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .def-tooltip-header small {
+      font-family: var(--font-body); font-size: 0.72rem; font-weight: 400;
+      color: var(--muted); text-transform: none; letter-spacing: 0;
+    }
+    .def-tooltip-close {
+      background: none; border: none; color: var(--accent-2); font-size: 1.2rem;
+      cursor: pointer; padding: 0; line-height: 1;
+    }
+    .def-tooltip-body {
+      padding: 0.75rem; font-family: var(--font-accent); font-size: 0.95rem;
+      line-height: 1.6; color: var(--text); max-height: 300px; overflow-y: auto;
+    }
+    .def-tooltip-source {
+      font-family: var(--font-body); font-size: 0.75rem; font-style: italic;
+      color: var(--muted); margin-top: 0.5rem; border-top: 1px solid var(--border);
+      padding-top: 0.4rem;
+    }
+
+    /* ===== Governance Chart ===== */
+    .gov-chart-tool {
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      border-radius: var(--radius-md); padding: var(--space-lg); margin: var(--space-xl) 0;
+    }
+    .gov-chart-header {
+      font-family: var(--font-headline); font-size: 1.1rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      color: var(--accent); margin: 0 0 var(--space-sm);
+    }
+    .gov-chart-toggle {
+      display: flex; gap: var(--space-sm); margin-bottom: var(--space-md);
+    }
+    .gov-chart-toggle button {
+      background: var(--bg-soft); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); color: var(--text);
+      font-family: var(--font-body); font-size: 0.85rem; padding: 0.35rem 0.75rem;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .gov-chart-toggle button:hover, .gov-chart-toggle button.active {
+      background: var(--accent); color: #000; border-color: var(--accent);
+    }
+    .gov-chart-caption {
+      font-family: var(--font-body); font-size: 0.82rem; color: var(--muted);
+      text-align: center; margin-top: var(--space-sm);
     }
 
     /* ===== Footer ===== */
@@ -894,6 +959,11 @@
 
         <p>A network can have a respectable Nakamoto coefficient (say, 5) while still having a very high Gini (0.85) if there are five similarly large holders and thousands of tiny ones. The use of the interactive calculator below will help illustrate how different distributions score differently across all three measures simultaneously.</p>
 
+        <p>To ground these abstractions in reality, the chart below plots the only verified empirical measurements available for major DAOs.</p>
+
+        <!-- Governance concentration chart (injected by JS) -->
+        <div id="gov-chart-anchor"></div>
+
         <!-- ============================
              SECTION 4: CALCULATOR
              ============================ -->
@@ -1165,6 +1235,18 @@
     </div><!-- /.content-area -->
   </div><!-- /.page-layout -->
 
+  <!-- Defined-term tooltip -->
+  <div class="def-tooltip" id="defTooltip">
+    <div class="def-tooltip-header">
+      <span id="defTermName"></span>
+      <button class="def-tooltip-close" onclick="closeDefTooltip()">&times;</button>
+    </div>
+    <div class="def-tooltip-body">
+      <div id="defTermBody"></div>
+      <div class="def-tooltip-source" id="defTermSource"></div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer class="site-footer">
     <div>
@@ -1433,6 +1515,239 @@
       html += '</tbody></table>';
       document.getElementById('dist-table-container').innerHTML = html;
     }
+
+    /* ===== Defined-Term Glossary (all from cited sources) ===== */
+    var defined_terms = {
+      "herfindahl-hirschman index": { def: "A numerical measure of market concentration that aggregates the squares of firms\u2019 market shares. Markets with post-merger HHI above 1,800 are classified as \u2018highly concentrated.\u2019", source: "DOJ & FTC, 2023 Merger Guidelines \u00a7 II.A" },
+      "hhi": { def: "A numerical measure of market concentration that aggregates the squares of firms\u2019 market shares. Markets with post-merger HHI above 1,800 are classified as \u2018highly concentrated.\u2019", source: "DOJ & FTC, 2023 Merger Guidelines \u00a7 II.A" },
+      "nakamoto coefficient": { def: "The minimum number of entities required to control over half of a network\u2019s critical resources.", source: "Cong et al., Decentralized Governance in Blockchain-Based Organizations, Oxford Rev. Econ. Pol\u2019y 36(2) (2020)" },
+      "gini coefficient": { def: "A measure of distributional inequality ranging from 0.0 (perfect equality) to 1.0 (total concentration; one actor controls all).", source: "Standard statistical measure; applied to DAO governance in Fritsch, M\u00fcller & Wattenhofer (2022)" },
+      "lorenz curve": { def: "A graphical representation of distributional inequality, plotting the cumulative share of holders against the cumulative share of resources. The Gini coefficient is derived from the area between the Lorenz curve and the line of perfect equality.", source: "Lorenz (1905)" },
+      "decentralized network": { def: "A blockchain system where no person had unilateral authority to control functionality, no person owned 20% or more of related digital assets, and no issuer directed 20% or more of voting power, each over a 12-month lookback period.", source: "N.H. Rev. Stat. Ann. \u00a7 301-B:5(IX)" },
+      "decentralized governance system": { def: "A rules-based system permitting users to form consensus or reach agreement in the development, management, or administration of a blockchain system. Excludes systems where any person or group can unilaterally alter consensus rules or determine final outcomes.", source: "N.H. Rev. Stat. Ann. \u00a7 301-B:5(X)" },
+      "permissionless blockchain": { def: "A blockchain system that allows any person to transact and produce blocks in accordance with the blockchain protocol, whereby the validity of the block is not determined by the identity of the producer.", source: "N.H. Rev. Stat. Ann. \u00a7 301-B:5(XXX)" },
+      "smart contract": { def: "Software code deployed in a blockchain system that consists of predefined and deterministic instructions and conditions executed in a decentralized manner. Execution produces a change in the blockchain state.", source: "N.H. Rev. Stat. Ann. \u00a7 301-B:5(XLI)" },
+      "digital asset": { def: "Any fungible digital representation of value that can be exclusively possessed and transferred, person to person, without necessary reliance on an intermediary, and is recorded on a blockchain system.", source: "N.H. Rev. Stat. Ann. \u00a7 301-B:5(XII)" },
+      "decentralized autonomous organization": { def: "An enterprise defined in accordance with a smart contract or network of smart contracts deployed on a permissionless blockchain that implements a coordinated project or undertaking among participants.", source: "N.H. Rev. Stat. Ann. \u00a7 301-B:5(VIII)" },
+      "dao": { def: "An enterprise defined in accordance with a smart contract or network of smart contracts deployed on a permissionless blockchain that implements a coordinated project or undertaking among participants.", source: "N.H. Rev. Stat. Ann. \u00a7 301-B:5(VIII)" },
+      "payment stablecoin": { def: "A digital asset used as a means of payment or settlement, whose issuer is obligated to redeem it for a fixed amount of monetary value, and which must maintain stable value. Not classified as a security or commodity under federal law.", source: "GENIUS Act, Pub. L. 119-27, \u00a7 2(22)" },
+      "single entity doctrine": { def: "The antitrust principle that a parent and its wholly owned subsidiary \u2018have a complete unity of interest\u2019 and cannot conspire under Sherman Act \u00a7 1. \u2018Substance, not form, determines whether an arrangement is concerted action.\u2019", source: "Copperweld Corp. v. Independence Tube Corp., 467 U.S. 752, 771 (1984); American Needle v. NFL, 560 U.S. 183 (2010)" },
+      "market concentration": { def: "The degree to which market share is concentrated among a small number of firms, quantified by the Herfindahl-Hirschman Index. A market with HHI above 1,800 is \u2018highly concentrated\u2019 under the 2023 Merger Guidelines.", source: "DOJ & FTC, 2023 Merger Guidelines \u00a7 II.A" }
+    };
+
+    /* ===== Annotate Defined Terms ===== */
+    function annotateDefinedTerms() {
+      var content = document.querySelector('.page-content');
+      if (!content) return;
+      var termKeys = Object.keys(defined_terms).sort(function(a, b) { return b.length - a.length; });
+      var escaped = termKeys.map(function(t) { return t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); });
+      var re = new RegExp('\\b(' + escaped.join('|') + ')\\b', 'gi');
+
+      var walker = document.createTreeWalker(content, NodeFilter.SHOW_TEXT, null, false);
+      var nodes = [];
+      while (walker.nextNode()) nodes.push(walker.currentNode);
+
+      nodes.forEach(function(node) {
+        if (node.parentElement.classList && node.parentElement.classList.contains('defined-term')) return;
+        var tag = node.parentElement.tagName;
+        if (tag === 'H1' || tag === 'H2' || tag === 'H3' || tag === 'SCRIPT' || tag === 'STYLE' || tag === 'A') return;
+        var text = node.textContent;
+        if (!re.test(text)) return;
+        re.lastIndex = 0;
+        var frag = document.createDocumentFragment();
+        var last = 0, m;
+        re.lastIndex = 0;
+        while ((m = re.exec(text)) !== null) {
+          if (m.index > last) frag.appendChild(document.createTextNode(text.substring(last, m.index)));
+          var span = document.createElement('span');
+          span.className = 'defined-term';
+          span.setAttribute('tabindex', '0');
+          span.setAttribute('role', 'button');
+          span.setAttribute('aria-label', 'Definition: ' + m[0]);
+          span.setAttribute('data-term', m[0].toLowerCase());
+          span.textContent = m[0];
+          frag.appendChild(span);
+          last = re.lastIndex;
+        }
+        if (last < text.length) frag.appendChild(document.createTextNode(text.substring(last)));
+        node.parentNode.replaceChild(frag, node);
+      });
+
+      content.addEventListener('click', function(e) {
+        var t = e.target.closest('.defined-term');
+        if (t) showDefTooltip(t);
+      });
+    }
+
+    function showDefTooltip(el) {
+      var key = el.getAttribute('data-term');
+      var entry = defined_terms[key];
+      if (!entry) return;
+      document.getElementById('defTermName').innerHTML = '<span>' + el.textContent + '</span>';
+      document.getElementById('defTermBody').textContent = entry.def;
+      document.getElementById('defTermSource').textContent = 'Source: ' + entry.source;
+      var tooltip = document.getElementById('defTooltip');
+      tooltip.classList.add('visible');
+      var rect = el.getBoundingClientRect();
+      var top = rect.bottom + 8;
+      var left = rect.left;
+      if (top + 200 > window.innerHeight) top = Math.max(8, rect.top - 220);
+      if (left + 440 > window.innerWidth) left = window.innerWidth - 450;
+      if (left < 8) left = 8;
+      tooltip.style.top = top + 'px';
+      tooltip.style.left = left + 'px';
+    }
+    function closeDefTooltip() { document.getElementById('defTooltip').classList.remove('visible'); }
+    document.addEventListener('click', function(e) {
+      var tt = document.getElementById('defTooltip');
+      if (tt.classList.contains('visible') && !tt.contains(e.target) && !e.target.classList.contains('defined-term')) closeDefTooltip();
+    });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeDefTooltip(); });
+
+    /* ===== Governance Concentration Chart (verified data only) ===== */
+    function injectGovChart() {
+      var anchor = document.getElementById('gov-chart-anchor');
+      if (!anchor) return;
+
+      // Only data verified through published sources
+      var daos = [
+        { name: 'Uniswap', gini: 0.995, gini_voted: 0.971, nmc: 11, verified: true },
+        { name: 'Compound', gini: 0.987, gini_voted: 0.964, nmc: 8, verified: true },
+        { name: 'Braintrust', gini: 0.88, nmc: 11, verified: false, note: 'Est. range: 0.85\u20130.92, NMC 10\u201312' }
+      ];
+      var metric = 'gini';
+
+      var el = document.createElement('div');
+      el.className = 'gov-chart-tool';
+      el.innerHTML = '<div class="gov-chart-header">Measured DAO Governance Concentration</div>' +
+        '<div class="gov-chart-toggle" id="gov-toggle">' +
+          '<button class="active" data-m="gini">Gini Coefficient</button>' +
+          '<button data-m="nmc">Nakamoto Coefficient</button>' +
+        '</div>' +
+        '<div style="text-align:center;overflow-x:auto;"><svg id="gov-svg" viewBox="0 0 600 180" preserveAspectRatio="xMidYMid meet" style="width:100%;max-width:600px;"></svg></div>' +
+        '<div class="gov-chart-caption" id="gov-caption"></div>' +
+        '<div style="font-size:0.72rem;color:var(--muted);text-align:center;margin-top:var(--space-xs);">' +
+          '<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);vertical-align:middle;margin-right:3px;"></span> Measured &nbsp; ' +
+          '<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);opacity:0.5;vertical-align:middle;margin-right:3px;border:1px dashed var(--text);"></span> Estimated &nbsp; ' +
+          'Source: Fritsch, M\u00fcller & Wattenhofer (2022) tbl. 2; Oranburg (CPI 2025) fn. 52\u201353' +
+        '</div>';
+      anchor.appendChild(el);
+
+      var svg = document.getElementById('gov-svg');
+      var ns = 'http://www.w3.org/2000/svg';
+      var toggle = document.getElementById('gov-toggle');
+      toggle.querySelectorAll('button').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          metric = btn.getAttribute('data-m');
+          toggle.querySelectorAll('button').forEach(function(b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          draw();
+        });
+      });
+
+      function draw() {
+        svg.innerHTML = '';
+        var ox = 100, oy = 15, W = 460, H = 130;
+        var sorted = daos.slice().sort(function(a, b) {
+          return metric === 'gini' ? a.gini - b.gini : b.nmc - a.nmc;
+        });
+        var isGini = metric === 'gini';
+        var maxVal = isGini ? 1.0 : 60;
+        var label = isGini ? 'Gini Coefficient (0 = equal, 1 = concentrated)' : 'Nakamoto Coefficient (higher = more decentralized)';
+
+        function toX(v) { return ox + (v / maxVal) * W; }
+
+        // Zones
+        if (isGini) {
+          [{x1:0,x2:0.6,c:'rgba(46,107,62,0.08)'},{x1:0.6,x2:0.9,c:'rgba(196,151,47,0.08)'},{x1:0.9,x2:1,c:'rgba(178,31,44,0.08)'}].forEach(function(z) {
+            var r = document.createElementNS(ns,'rect');
+            r.setAttribute('x',toX(z.x1)); r.setAttribute('y',oy);
+            r.setAttribute('width',toX(z.x2)-toX(z.x1)); r.setAttribute('height',H);
+            r.setAttribute('fill',z.c); svg.appendChild(r);
+          });
+        } else {
+          [{x1:0,x2:10,c:'rgba(178,31,44,0.08)'},{x1:10,x2:20,c:'rgba(196,151,47,0.08)'},{x1:20,x2:60,c:'rgba(46,107,62,0.08)'}].forEach(function(z) {
+            var r = document.createElementNS(ns,'rect');
+            r.setAttribute('x',toX(z.x1)); r.setAttribute('y',oy);
+            r.setAttribute('width',toX(z.x2)-toX(z.x1)); r.setAttribute('height',H);
+            r.setAttribute('fill',z.c); svg.appendChild(r);
+          });
+        }
+
+        // Axis
+        var ax = document.createElementNS(ns,'line');
+        ax.setAttribute('x1',ox); ax.setAttribute('y1',oy+H);
+        ax.setAttribute('x2',ox+W); ax.setAttribute('y2',oy+H);
+        ax.setAttribute('stroke','var(--muted)'); ax.setAttribute('stroke-width','1');
+        svg.appendChild(ax);
+
+        // Ticks
+        var ticks = isGini ? [0,0.2,0.4,0.6,0.8,1.0] : [0,10,20,30,40,50,60];
+        ticks.forEach(function(v) {
+          var t = document.createElementNS(ns,'text');
+          t.setAttribute('x',toX(v)); t.setAttribute('y',oy+H+14);
+          t.setAttribute('fill','var(--muted)'); t.setAttribute('font-size','12');
+          t.setAttribute('font-family','var(--font-mono)'); t.setAttribute('text-anchor','middle');
+          t.textContent = isGini ? v.toFixed(1) : v;
+          svg.appendChild(t);
+        });
+
+        // Axis label
+        var al = document.createElementNS(ns,'text');
+        al.setAttribute('x',ox+W/2); al.setAttribute('y',oy+H+35);
+        al.setAttribute('fill','var(--muted)'); al.setAttribute('font-size','13');
+        al.setAttribute('font-family','var(--font-body)'); al.setAttribute('text-anchor','middle');
+        al.textContent = label;
+        svg.appendChild(al);
+
+        // DAOs
+        var rowH = H / sorted.length;
+        sorted.forEach(function(dao, i) {
+          var val = isGini ? dao.gini : dao.nmc;
+          var cx = toX(val);
+          var cy = oy + 20 + i * rowH + rowH * 0.3;
+
+          var stem = document.createElementNS(ns,'line');
+          stem.setAttribute('x1',ox); stem.setAttribute('y1',cy);
+          stem.setAttribute('x2',cx); stem.setAttribute('y2',cy);
+          stem.setAttribute('stroke','var(--accent)'); stem.setAttribute('stroke-width','2');
+          stem.setAttribute('opacity',dao.verified ? '1' : '0.5');
+          svg.appendChild(stem);
+
+          var circ = document.createElementNS(ns,'circle');
+          circ.setAttribute('cx',cx); circ.setAttribute('cy',cy); circ.setAttribute('r','6');
+          circ.setAttribute('fill',dao.verified ? 'var(--accent)' : 'var(--bg-secondary)');
+          circ.setAttribute('stroke',dao.verified ? 'var(--text)' : 'var(--accent)');
+          circ.setAttribute('stroke-width','1.5');
+          if (!dao.verified) circ.setAttribute('stroke-dasharray','3,2');
+          svg.appendChild(circ);
+
+          var nm = document.createElementNS(ns,'text');
+          nm.setAttribute('x',ox-6); nm.setAttribute('y',cy+4);
+          nm.setAttribute('fill','var(--text)'); nm.setAttribute('font-size','13');
+          nm.setAttribute('font-family','var(--font-body)'); nm.setAttribute('text-anchor','end');
+          nm.setAttribute('font-weight','600');
+          nm.textContent = dao.name;
+          svg.appendChild(nm);
+
+          var vl = document.createElementNS(ns,'text');
+          vl.setAttribute('x',cx+10); vl.setAttribute('y',cy+4);
+          vl.setAttribute('fill','var(--accent-2)'); vl.setAttribute('font-size','12');
+          vl.setAttribute('font-family','var(--font-mono)');
+          vl.textContent = (isGini ? val.toFixed(3) : val) + (dao.verified ? '' : ' *');
+          svg.appendChild(vl);
+        });
+
+        document.getElementById('gov-caption').textContent = isGini
+          ? 'Gini: 0 = equal, 1 = monopoly. Solid = measured; dashed = estimated (*). Data as of Mar. 2022.'
+          : 'NMC: minimum entities for >50% control. Lower = more concentrated. Solid = measured; dashed = estimated (*).';
+      }
+      draw();
+    }
+
+    // Run after page loads
+    annotateDefinedTerms();
+    injectGovChart();
   </script>
 </body>
 </html>
