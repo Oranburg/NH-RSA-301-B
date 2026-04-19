@@ -731,8 +731,9 @@
       <div style="display:flex; align-items:center; gap:var(--space-md);">
         <a href="index.html">RSA 301-B</a>
         <a href="registry.html">Registry</a>
-        <a href="genius.html">GENIUS Act</a>
+<a href="genius.html">GENIUS Act</a>
         <a href="stable-tokens.html">Stable Tokens</a>
+        <a href="comparison.html">Compare States</a>
       </div>
       <span class="nav-title">Measuring Decentralization</span>
       <div style="display:flex; align-items:center; gap:var(--space-md);">
@@ -771,9 +772,9 @@
       </ul>
       <hr class="toc-divider">
       <p class="toc-heading" style="margin-top:0;">Quick Reference</p>
-      <div class="toc-stat-badge">NH threshold: 20%</div><br>
-      <div class="toc-stat-badge">§ 301-B:5 IX</div><br>
-      <div class="toc-stat-badge">§ 301-B:15(j)–(k)</div>
+      <a href="#nh-definition" class="toc-stat-badge" style="display:inline-block;text-decoration:none;cursor:pointer;">NH threshold: 20%</a><br>
+      <a href="index.html#sec-5" class="toc-stat-badge" style="display:inline-block;text-decoration:none;cursor:pointer;">&sect; 301-B:5 IX</a><br>
+      <a href="index.html#sec-15" class="toc-stat-badge" style="display:inline-block;text-decoration:none;cursor:pointer;">&sect; 301-B:15(j)&ndash;(k)</a>
       <hr class="toc-divider">
       <p style="font-size:0.78rem; color:var(--muted); margin:0;">Part of the<br><strong>NH DAO Law Explorer</strong><br>series on decentralization.</p>
     </aside>
@@ -1074,10 +1075,11 @@
           </div>
           <div class="btn-row">
             <button class="btn btn-primary" onclick="calculate()">&#8594; Calculate</button>
-            <button class="btn btn-secondary" onclick="loadPreset('equal5')">5 Equal Holders</button>
-            <button class="btn btn-secondary" onclick="loadPreset('majority')">One Dominant Holder</button>
-            <button class="btn btn-secondary" onclick="loadPreset('long')">Long-Tail Distribution</button>
-            <button class="btn btn-secondary" onclick="loadPreset('nh_edge')">NH Edge Case</button>
+            <button class="btn btn-secondary" onclick="loadPreset('fail5')">5 Equal at 20% (fails NH)</button>
+            <button class="btn btn-secondary" onclick="loadPreset('pass6')">6 Equal at 16.7% (passes)</button>
+            <button class="btn btn-secondary" onclick="loadPreset('unequal6')">6 Unequal (barely passes)</button>
+            <button class="btn btn-secondary" onclick="loadPreset('long')">Long Tail (20 holders)</button>
+            <button class="btn btn-secondary" onclick="loadPreset('dominant')">One Dominant Holder (fails)</button>
           </div>
 
           <!-- Metric Output -->
@@ -1395,11 +1397,19 @@
     })();
 
     /* ===== Presets ===== */
+    // Presets designed to teach the 20% threshold boundary
     var presets = {
-      'equal5':   '20, 20, 20, 20, 20',
-      'majority': '60, 10, 10, 10, 10',
+      // Fails NH: each holder at exactly 20% (>= 20% is the threshold)
+      'fail5':    '20, 20, 20, 20, 20',
+      // Passes NH: 6 equal holders, each at ~16.7%. Compare NMC and Gini to fail5.
+      'pass6':    '16.67, 16.67, 16.67, 16.67, 16.67, 16.67',
+      // Barely passes NH: 6 holders, none at 20%, but very unequal.
+      // Compare Gini to pass6 -- nearly the same NMC but much higher Gini.
+      'unequal6': '19.9, 19.9, 19.5, 18, 15, 7.7',
+      // Long tail: realistic distribution with many small holders. Passes NH.
       'long':     '18, 15, 12, 10, 8, 7, 6, 5, 5, 4, 4, 3, 3, 2, 2, 1, 1, 1, 1, 1',
-      'nh_edge':  '19.9, 19.9, 19.9, 19.9, 19.9, 0.5'
+      // Dominant holder: one entity at 60%. Obviously fails NH.
+      'dominant': '60, 10, 10, 10, 10'
     };
     function loadPreset(key) {
       document.getElementById('holdings-input').value = presets[key];
@@ -1719,140 +1729,50 @@
       var anchor = document.getElementById('gov-chart-anchor');
       if (!anchor) return;
 
-      // Only data verified through published sources
-      var daos = [
-        { name: 'Uniswap', gini: 0.995, gini_voted: 0.971, nmc: 11, verified: true },
-        { name: 'Compound', gini: 0.987, gini_voted: 0.964, nmc: 8, verified: true },
-        { name: 'Braintrust', gini: 0.88, nmc: 11, verified: false, note: 'Est. range: 0.85\u20130.92, NMC 10\u201312' }
+      // ALL verified measurements from published sources
+      // Multiple measurements per DAO show how methodology and time affect results
+      var measurements = [
+        { dao: 'Compound', metric: 'Gini (delegates)',      value: 0.987, source: 'Fritsch et al. (2022) tbl. 2', date: 'Mar 2022', level: 'delegates' },
+        { dao: 'Compound', metric: 'Gini (voted delegates)', value: 0.964, source: 'Fritsch et al. (2022) tbl. 2', date: 'Mar 2022', level: 'delegates who voted' },
+        { dao: 'Compound', metric: 'NMC (delegates)',        value: 8,     source: 'Fritsch et al. (2022) tbl. 2', date: 'Mar 2022', level: 'delegates' },
+        { dao: 'Compound', metric: 'NMC (avg voters)',       value: 3.18,  source: 'Messias et al. (2025)',        date: '2020\u20132024', level: 'voters' },
+        { dao: 'Uniswap', metric: 'Gini (delegates)',       value: 0.995, source: 'Fritsch et al. (2022) tbl. 2', date: 'Mar 2022', level: 'delegates' },
+        { dao: 'Uniswap', metric: 'Gini (voted delegates)', value: 0.971, source: 'Fritsch et al. (2022) tbl. 2', date: 'Mar 2022', level: 'delegates who voted' },
+        { dao: 'Uniswap', metric: 'Gini (on-chain voting)', value: 0.938, source: 'Chao (n.d.)',                  date: 'n.d.',       level: 'on-chain votes' },
+        { dao: 'Uniswap', metric: 'NMC (delegates)',        value: 11,    source: 'Fritsch et al. (2022) tbl. 2', date: 'Mar 2022', level: 'delegates' },
+        { dao: 'Uniswap', metric: 'NMC (avg voters)',       value: 4.7,   source: 'Messias et al. (2025)',        date: '2021\u20132024', level: 'voters' },
+        { dao: 'Braintrust', metric: 'Gini (estimated)',    value: '0.85\u20130.92', source: 'Oranburg (CPI 2025) fn. 53', date: 'Nov 2025', level: 'token holders', estimated: true },
+        { dao: 'Braintrust', metric: 'NMC (estimated)',     value: '10\u201312',    source: 'Oranburg (CPI 2025) fn. 53', date: 'Nov 2025', level: 'token holders', estimated: true }
       ];
-      var metric = 'gini';
-
       var el = document.createElement('div');
       el.className = 'gov-chart-tool';
-      el.innerHTML = '<div class="gov-chart-header">Measured DAO Governance Concentration</div>' +
-        '<div class="gov-chart-toggle" id="gov-toggle">' +
-          '<button class="active" data-m="gini">Gini Coefficient</button>' +
-          '<button data-m="nmc">Nakamoto Coefficient</button>' +
-        '</div>' +
-        '<div style="text-align:center;overflow-x:auto;"><svg id="gov-svg" viewBox="0 0 600 180" preserveAspectRatio="xMidYMid meet" style="width:100%;max-width:600px;"></svg></div>' +
-        '<div class="gov-chart-caption" id="gov-caption"></div>' +
-        '<div style="font-size:0.72rem;color:var(--muted);text-align:center;margin-top:var(--space-xs);">' +
-          '<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);vertical-align:middle;margin-right:3px;"></span> Measured &nbsp; ' +
-          '<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);opacity:0.5;vertical-align:middle;margin-right:3px;border:1px dashed var(--text);"></span> Estimated &nbsp; ' +
-          'Source: Fritsch, M\u00fcller & Wattenhofer (2022) tbl. 2; Oranburg (CPI 2025) fn. 52\u201353' +
-        '</div>';
+
+      // Build a table showing ALL measurements
+      var html = '<div class="gov-chart-header">Verified DAO Governance Measurements</div>';
+      html += '<p style="font-size:0.85rem;color:var(--muted);margin:0 0 var(--space-md);">Multiple measurements per DAO reveal how methodology (delegates vs. voters), measurement level (all delegates vs. those who voted), and time period affect the result. This is the complete inventory of published, peer-reviewed or publicly documented measurements available in the literature.</p>';
+
+      html += '<div class="comparison-table-wrapper"><table class="comparison-table" style="min-width:500px;">';
+      html += '<thead><tr><th>DAO</th><th>Metric</th><th>Value</th><th>Level</th><th>Date</th><th>Source</th></tr></thead><tbody>';
+
+      var lastDao = '';
+      measurements.forEach(function(m) {
+        var rowClass = m.estimated ? ' style="opacity:0.7;font-style:italic;"' : '';
+        var daoCell = m.dao !== lastDao ? m.dao : '';
+        lastDao = m.dao;
+        var valStr = typeof m.value === 'number' ? (m.value < 1 ? m.value.toFixed(3) : m.value.toFixed(2)) : m.value;
+        if (m.estimated) valStr += ' *';
+        html += '<tr' + rowClass + '><td><strong>' + daoCell + '</strong></td><td>' + m.metric + '</td><td style="font-family:var(--font-mono);color:var(--accent-2);">' + valStr + '</td><td style="font-size:0.78rem;">' + m.level + '</td><td style="font-size:0.78rem;">' + m.date + '</td><td style="font-size:0.75rem;">' + m.source + '</td></tr>';
+      });
+      html += '</tbody></table></div>';
+
+      html += '<div style="font-size:0.75rem;color:var(--muted);margin-top:var(--space-sm);">';
+      html += '* Estimated (not directly measured). All other values from peer-reviewed or publicly documented research.<br>';
+      html += '<strong>Key insight:</strong> Compound\u2019s NMC is 8 when counting all delegates (Fritsch 2022) but only 3.18 when counting actual voters (Messias 2025). The same DAO looks very different depending on what you measure. Uniswap\u2019s Gini is 0.995 at the delegate level (Fritsch 2022) but 0.938 for on-chain voting (Chao). Methodology matters as much as the number.';
+      html += '</div>';
+
+      el.innerHTML = html;
       anchor.appendChild(el);
 
-      var svg = document.getElementById('gov-svg');
-      var ns = 'http://www.w3.org/2000/svg';
-      var toggle = document.getElementById('gov-toggle');
-      toggle.querySelectorAll('button').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          metric = btn.getAttribute('data-m');
-          toggle.querySelectorAll('button').forEach(function(b) { b.classList.remove('active'); });
-          btn.classList.add('active');
-          draw();
-        });
-      });
-
-      function draw() {
-        svg.innerHTML = '';
-        var ox = 100, oy = 15, W = 460, H = 130;
-        var sorted = daos.slice().sort(function(a, b) {
-          return metric === 'gini' ? a.gini - b.gini : b.nmc - a.nmc;
-        });
-        var isGini = metric === 'gini';
-        var maxVal = isGini ? 1.0 : 60;
-        var label = isGini ? 'Gini Coefficient (0 = equal, 1 = concentrated)' : 'Nakamoto Coefficient (higher = more decentralized)';
-
-        function toX(v) { return ox + (v / maxVal) * W; }
-
-        // Zones
-        if (isGini) {
-          [{x1:0,x2:0.6,c:'rgba(46,107,62,0.08)'},{x1:0.6,x2:0.9,c:'rgba(196,151,47,0.08)'},{x1:0.9,x2:1,c:'rgba(178,31,44,0.08)'}].forEach(function(z) {
-            var r = document.createElementNS(ns,'rect');
-            r.setAttribute('x',toX(z.x1)); r.setAttribute('y',oy);
-            r.setAttribute('width',toX(z.x2)-toX(z.x1)); r.setAttribute('height',H);
-            r.setAttribute('fill',z.c); svg.appendChild(r);
-          });
-        } else {
-          [{x1:0,x2:10,c:'rgba(178,31,44,0.08)'},{x1:10,x2:20,c:'rgba(196,151,47,0.08)'},{x1:20,x2:60,c:'rgba(46,107,62,0.08)'}].forEach(function(z) {
-            var r = document.createElementNS(ns,'rect');
-            r.setAttribute('x',toX(z.x1)); r.setAttribute('y',oy);
-            r.setAttribute('width',toX(z.x2)-toX(z.x1)); r.setAttribute('height',H);
-            r.setAttribute('fill',z.c); svg.appendChild(r);
-          });
-        }
-
-        // Axis
-        var ax = document.createElementNS(ns,'line');
-        ax.setAttribute('x1',ox); ax.setAttribute('y1',oy+H);
-        ax.setAttribute('x2',ox+W); ax.setAttribute('y2',oy+H);
-        ax.setAttribute('stroke','var(--muted)'); ax.setAttribute('stroke-width','1');
-        svg.appendChild(ax);
-
-        // Ticks
-        var ticks = isGini ? [0,0.2,0.4,0.6,0.8,1.0] : [0,10,20,30,40,50,60];
-        ticks.forEach(function(v) {
-          var t = document.createElementNS(ns,'text');
-          t.setAttribute('x',toX(v)); t.setAttribute('y',oy+H+14);
-          t.setAttribute('fill','var(--muted)'); t.setAttribute('font-size','12');
-          t.setAttribute('font-family','var(--font-mono)'); t.setAttribute('text-anchor','middle');
-          t.textContent = isGini ? v.toFixed(1) : v;
-          svg.appendChild(t);
-        });
-
-        // Axis label
-        var al = document.createElementNS(ns,'text');
-        al.setAttribute('x',ox+W/2); al.setAttribute('y',oy+H+35);
-        al.setAttribute('fill','var(--muted)'); al.setAttribute('font-size','13');
-        al.setAttribute('font-family','var(--font-body)'); al.setAttribute('text-anchor','middle');
-        al.textContent = label;
-        svg.appendChild(al);
-
-        // DAOs
-        var rowH = H / sorted.length;
-        sorted.forEach(function(dao, i) {
-          var val = isGini ? dao.gini : dao.nmc;
-          var cx = toX(val);
-          var cy = oy + 20 + i * rowH + rowH * 0.3;
-
-          var stem = document.createElementNS(ns,'line');
-          stem.setAttribute('x1',ox); stem.setAttribute('y1',cy);
-          stem.setAttribute('x2',cx); stem.setAttribute('y2',cy);
-          stem.setAttribute('stroke','var(--accent)'); stem.setAttribute('stroke-width','2');
-          stem.setAttribute('opacity',dao.verified ? '1' : '0.5');
-          svg.appendChild(stem);
-
-          var circ = document.createElementNS(ns,'circle');
-          circ.setAttribute('cx',cx); circ.setAttribute('cy',cy); circ.setAttribute('r','6');
-          circ.setAttribute('fill',dao.verified ? 'var(--accent)' : 'var(--bg-secondary)');
-          circ.setAttribute('stroke',dao.verified ? 'var(--text)' : 'var(--accent)');
-          circ.setAttribute('stroke-width','1.5');
-          if (!dao.verified) circ.setAttribute('stroke-dasharray','3,2');
-          svg.appendChild(circ);
-
-          var nm = document.createElementNS(ns,'text');
-          nm.setAttribute('x',ox-6); nm.setAttribute('y',cy+4);
-          nm.setAttribute('fill','var(--text)'); nm.setAttribute('font-size','13');
-          nm.setAttribute('font-family','var(--font-body)'); nm.setAttribute('text-anchor','end');
-          nm.setAttribute('font-weight','600');
-          nm.textContent = dao.name;
-          svg.appendChild(nm);
-
-          var vl = document.createElementNS(ns,'text');
-          vl.setAttribute('x',cx+10); vl.setAttribute('y',cy+4);
-          vl.setAttribute('fill','var(--accent-2)'); vl.setAttribute('font-size','12');
-          vl.setAttribute('font-family','var(--font-mono)');
-          vl.textContent = (isGini ? val.toFixed(3) : val) + (dao.verified ? '' : ' *');
-          svg.appendChild(vl);
-        });
-
-        document.getElementById('gov-caption').textContent = isGini
-          ? 'Gini: 0 = equal, 1 = monopoly. Solid = measured; dashed = estimated (*). Data as of Mar. 2022.'
-          : 'NMC: minimum entities for >50% control. Lower = more concentrated. Solid = measured; dashed = estimated (*).';
-      }
-      draw();
     }
 
     // Run after page loads
