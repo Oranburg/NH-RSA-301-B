@@ -737,6 +737,76 @@
     </div>
   </div>
 
+  <!-- GENIUS Act Regulatory Architecture Flowchart -->
+  <div style="max-width:740px;margin:0 auto var(--space-2xl);padding:0 var(--space-md);text-align:center;">
+    <svg viewBox="0 0 600 300" preserveAspectRatio="xMidYMid meet" style="width:100%;max-width:600px;" font-family="Roboto, sans-serif" role="img" aria-label="GENIUS Act Regulatory Architecture Flowchart">
+      <!-- Top box: GENIUS Act -->
+      <rect x="200" y="10" width="200" height="40" rx="8" ry="8" fill="var(--blue-deep)" stroke="var(--border)" stroke-width="1.5"/>
+      <text x="300" y="36" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">GENIUS Act</text>
+      <!-- Vertical line from top box -->
+      <line x1="300" y1="50" x2="300" y2="80" stroke="var(--muted)" stroke-width="1.5"/>
+      <!-- Horizontal branching line -->
+      <line x1="100" y1="80" x2="500" y2="80" stroke="var(--muted)" stroke-width="1.5"/>
+      <!-- Three vertical lines down from branch -->
+      <line x1="100" y1="80" x2="100" y2="100" stroke="var(--muted)" stroke-width="1.5"/>
+      <line x1="300" y1="80" x2="300" y2="100" stroke="var(--muted)" stroke-width="1.5"/>
+      <line x1="500" y1="80" x2="500" y2="100" stroke="var(--muted)" stroke-width="1.5"/>
+      <!-- Pathway A: Federal Qualified -->
+      <rect x="15" y="100" width="170" height="44" rx="6" ry="6" fill="var(--bg-secondary)" stroke="var(--accent)" stroke-width="1.5"/>
+      <text x="100" y="118" text-anchor="middle" font-size="13" font-weight="600" fill="var(--text)">Federal Qualified</text>
+      <text x="100" y="136" text-anchor="middle" font-size="11" fill="var(--muted)">&sect; 5, OCC</text>
+      <!-- Pathway B: State Qualified -->
+      <rect x="215" y="100" width="170" height="44" rx="6" ry="6" fill="var(--bg-secondary)" stroke="var(--accent)" stroke-width="1.5"/>
+      <text x="300" y="118" text-anchor="middle" font-size="13" font-weight="600" fill="var(--text)">State Qualified</text>
+      <text x="300" y="136" text-anchor="middle" font-size="11" fill="var(--muted)">&sect; 7, State Regulator</text>
+      <!-- Pathway C: IDI Subsidiary -->
+      <rect x="415" y="100" width="170" height="44" rx="6" ry="6" fill="var(--bg-secondary)" stroke="var(--accent)" stroke-width="1.5"/>
+      <text x="500" y="118" text-anchor="middle" font-size="13" font-weight="600" fill="var(--text)">IDI Subsidiary</text>
+      <text x="500" y="136" text-anchor="middle" font-size="11" fill="var(--muted)">&sect; 5, Parent Regulator</text>
+      <!-- Detail lines below each pathway -->
+      <line x1="100" y1="144" x2="100" y2="168" stroke="var(--muted)" stroke-width="1"/>
+      <line x1="300" y1="144" x2="300" y2="168" stroke="var(--muted)" stroke-width="1"/>
+      <line x1="500" y1="144" x2="500" y2="168" stroke="var(--muted)" stroke-width="1"/>
+      <!-- Detail labels -->
+      <text x="100" y="182" text-anchor="middle" font-size="11" fill="var(--muted)">No size cap</text>
+      <text x="300" y="182" text-anchor="middle" font-size="11" fill="var(--muted)">$10B cap</text>
+      <text x="500" y="178" text-anchor="middle" font-size="11" fill="var(--muted)">Existing bank</text>
+      <text x="500" y="192" text-anchor="middle" font-size="11" fill="var(--muted)">supervision</text>
+      <!-- Converging lines to bottom -->
+      <line x1="100" y1="195" x2="100" y2="220" stroke="var(--muted)" stroke-width="1"/>
+      <line x1="300" y1="195" x2="300" y2="220" stroke="var(--muted)" stroke-width="1"/>
+      <line x1="500" y1="200" x2="500" y2="220" stroke="var(--muted)" stroke-width="1"/>
+      <line x1="100" y1="220" x2="500" y2="220" stroke="var(--muted)" stroke-width="1"/>
+      <line x1="300" y1="220" x2="300" y2="240" stroke="var(--muted)" stroke-width="1.5"/>
+      <!-- Bottom result box -->
+      <rect x="150" y="240" width="300" height="44" rx="8" ry="8" fill="var(--bg-secondary)" stroke="var(--accent-2)" stroke-width="2"/>
+      <text x="300" y="258" text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-2)">Payment Stablecoin</text>
+      <text x="300" y="276" text-anchor="middle" font-size="11" fill="var(--muted)">Reserves per &sect; 4</text>
+    </svg>
+    <p style="font-size:0.78rem;color:var(--muted);text-align:center;">Fig. 1. GENIUS Act regulatory architecture: three issuer pathways converge on a single reserve standard.</p>
+  </div>
+
+  <!-- Reserve Requirements Breakdown -->
+  <div style="max-width:740px;margin:0 auto var(--space-2xl);padding:0 var(--space-md);text-align:center;">
+    <svg viewBox="0 0 600 80" preserveAspectRatio="xMidYMid meet" style="width:100%;max-width:600px;" font-family="Roboto, sans-serif" role="img" aria-label="GENIUS Act Section 4 Reserve Asset Types">
+      <!-- Section label -->
+      <text x="300" y="14" text-anchor="middle" font-size="13" font-weight="600" fill="var(--text)">&sect; 4 Qualifying Reserve Assets</text>
+      <!-- Stacked horizontal bar -->
+      <rect x="10" y="24" width="140" height="30" rx="4" ry="4" fill="var(--accent)" opacity="0.85"/>
+      <text x="80" y="44" text-anchor="middle" font-size="11" font-weight="600" fill="var(--bg)">Cash &amp; Deposits</text>
+      <rect x="152" y="24" width="140" height="30" rx="4" ry="4" fill="var(--blue-bright)" opacity="0.85"/>
+      <text x="222" y="44" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">T-Bills (&le;93d)</text>
+      <rect x="294" y="24" width="150" height="30" rx="4" ry="4" fill="var(--accent-2)" opacity="0.85"/>
+      <text x="369" y="44" text-anchor="middle" font-size="11" font-weight="600" fill="var(--bg)">Overnight Repos</text>
+      <rect x="446" y="24" width="144" height="30" rx="4" ry="4" fill="var(--gold)" opacity="0.85"/>
+      <text x="518" y="44" text-anchor="middle" font-size="11" font-weight="600" fill="var(--bg)">Gov't MMFs</text>
+      <!-- Bracket line below -->
+      <line x1="10" y1="62" x2="590" y2="62" stroke="var(--muted)" stroke-width="1"/>
+      <text x="300" y="76" text-anchor="middle" font-size="11" fill="var(--muted)">100% reserve requirement &mdash; no rehypothecation permitted</text>
+    </svg>
+    <p style="font-size:0.78rem;color:var(--muted);text-align:center;">Fig. 2. Four qualifying asset categories under GENIUS Act &sect; 4. Bar widths are illustrative, not proportional.</p>
+  </div>
+
   <!-- Mobile TOC toggle -->
   <button class="toc-mobile-toggle" id="tocToggle" aria-label="Table of contents">&#9776;</button>
   <div class="toc-mobile-overlay" id="tocOverlay"></div>
