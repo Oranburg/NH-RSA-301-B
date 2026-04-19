@@ -119,9 +119,11 @@
     /* Top Nav */
     .top-nav{background-color:var(--blue-deep);padding:.6rem var(--space-md);position:sticky;top:0;z-index:200;box-shadow:0 2px 5px rgba(0,0,0,.3);}
     .top-nav-inner{max-width:var(--max-width);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:var(--space-md);}
-    .top-nav a{color:#FFF;font-family:var(--font-body);font-size:.9rem;font-weight:500;letter-spacing:.03em;text-transform:uppercase;}
+    .top-nav a{color:#FFF;font-family:var(--font-body);font-size:.82rem;font-weight:500;letter-spacing:.03em;text-transform:uppercase;}
     .top-nav a:hover{color:var(--accent-2);}
-    .nav-title{font-family:var(--font-headline);font-size:1.05rem;font-weight:600;color:#FFF;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .top-nav a.nav-active{color:var(--accent-2);border-bottom:2px solid var(--accent-2);padding-bottom:2px;}
+    .nav-pages{display:flex;align-items:center;gap:var(--space-sm);flex-wrap:wrap;}
+    .nav-title{font-family:var(--font-headline);font-size:.95rem;font-weight:600;color:var(--accent-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-shrink:0;}
     .theme-toggle{background:none;border:none;cursor:pointer;color:#FFF;padding:.25rem;display:flex;align-items:center;transition:color .2s;}
     .theme-toggle:hover{color:var(--accent-2);}
     [data-theme="dark"] .icon-sun{display:inline;}[data-theme="dark"] .icon-moon{display:none;}
@@ -197,6 +199,28 @@
     .pathway-card p{font-size:.85rem;color:var(--muted);text-align:left;margin:0;}
 
     .stat-value-year{font-size:.9rem;font-family:var(--font-headline);font-weight:700;}
+
+    /* History Timeline (vertical) */
+    .history-timeline{position:relative;padding-left:2.2rem;margin:var(--space-xl) 0;}
+    .history-timeline::before{content:'';position:absolute;left:.65rem;top:.5rem;bottom:.5rem;width:2px;background:linear-gradient(180deg,var(--blue-bright),var(--gold),#27ae60);}
+    .ht-item{position:relative;margin-bottom:var(--space-lg);padding-left:.8rem;}
+    .ht-item::before{content:'';position:absolute;left:-2.15rem;top:.35rem;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--blue-bright);z-index:1;}
+    .ht-item.ht-danger::before{border-color:#c0392b;}
+    .ht-item.ht-warning::before{border-color:var(--gold);}
+    .ht-item.ht-success::before{border-color:#27ae60;}
+    .ht-date{font-family:var(--font-mono);font-size:.78rem;color:var(--accent-2);font-weight:700;}
+    .ht-label{font-size:.88rem;color:var(--text);line-height:1.4;}
+
+    /* Prong/Pathway Cards (from decentralization.html) */
+    .prong-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--space-md);margin:var(--space-lg) 0;}
+    .prong-card{background:var(--bg-soft);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--space-md);}
+    .prong-label{font-family:var(--font-headline);font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;display:inline-block;padding:.15rem .5rem;border-radius:var(--radius-sm);margin-bottom:var(--space-sm);}
+    .prong-label-host{background:rgba(36,89,169,.2);color:var(--blue-light);}
+    .prong-label-regulate{background:rgba(196,151,47,.15);color:var(--gold-light);}
+    .prong-label-issue{background:rgba(30,130,76,.15);color:#27ae60;}
+    .prong-card h4{font-family:var(--font-headline);font-size:1rem;font-weight:600;color:var(--text);margin:0 0 var(--space-xs);}
+    .prong-card p{font-family:var(--font-body)!important;font-size:.88rem!important;line-height:1.5!important;margin:0!important;text-align:left!important;color:var(--muted);}
+
     /* Bar Chart */
     .bar-chart{margin:var(--space-xl) 0;}
     .bar-row{display:flex;align-items:center;gap:var(--space-md);margin-bottom:.55rem;}
@@ -296,26 +320,25 @@
 <!-- Navigation -->
 <nav class="top-nav">
   <div class="top-nav-inner">
-    <div style="display:flex;align-items:center;gap:var(--space-md);">
-      <a href="index.html">RSA 301-B</a>
-      <a href="genius.html">GENIUS Act</a>
+    <span class="nav-title">NH DAO Law</span>
+    <div class="nav-pages">
+      <a href="index.html">Statute</a>
       <a href="decentralization.html">Decentralization</a>
       <a href="registry.html">Registry</a>
+      <a href="comparison.html">Compare</a>
+      <a href="genius.html">GENIUS</a>
+      <a href="stable-tokens.html" class="nav-active">Stable Tokens</a>
     </div>
-    <span class="nav-title">The GENIUS Dilemma</span>
-    <div style="display:flex;align-items:center;gap:var(--space-md);">
-      <a href="https://github.com/Oranburg/NH-RSA-301-B">GitHub</a>
-      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
-    </div>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
   </div>
 </nav>
 
 <!-- Cross-link Banner -->
 <div class="crosslink-banner">
-  Read the full statute: <a href="genius.html">GENIUS Act &mdash; Pub. L. 119-27</a> &bull; <a href="index.html">NH RSA 301-B DAO Act</a>
+  Read the full statute: <a href="genius.html">GENIUS Act &ndash; Pub. L. 119-27</a> &bull; <a href="index.html">NH RSA 301-B DAO Act</a>
 </div>
 
 <!-- Page Layout -->
@@ -356,7 +379,7 @@
           <a href="index.html">RSA 301-B</a> &rsaquo; <a href="genius.html">GENIUS Act</a> &rsaquo; Stable Tokens
         </p>
         <h1>The GENIUS Dilemma:<br>Stable Tokens &amp; NH DAO Law</h1>
-        <p class="subtitle">How the Guiding and Establishing National Innovation for U.S. Stablecoins Act (Pub.&thinsp;L.&thinsp;119-27) intersects with New Hampshire&rsquo;s DAO Act (RSA 301-B) and its Commission to Study Stable Tokens (RSA 383:26)&mdash;and why the tension between decentralization and central-bank-style reserve requirements may define the next chapter of DAO law.</p>
+        <p class="subtitle">How the Guiding and Establishing National Innovation for U.S. Stablecoins Act (Pub.&thinsp;L.&thinsp;119-27) intersects with New Hampshire&rsquo;s DAO Act (RSA 301-B) and its Commission to Study Stable Tokens (RSA 383:26) &ndash; and why the tension between decentralization and central-bank-style reserve requirements may define the next chapter of DAO law.</p>
         <div class="hero-tags">
           <span class="hero-tag">Pub. L. 119-27</span>
           <span class="hero-tag">RSA 301-B</span>
@@ -399,12 +422,40 @@
         <li><strong>CFTC position:</strong> Commodity interests; jurisdiction over derivatives but uncertain over spot markets.</li>
         <li><strong>FinCEN:</strong> Money services business registration; AML/KYC under BSA; SAR filing obligations.</li>
         <li><strong>OCC (2020-21 interpretive letters):</strong> National banks may hold stablecoin reserves; issuance authority unclear.</li>
-        <li><strong>State regimes:</strong> New York BitLicense, Wyoming SPDI, NH banking division oversight &mdash; 50 different answers.</li>
+        <li><strong>State regimes:</strong> New York BitLicense, Wyoming SPDI, NH banking division oversight &ndash; 50 different answers.</li>
       </ul>
 
+      <h3>Regulatory History at a Glance</h3>
+      <div class="history-timeline">
+        <div class="ht-item ht-danger">
+          <div class="ht-date">May 2022</div>
+          <div class="ht-label">TerraUSD collapse &ndash; $50B in losses</div>
+        </div>
+        <div class="ht-item ht-warning">
+          <div class="ht-date">2023</div>
+          <div class="ht-label">SEC enforcement wave &ndash; stablecoin actions accelerate</div>
+        </div>
+        <div class="ht-item">
+          <div class="ht-date">2024</div>
+          <div class="ht-label">GENIUS Act introduced (S. 1582)</div>
+        </div>
+        <div class="ht-item ht-success">
+          <div class="ht-date">Jul 18, 2025</div>
+          <div class="ht-label">GENIUS Act signed into law (Pub. L. 119-27)</div>
+        </div>
+        <div class="ht-item ht-success">
+          <div class="ht-date">Jul 15, 2025</div>
+          <div class="ht-label">NH Stable Token Commission created (HB 310)</div>
+        </div>
+        <div class="ht-item">
+          <div class="ht-date">Apr 18, 2026</div>
+          <div class="ht-label">NH DAO Registry Design Sprint</div>
+        </div>
+      </div>
+
       <blockquote>
-        &ldquo;The <span class="defined-term" data-term="genius-act">GENIUS Act</span> reflects a congressional determination that the ambiguity surrounding stablecoin regulation was itself a systemic risk&mdash;one that the collapse of TerraUSD had made undeniable. By creating a single federal floor and a defined state option, Congress chose <span class="defined-term" data-term="prudential">prudential</span> regulation over continued reliance on enforcement as a substitute for rulemaking.&rdquo;
-        <cite>&mdash; Seth C. Oranburg, <em>The Genius of the GENIUS Act</em>, Stanford J. Blockchain L. &amp; Pol&rsquo;y (2026)</cite>
+        &ldquo;The <span class="defined-term" data-term="genius-act">GENIUS Act</span> reflects a congressional determination that the ambiguity surrounding stablecoin regulation was itself a systemic risk &ndash; one that the collapse of TerraUSD had made undeniable. By creating a single federal floor and a defined state option, Congress chose <span class="defined-term" data-term="prudential">prudential</span> regulation over continued reliance on enforcement as a substitute for rulemaking.&rdquo;
+        <cite> &ndash; Seth C. Oranburg, <em>The Genius of the GENIUS Act</em>, Stanford J. Blockchain L. &amp; Pol&rsquo;y (2026)</cite>
       </blockquote>
 
       <!-- ===== SECTION 2: WHAT IS A STABLE TOKEN ===== -->
@@ -425,7 +476,7 @@
 
       <h3>GENIUS Act &sect;&thinsp;2(22): The Statutory Definition</h3>
 
-      <p>The Act defines a payment stablecoin as a digital asset that is&mdash;(A) used or designed to be used as a means of payment or settlement; (B) denominated solely in United States dollars; (C) the issuer of which represents will be convertible, redeemable, or repurchasable for United States dollars at a fixed amount; and (D) backed by permissible payment stablecoin reserves. The definition expressly excludes <span class="defined-term" data-term="algorithmic-stablecoin">algorithmic stablecoins</span> whose backing asset is another digital asset.</p>
+      <p>The Act defines a payment stablecoin as a digital asset that is &ndash; (A) used or designed to be used as a means of payment or settlement; (B) denominated in a national currency (not limited to United States dollars); (C) the issuer of which represents will be convertible, redeemable, or repurchasable for a fixed amount of monetary value; and (D) backed by permissible payment stablecoin reserves. The definition expressly excludes <span class="defined-term" data-term="algorithmic-stablecoin">algorithmic stablecoins</span> whose backing asset is another digital asset.</p>
 
       <h3>Qualifying vs. Non-Qualifying Reserves (&sect;&thinsp;4)</h3>
 
@@ -453,9 +504,9 @@
           <div class="bar-status yes">YES</div>
         </div>
         <div class="bar-row">
-          <div class="bar-label">Money market funds</div>
-          <div class="bar-track"><div class="bar-fill bar-no" style="width:55%;">MMFs — NOT qualifying</div></div>
-          <div class="bar-status no">NO</div>
+          <div class="bar-label">Gov&rsquo;t money market funds</div>
+          <div class="bar-track"><div class="bar-fill bar-yes" style="width:70%;">Gov&rsquo;t MMFs in qualifying assets</div></div>
+          <div class="bar-status yes">YES</div>
         </div>
         <div class="bar-row">
           <div class="bar-label">Corporate bonds</div>
@@ -479,8 +530,8 @@
       <p>The GENIUS Act did not emerge from a vacuum. Its conceptual lineage runs through two prior bills that failed to become law:</p>
 
       <ol>
-        <li><strong>Token Taxonomy Act of 2019 (H.R. 2144)</strong> &mdash; proposed to exclude qualifying digital tokens from SEC securities regulation. Never enacted but established the conceptual distinction between payment tokens and investment tokens.</li>
-        <li><strong>CLARITY Act of 2025 (H.R. 1812)</strong> &mdash; companion to GENIUS in the 119th Congress; addressed broader digital asset classification. GENIUS was enacted first (July 18, 2025) while CLARITY remained pending.</li>
+        <li><strong>Token Taxonomy Act of 2019 (H.R. 2144)</strong> &ndash; proposed to exclude qualifying digital tokens from SEC securities regulation. Never enacted but established the conceptual distinction between payment tokens and investment tokens.</li>
+        <li><strong>CLARITY Act of 2025 (H.R. 3633)</strong> &ndash; companion to GENIUS in the 119th Congress; addressed broader digital asset classification. GENIUS was enacted first (July 18, 2025) while CLARITY remained pending.</li>
       </ol>
 
       <p>GENIUS passed the Senate 68&ndash;30 and the House 308&ndash;122, reflecting rare bipartisan consensus driven by the post-TerraUSD political environment and industry lobbying for regulatory clarity.</p>
@@ -499,9 +550,9 @@
           <p>PPSIs must maintain permissible reserves equal to 100% of outstanding payment stablecoins. Prohibits <span class="defined-term" data-term="rehypothecation">rehypothecation</span> of reserves. Monthly public attestation by registered public accounting firm required.</p>
         </div>
         <div class="card">
-          <div class="card-badge">&sect; 14(c)&ndash;(d)</div>
-          <h4>Securities Carve-Out + Private Right</h4>
-          <p>Payment stablecoins are not securities under the Securities Act (carve-out). Creates a new private right of action for redemption failures in lieu of <span class="defined-term" data-term="rule10b5">Rule 10b-5</span>; requires showing of recklessness (<span class="defined-term" data-term="scienter">scienter</span>).</p>
+          <div class="card-badge">&sect; 17</div>
+          <h4>Securities Carve-Out</h4>
+          <p>Payment stablecoins are not securities under the Securities Act of 1933 (&sect;&thinsp;17). The GENIUS Act does not create a private right of action for redemption failures; enforcement is through the prudential regulators and the penalty provisions in &sect;&thinsp;3(f).</p>
         </div>
         <div class="card">
           <div class="card-badge">&sect; 3(e)</div>
@@ -509,14 +560,14 @@
           <p>Foreign issuers offering payment stablecoins to U.S. persons must register with Treasury or comply with a Treasury-certified foreign regulatory regime &ldquo;substantially similar&rdquo; to GENIUS requirements.</p>
         </div>
         <div class="card">
-          <div class="card-badge">&sect; 22</div>
-          <h4>BSA Integration</h4>
+          <div class="card-badge">&sect; 8</div>
+          <h4>Anti-Money Laundering Protections</h4>
           <p>PPSIs are explicitly &ldquo;financial institutions&rdquo; under the <span class="defined-term" data-term="bsa">Bank Secrecy Act</span>. Full <span class="defined-term" data-term="aml">AML/KYC</span> obligations apply: suspicious activity reports, customer identification, transaction monitoring, OFAC sanctions screening.</p>
         </div>
         <div class="card">
           <div class="card-badge">&sect; 2(24)</div>
           <h4>&ldquo;Person&rdquo; Definition</h4>
-          <p>Defines &ldquo;person&rdquo; as an individual, partnership, company, association, trust, or other <em>business entity</em>. The phrase &ldquo;business entity&rdquo; &mdash; versus the broader &ldquo;entity&rdquo; in earlier drafts &mdash; is the source of the governmental entity exclusion debate.</p>
+          <p>Defines &ldquo;person&rdquo; as an individual, partnership, company, association, trust, or other <em>business entity</em>. The phrase &ldquo;business entity&rdquo; &ndash; versus the broader &ldquo;entity&rdquo; in earlier drafts &ndash; is the source of the governmental entity exclusion debate.</p>
         </div>
       </div>
 
@@ -525,11 +576,11 @@
 
       <p>The most consequential and least-discussed textual change between the introduced bill (S. 1582) and the enacted law is in the definition of &ldquo;person&rdquo; in &sect;&thinsp;2(24). The introduced bill read &ldquo;or other <strong>entity</strong>&rdquo;; the enacted statute reads &ldquo;or other <strong>business entity</strong>.&rdquo; Two words added; a universe of regulatory questions created.</p>
 
-      <p>The practical implication: governmental entities&mdash;states, municipalities, state authorities, commissions&mdash;are arguably not &ldquo;persons&rdquo; under GENIUS. If they are not persons, they cannot be PPSIs, but they also may not be <em>required</em> to become PPSIs. A state government that issues its own stable token may be entirely outside the GENIUS regulatory framework.</p>
+      <p>The practical implication: governmental entities &ndash; states, municipalities, state authorities, commissions &ndash; are arguably not &ldquo;persons&rdquo; under GENIUS. If they are not persons, they cannot be PPSIs, but they also may not be <em>required</em> to become PPSIs. A state government that issues its own stable token may be entirely outside the GENIUS regulatory framework.</p>
 
       <div class="alert alert-warning">
         <strong>Wyoming FRNT (Frontier Token)</strong>
-        Wyoming&rsquo;s FRNT initiative&mdash;a state-issued digital currency backed by Wyoming tax revenues&mdash;was being developed concurrently with the GENIUS Act. If Wyoming is not a &ldquo;person,&rdquo; FRNT may operate outside GENIUS reserve and licensing requirements. This creates potential for state arbitrage: states could issue competing stable tokens with looser standards than federally licensed PPSIs.
+        Wyoming&rsquo;s FRNT initiative &ndash; a state-issued digital currency backed by Wyoming tax revenues &ndash; was being developed concurrently with the GENIUS Act. If Wyoming is not a &ldquo;person,&rdquo; FRNT may operate outside GENIUS reserve and licensing requirements. This creates potential for state arbitrage: states could issue competing stable tokens with looser standards than federally licensed PPSIs.
       </div>
 
       <div class="alert alert-warning">
@@ -541,7 +592,7 @@
         <summary>The Civil War Banking Analogy: Why This Pattern Repeats</summary>
         <div class="details-body">
           <p>American monetary history is rife with state-federal currency competition. During the Civil War, the National Bank Act of 1863 taxed state banknotes out of existence precisely because Congress feared a fragmented currency system would undermine the union&rsquo;s war finance. The modern echo: if states can issue stable tokens outside GENIUS, the federal government&rsquo;s ability to enforce a uniform reserve standard is weakened.</p>
-          <p>The constitutional dimension is significant. The Supremacy Clause would make GENIUS preemptive over state law where it conflicts&mdash;but only if GENIUS actually applies to the state actor. The &sect;&thinsp;2(24) &ldquo;business entity&rdquo; carve-out, if interpreted broadly, could replicate the pre-1863 fragmentation problem. Treasury rulemaking in the 12-month window post-enactment will be watched closely for clarification.</p>
+          <p>The constitutional dimension is significant. The Supremacy Clause would make GENIUS preemptive over state law where it conflicts &ndash; but only if GENIUS actually applies to the state actor. The &sect;&thinsp;2(24) &ldquo;business entity&rdquo; carve-out, if interpreted broadly, could replicate the pre-1863 fragmentation problem. Treasury rulemaking in the 12-month window post-enactment will be watched closely for clarification.</p>
           <p>Cf. <em>Veazie Bank v. Fenno</em>, 75 U.S. (8 Wall.) 533 (1869) (upholding 10% tax on state banknotes as constitutional exercise of congressional currency power); <em>McCulloch v. Maryland</em>, 17 U.S. (4 Wheat.) 316 (1819) (implied powers include currency regulation).</p>
         </div>
       </details>
@@ -565,7 +616,27 @@
         <div class="pathway-card shadow">
           <div class="pathway-letter">C</div>
           <h4>State Actor Shadow Pathway</h4>
-          <p>A governmental entity (state, commission, authority) that is not a &ldquo;business entity&rdquo; under &sect;&thinsp;2(24) may issue stable tokens entirely outside GENIUS. No reserve certification, no PPSI license, no BSA designation required by the Act&mdash;though state law and other federal law still apply. This pathway is legally uncertain pending Treasury rulemaking.</p>
+          <p>A governmental entity (state, commission, authority) that is not a &ldquo;business entity&rdquo; under &sect;&thinsp;2(24) may issue stable tokens entirely outside GENIUS. No reserve certification, no PPSI license, no BSA designation required by the Act &ndash; though state law and other federal law still apply. This pathway is legally uncertain pending Treasury rulemaking.</p>
+        </div>
+      </div>
+
+      <h3>Oranburg&rsquo;s Three State Pathways Under GENIUS</h3>
+      <p>States face three distinct strategies for engaging with GENIUS-regulated stablecoin markets:</p>
+      <div class="prong-grid">
+        <div class="prong-card">
+          <span class="prong-label prong-label-host">Path 1</span>
+          <h4>Host Federally Licensed Issuers</h4>
+          <p>The default path. A state provides a favorable business environment (trust company charters, regulatory sandboxes) so that federally licensed PPSIs locate operations in the state. No state certification required. NH can attract PPSI headquarters and reserve custodians through existing RSA 392 trust company law.</p>
+        </div>
+        <div class="prong-card">
+          <span class="prong-label prong-label-regulate">Path 2</span>
+          <h4>Become a Certified State Regulator</h4>
+          <p>A state seeks Federal Reserve certification under &sect;&thinsp;7 that its regulatory regime is &ldquo;substantially similar&rdquo; to GENIUS. Once certified, the state can license PPSIs with &le;$10B outstanding. Requires enacting 100% reserve, redemption, attestation, and AML rules. Treasury approval needed.</p>
+        </div>
+        <div class="prong-card">
+          <span class="prong-label prong-label-issue">Path 3</span>
+          <h4>Issue a State-Backed Token</h4>
+          <p>A state governmental entity (commission, authority, or agency) issues its own stable token. If the state is not a &ldquo;business entity&rdquo; under &sect;&thinsp;2(24), it may operate outside GENIUS. This path is legally unsettled and depends on Treasury rulemaking. Wyoming (FRNT) and NH (RSA 383:26 Commission) are potential pioneers.</p>
         </div>
       </div>
 
@@ -578,7 +649,7 @@
 
       <div class="alert alert-danger">
         <strong>Core Tension: GENIUS vs. RSA 301-B</strong>
-        A PPSI must designate responsible officers, maintain a compliance program, respond to regulatory examinations, and hold reserves in accounts subject to regulatory access. These requirements presuppose centralized control&mdash;a compliance officer with authority to freeze assets, a board that can certify attestations, an executive who can satisfy examiner requests. A genuinely decentralized DAO with no person holding &gt;20% control cannot satisfy these requirements without undermining its statutory decentralization status under RSA 301-B:5(IX).
+        A PPSI must designate responsible officers, maintain a compliance program, respond to regulatory examinations, and hold reserves in accounts subject to regulatory access. These requirements presuppose centralized control &ndash; a compliance officer with authority to freeze assets, a board that can certify attestations, an executive who can satisfy examiner requests. A genuinely decentralized DAO with no person holding &gt;20% control cannot satisfy these requirements without undermining its statutory decentralization status under RSA 301-B:5(IX).
       </div>
 
       <p>Three structural options exist for a DAO that wishes to participate in the stablecoin market:</p>
@@ -587,7 +658,7 @@
         <summary>Option A: Two-Entity Structure (DAO + PPSI Subsidiary)</summary>
         <div class="details-body">
           <p>The DAO maintains its decentralized governance structure while creating a wholly owned or majority-owned traditional entity (LLC, corporation, or trust company) to serve as the PPSI. The DAO governance controls the subsidiary through ownership, but the subsidiary itself has centralized compliance officers and satisfies GENIUS requirements.</p>
-          <p><strong>Risk:</strong> If the subsidiary is controlled by the DAO, and the DAO is a &ldquo;person&rdquo; under &sect;&thinsp;2(24), the DAO itself may be treated as the issuer, negating the structural separation. Additionally, RSA 301-B DAO status requires that no person have unilateral control&mdash;if the DAO&rsquo;s governance controls the PPSI, regulators may view the DAO as having unilateral control over the token issuance function.</p>
+          <p><strong>Risk:</strong> If the subsidiary is controlled by the DAO, and the DAO is a &ldquo;person&rdquo; under &sect;&thinsp;2(24), the DAO itself may be treated as the issuer, negating the structural separation. Additionally, RSA 301-B DAO status requires that no person have unilateral control &ndash; if the DAO&rsquo;s governance controls the PPSI, regulators may view the DAO as having unilateral control over the token issuance function.</p>
           <p><strong>Analogy:</strong> Trust company holding company structures; Federal Reserve holding company framework (12 U.S.C. &sect; 1841 et seq.).</p>
         </div>
       </details>
@@ -595,7 +666,7 @@
       <details>
         <summary>Option B: State Actor Pathway via NH Commission (RSA 383:26)</summary>
         <div class="details-body">
-          <p>RSA 383:26 creates a New Hampshire Commission to Study Stable Tokens. If NH&rsquo;s Commission issues stable tokens as a governmental entity, it may fall within the &sect;&thinsp;2(24) carve-out. The DAO could then contract with the Commission as a service provider&mdash;handling smart contract execution, wallet infrastructure, and network operations&mdash;without itself being the issuer.</p>
+          <p>RSA 383:26 creates a New Hampshire Commission to Study Stable Tokens. If NH&rsquo;s Commission issues stable tokens as a governmental entity, it may fall within the &sect;&thinsp;2(24) carve-out. The DAO could then contract with the Commission as a service provider &ndash; handling smart contract execution, wallet infrastructure, and network operations &ndash; without itself being the issuer.</p>
           <p><strong>Advantage:</strong> The governmental issuer pathway preserves full DAO participation in the network without requiring the DAO to become a PPSI. The DAO earns fees for infrastructure services rather than issuing the token.</p>
           <p><strong>Risk:</strong> Treasury rulemaking could define governmental entities as persons. The Commission&rsquo;s enabling statute (RSA 383:26) may need to be interpreted as authorizing token issuance, not just study. Constitutional questions about state currency competition with federal law remain.</p>
         </div>
@@ -604,7 +675,7 @@
       <details>
         <summary>Option C: Commodities Lane (CFTC Jurisdiction)</summary>
         <div class="details-body">
-          <p>If a token does not qualify as a payment stablecoin under &sect;&thinsp;2(22) &mdash; for example, because it is pegged to a commodity basket rather than solely to USD, or because it is used for settlement in commodity markets rather than general payment&mdash;it may fall under CFTC jurisdiction rather than GENIUS. CFTC oversight of spot commodity markets is currently limited, creating a potential gap that a DAO-issued token might occupy.</p>
+          <p>If a token does not qualify as a payment stablecoin under &sect;&thinsp;2(22) &ndash; for example, because it is pegged to a commodity basket rather than a national currency, or because it is used for settlement in commodity markets rather than general payment &ndash; it may fall under CFTC jurisdiction rather than GENIUS. CFTC oversight of spot commodity markets is currently limited, creating a potential gap that a DAO-issued token might occupy.</p>
           <p><strong>CLARITY Act Caveat:</strong> The CLARITY Act, if enacted, would fill many of these gaps by defining digital commodity classification. Until CLARITY passes, the commodity lane remains a viable but uncertain alternative for DAO-issued tokens that can be structured outside the &sect;&thinsp;2(22) definition.</p>
           <p><strong>Risk:</strong> Structuring transactions primarily to avoid regulatory definitions has led courts and regulators to look through formal labels. The substance-over-form doctrine would apply: if a token functions as a payment stablecoin, courts may treat it as one regardless of structural labels.</p>
         </div>
@@ -612,7 +683,7 @@
 
       <!-- ===== SECTION 7: CLASSIFIER ===== -->
       <h2 id="classifier">Pathway Classifier Tool</h2>
-      <p>Answer four questions to determine which GENIUS Act regulatory pathway applies to your token issuance project. This tool is illustrative only&mdash;consult qualified legal counsel.</p>
+      <p>Answer four questions to determine which GENIUS Act regulatory pathway applies to your token issuance project. This tool is illustrative only &ndash; consult qualified legal counsel.</p>
 
       <div class="classifier">
         <div class="classifier-title">&#9654; GENIUS Pathway Classifier</div>
@@ -626,7 +697,7 @@
 
         <!-- Step 0 -->
         <div class="step active" id="step0">
-          <div class="step-q">Is your token a <span class="defined-term" data-term="payment-stablecoin">payment stablecoin</span> under GENIUS &sect;&thinsp;2(22)?<br><small style="font-weight:400;font-size:.85rem;color:var(--muted);">(pegged to USD, used for payment, not an algorithmic stablecoin)</small></div>
+          <div class="step-q">Is your token a <span class="defined-term" data-term="payment-stablecoin">payment stablecoin</span> under GENIUS &sect;&thinsp;2(22)?<br><small style="font-weight:400;font-size:.85rem;color:var(--muted);">(pegged to a national currency, used for payment, not an algorithmic stablecoin)</small></div>
           <div class="step-buttons">
             <button class="btn btn-yes" onclick="classifierNext(1)">Yes &rarr;</button>
             <button class="btn btn-no" onclick="classifierResult('other')">No</button>
@@ -662,14 +733,14 @@
         <div class="step" id="result-shadow">
           <div class="result-box shadow">
             <div class="result-title">&#9650; Pathway C: State Actor Shadow</div>
-            <div class="result-desc">A governmental entity issuer may fall outside GENIUS&rsquo;s &ldquo;person&rdquo; definition (&sect;&thinsp;2(24)). No PPSI license may be required, but Treasury rulemaking could alter this analysis. State law (including RSA 383:26) governs. Private contractors supporting the issuance may still face BSA obligations. This pathway is legally uncertain &mdash; monitor Treasury rulemakings.</div>
+            <div class="result-desc">A governmental entity issuer may fall outside GENIUS&rsquo;s &ldquo;person&rdquo; definition (&sect;&thinsp;2(24)). No PPSI license may be required, but Treasury rulemaking could alter this analysis. State law (including RSA 383:26) governs. Private contractors supporting the issuance may still face BSA obligations. This pathway is legally uncertain &ndash; monitor Treasury rulemakings.</div>
           </div>
         </div>
 
         <div class="step" id="result-federal">
           <div class="result-box federal">
             <div class="result-title">&#9679; Pathway A: Federal Qualified Issuer</div>
-            <div class="result-desc">You must obtain a federal PPSI license from the OCC (non-bank) or Federal Reserve (insured depository). Full prudential supervision applies. State money-transmitter licensing preempted. 100% reserve requirement, monthly attestations, BSA/AML compliance, and examinations required. No size cap &mdash; suitable for large issuers.</div>
+            <div class="result-desc">You must obtain a federal PPSI license from the OCC (non-bank) or Federal Reserve (insured depository). Full prudential supervision applies. State money-transmitter licensing preempted. 100% reserve requirement, monthly attestations, BSA/AML compliance, and examinations required. No size cap &ndash; suitable for large issuers.</div>
           </div>
         </div>
 
@@ -691,7 +762,7 @@
       <div class="timeline">
         <div class="timeline-item">
           <div class="timeline-dot"></div>
-          <div class="timeline-date">Day 0 &mdash; July 18, 2025</div>
+          <div class="timeline-date">Day 0 &ndash; July 18, 2025</div>
           <div class="timeline-title">GENIUS Act Enacted</div>
           <div class="timeline-body">Pub. L. 119-27 signed into law. Immediate effective date for definitional provisions and prohibition on new algorithmic stablecoin issuance (&sect;&thinsp;8). Existing issuers begin provisional compliance period.</div>
         </div>
@@ -717,7 +788,7 @@
           <div class="timeline-dot"></div>
           <div class="timeline-date">3 Years After Final Rules</div>
           <div class="timeline-title">Unlicensed Issuance Ban Fully Effective</div>
-          <div class="timeline-body">Any person (within &sect;&thinsp;2(24)&rsquo;s definition) issuing payment stablecoins without PPSI status faces civil and criminal liability (&sect;&thinsp;19). Maximum civil penalty: $50,000 per day per violation plus disgorgement of profits. Criminal referral available for willful violations.</div>
+          <div class="timeline-body">Any person (within &sect;&thinsp;2(24)&rsquo;s definition) issuing payment stablecoins without PPSI status faces civil and criminal liability (&sect;&thinsp;3(f)). Maximum civil penalty: $1,000,000 per violation plus disgorgement of profits. Criminal penalties include up to 5 years imprisonment for willful violations.</div>
         </div>
       </div>
 
@@ -745,19 +816,19 @@
             </tr>
             <tr>
               <td><strong>Redemption Right</strong></td>
-              <td>Mandatory at par, within 1 business day (&sect;&thinsp;5); private right of action for failure</td>
+              <td>Mandatory at par, within 1 business day (&sect;&thinsp;5); enforcement through regulators</td>
               <td>Mandatory at par upon request; up to 30-day window for large redemptions</td>
               <td>Redemption at par required; timeframe set by MAS Notice on Digital Payment Tokens</td>
             </tr>
             <tr>
               <td><strong>Private Enforcement</strong></td>
-              <td>Yes &mdash; &sect;&thinsp;14(d) creates private right of action (recklessness standard)</td>
+              <td>No statutory private right of action; enforcement through prudential regulators and &sect;&thinsp;3(f) penalties</td>
               <td>No private right of action; enforcement by national competent authorities</td>
               <td>No private right of action; MAS enforcement only</td>
             </tr>
             <tr>
               <td><strong>Securities Law Interaction</strong></td>
-              <td>Payment stablecoins are not securities; SEC carve-out (&sect;&thinsp;14(c))</td>
+              <td>Payment stablecoins are not securities; SEC carve-out (&sect;&thinsp;17)</td>
               <td>EMTs/ARTs subject to MiCA, not MiFID II (separate regimes)</td>
               <td>Digital payment tokens not capital markets products under Securities and Futures Act</td>
             </tr>
@@ -775,7 +846,7 @@
             </tr>
             <tr>
               <td><strong>AML/KYC</strong></td>
-              <td>BSA designation; full FinCEN requirements (&sect;&thinsp;22)</td>
+              <td>BSA designation; full FinCEN requirements (&sect;&thinsp;8)</td>
               <td>AMLD6 compliance; national competent authority supervision</td>
               <td>MAS Notice PSN02 on AML/CFT; travel rule compliance</td>
             </tr>
@@ -799,8 +870,8 @@
         <summary>Why GENIUS Is Stricter Than MiCA on Reserves</summary>
         <div class="details-body">
           <p>MiCA requires that at least 30% of e-money token reserves be held in insured deposits at credit institutions (Article 36(1)(b) MiCA). The remaining 70% can be invested in a broader range of low-risk assets including sovereign bonds, money market funds, and similar instruments. MiCA also permits a reserve management framework where issuers invest in assets bearing some credit risk, provided the investment policy is disclosed and approved.</p>
-          <p>GENIUS, by contrast, permits only four categories: U.S. Treasury bills with maturity &le;93 days, Federal Reserve deposits, physical U.S. dollars or demand deposits, and overnight repos collateralized by Treasury securities. This list deliberately excludes money market funds (which held significant Treasuries but have structural risks, as demonstrated in March 2020) and corporate debt of any kind.</p>
-          <p>The congressional rationale, articulated in the Senate Banking Committee report, was that the TerraUSD collapse demonstrated that any yield-seeking in reserve management created run risk. By limiting reserves to the four most liquid, safest U.S.-government-related assets, Congress sought to make payment stablecoins function like <span class="defined-term" data-term="narrow-bank">narrow banks</span>&mdash;institutions that take deposits but invest only in safe government assets and pay no interest to depositors.</p>
+          <p>GENIUS, by contrast, permits a narrow set of categories: U.S. Treasury bills with maturity &le;93 days, Federal Reserve deposits, physical U.S. dollars or demand deposits, overnight repos collateralized by Treasury securities, and government money market funds invested solely in qualifying assets (&sect;&thinsp;4(a)(1)(A)(vi)). This list excludes non-government money market funds and corporate debt of any kind.</p>
+          <p>The congressional rationale, articulated in the Senate Banking Committee report, was that the TerraUSD collapse demonstrated that any yield-seeking in reserve management created run risk. By limiting reserves to the four most liquid, safest U.S.-government-related assets, Congress sought to make payment stablecoins function like <span class="defined-term" data-term="narrow-bank">narrow banks</span> &ndash; institutions that take deposits but invest only in safe government assets and pay no interest to depositors.</p>
           <p>The tradeoff: GENIUS issuers cannot generate yield on reserves (other than from T-bill interest), potentially limiting their business model to transaction fees. MiCA issuers have more flexibility but face greater reserve risk.</p>
         </div>
       </details>
@@ -808,7 +879,7 @@
       <!-- ===== SECTION 10: NH ANGLE ===== -->
       <h2 id="nh-angle">New Hampshire&rsquo;s Angle</h2>
 
-      <p>New Hampshire sits at a unique intersection of all three regulatory regimes discussed in this analysis: it has the most developed state DAO statute (RSA 301-B), a legislative commission specifically studying stable tokens (RSA 383:26), and the University of New Hampshire Institute on Law (UNH-IOL) actively engaged in blockchain governance research. Four specific intersection points require attention:</p>
+      <p>New Hampshire sits at a unique intersection of all three regulatory regimes discussed in this analysis: it has the most developed state DAO statute (RSA 301-B), a legislative commission specifically studying stable tokens (RSA 383:26), and the University of New Hampshire Interoperability Laboratory (UNH-IOL) actively engaged in blockchain governance research. Four specific intersection points require attention:</p>
 
       <div class="nh-cards">
         <div class="nh-card">
@@ -835,21 +906,15 @@
 
       <div class="alert alert-info">
         <strong>Cross-Reference: Registry &amp; UNH-IOL</strong>
-        The NH DAO Registry requirements (see <a href="registry.html">registry.html</a>) apply to any RSA 301-B DAO regardless of whether it issues stablecoins. A DAO seeking to participate in stablecoin issuance via Option A (two-entity) must still maintain its registry filings and decentralization attestations. The University of New Hampshire Institute on Law (UNH-IOL) maintains the definitive interpretation of RSA 301-B and has engaged with the NH Commission on RSA 383:26.
+        The NH DAO Registry requirements (see <a href="registry.html">registry.html</a>) apply to any RSA 301-B DAO regardless of whether it issues stablecoins. A DAO seeking to participate in stablecoin issuance via Option A (two-entity) must still maintain its registry filings and decentralization attestations. The University of New Hampshire Interoperability Laboratory (UNH-IOL) maintains the definitive interpretation of RSA 301-B and has engaged with the NH Commission on RSA 383:26.
       </div>
 
       <details>
-        <summary>Deep Dive: GENIUS Private Right of Action vs. Rule 10b-5 in NH Disputes</summary>
+        <summary>Deep Dive: GENIUS Securities Carve-Out and NH Enforcement</summary>
         <div class="details-body">
           <p>Before the GENIUS Act, a payment stablecoin holder who suffered losses due to issuer misrepresentations about reserve backing might have brought a claim under <span class="defined-term" data-term="rule10b5">Rule 10b-5</span> (17 C.F.R. &sect; 240.10b-5) if the stablecoin was treated as a security. Rule 10b-5 requires: (1) a material misrepresentation or omission; (2) scienter (knowingly or recklessly); (3) in connection with the purchase or sale of a security; (4) reliance; (5) economic loss; and (6) loss causation.</p>
-          <p>Under GENIUS &sect;&thinsp;14(c), payment stablecoins are no longer securities for Securities Act purposes. The Rule 10b-5 path is eliminated. In its place, GENIUS &sect;&thinsp;14(d) creates a new private right of action for:
-          <ul>
-            <li>Failure to redeem at par within the statutory timeframe;</li>
-            <li>Material misrepresentations about reserve composition;</li>
-            <li>Failure to publish required monthly attestations.</li>
-          </ul>
-          The standard is recklessness, equivalent to the <span class="defined-term" data-term="scienter">scienter</span> requirement under <em>Ernst &amp; Ernst v. Hochfelder</em>, 425 U.S. 185 (1976).</p>
-          <p><strong>Practical implications for NH:</strong> NH state courts have concurrent jurisdiction over GENIUS &sect;&thinsp;14(d) claims (no exclusive federal jurisdiction stated in the Act). NH&rsquo;s Consumer Protection Act (RSA 358-A) may provide an additional parallel remedy for deceptive acts&mdash;though double recovery would be limited by standard principles. The NH Banking Commission could enforce reserve requirements administratively, complementing private rights.</p>
+          <p>Under GENIUS &sect;&thinsp;17, payment stablecoins are no longer securities for Securities Act purposes. The Rule 10b-5 path is eliminated. The GENIUS Act does not create a private right of action to replace it. Instead, enforcement of reserve and redemption obligations runs through the prudential regulators (OCC, Federal Reserve, or certified state regulator), with penalties under &sect;&thinsp;3(f) of up to $1,000,000 per violation and up to 5 years imprisonment for willful violations.</p>
+          <p><strong>Practical implications for NH:</strong> NH&rsquo;s Consumer Protection Act (RSA 358-A) may provide a parallel state-law remedy for deceptive acts by stablecoin issuers, though the absence of a federal private right of action makes state consumer protection law more important for injured holders. The NH Banking Commission could enforce reserve requirements administratively, complementing federal regulatory action.</p>
           <p>The shift from <span class="defined-term" data-term="ex-ante-post">ex post</span> securities enforcement to GENIUS&rsquo;s <span class="defined-term" data-term="ex-ante-post">ex ante</span> prudential model means that NH&rsquo;s Banking Division becomes a more important enforcement actor than it was when the SEC was the primary enforcer.</p>
         </div>
       </details>
@@ -866,6 +931,7 @@
             <li><a href="genius.html">GENIUS Act Full Text (genius.html)</a></li>
             <li><a href="index.html">NH RSA 301-B Full Text (index.html)</a></li>
             <li><a href="registry.html">NH Registry Requirements (registry.html)</a></li>
+            <li><a href="comparison.html">How State DAO Statutes Compare (comparison.html)</a></li>
             <li><a href="https://www.congress.gov/bill/119th-congress/senate-bill/1582" target="_blank" rel="noopener">Congress.gov S.1582</a></li>
           </ul>
         </div>
@@ -898,7 +964,7 @@
           <ul style="margin:0;padding-left:1.2rem;font-size:.85rem;color:var(--muted);">
             <li><a href="https://www.gencourt.state.nh.us/rsa/html/XXXV/383/383-26.htm" target="_blank" rel="noopener">RSA 383:26 NH Commission on Stable Tokens</a></li>
             <li><a href="decentralization.html">Measuring Decentralization (decentralization.html)</a></li>
-            <li><a href="https://law.unh.edu/institute-law" target="_blank" rel="noopener">UNH Institute on Law (UNH-IOL)</a></li>
+            <li><a href="https://www.iol.unh.edu/" target="_blank" rel="noopener">UNH Interoperability Laboratory (UNH-IOL)</a></li>
             <li><a href="https://www.nhbankingdept.com/" target="_blank" rel="noopener">NH Banking Department</a></li>
           </ul>
         </div>
@@ -920,6 +986,7 @@
           <li><a href="genius.html" style="font-size:.88rem;">GENIUS Act Full Text</a></li>
           <li><a href="decentralization.html" style="font-size:.88rem;">Measuring Decentralization</a></li>
           <li><a href="registry.html" style="font-size:.88rem;">Registry Requirements</a></li>
+          <li><a href="comparison.html" style="font-size:.88rem;">State DAO Comparison</a></li>
           <li><a href="stable-tokens.html" style="font-size:.88rem;">Stable Tokens (this page)</a></li>
         </ul>
       </div>
@@ -1023,21 +1090,21 @@
     'defi':{name:'Decentralized Finance (DeFi)',def:'Financial services built on smart-contract-based blockchain protocols, typically without intermediaries. Protocol-level DeFi activities may not involve a \u201cperson\u201d under GENIUS \u00a7 2(24).',source:'N.H. Rev. Stat. Ann. \u00a7 301-B:5 (defining blockchain system and smart contract).'},
     'investment-contract':{name:'Investment Contract',def:'A contract, transaction, or scheme whereby a person invests money in a common enterprise and is led to expect profits solely from the efforts of others. The Howey test determines whether a digital asset is an investment contract.',source:'SEC v. W.J. Howey Co., 328 U.S. 293 (1946).'},
     'howey-test':{name:'Howey Test',def:'Four-part test from SEC v. W.J. Howey Co. (1946): (1) investment of money; (2) in a common enterprise; (3) with an expectation of profits; (4) derived from the efforts of others. Applied by SEC to determine if digital assets are securities.',source:'SEC v. W.J. Howey Co., 328 U.S. 293, 301 (1946); SEC v. Ripple Labs, Inc., 682 F. Supp. 3d 308 (S.D.N.Y. 2023).',link:'https://supreme.justia.com/cases/federal/us/328/293/'},
-    'bsa':{name:'Bank Secrecy Act (BSA)',def:'31 U.S.C. \u00a7\u00a7 5311-5336. Federal law requiring financial institutions to maintain records and file reports aiding detection of money laundering. GENIUS \u00a7 22 designates PPSIs as \u201cfinancial institutions\u201d under the BSA.',source:'GENIUS Act \u00a7 22, Pub. L. 119-27 (2025); 31 U.S.C. \u00a7 5312(a)(2).'},
-    'payment-stablecoin':{name:'Payment Stablecoin',def:'GENIUS Act \u00a7 2(22): A digital asset denominated solely in USD, designed for payment or settlement, which the issuer represents will be redeemable at a fixed dollar amount, backed by permissible reserves. Algorithmic stablecoins expressly excluded.',source:'GENIUS Act \u00a7 2(22), Pub. L. 119-27 (2025).'},
+    'bsa':{name:'Bank Secrecy Act (BSA)',def:'31 U.S.C. \u00a7\u00a7 5311-5336. Federal law requiring financial institutions to maintain records and file reports aiding detection of money laundering. GENIUS \u00a7 8 designates PPSIs as \u201cfinancial institutions\u201d under the BSA.',source:'GENIUS Act \u00a7 8, Pub. L. 119-27 (2025); 31 U.S.C. \u00a7 5312(a)(2).'},
+    'payment-stablecoin':{name:'Payment Stablecoin',def:'GENIUS Act \u00a7 2(22): A digital asset denominated in a national currency, designed for payment or settlement, which the issuer represents will be redeemable at a fixed amount of monetary value, backed by permissible reserves. Algorithmic stablecoins expressly excluded.',source:'GENIUS Act \u00a7 2(22), Pub. L. 119-27 (2025).'},
     'ppsi':{name:'Permitted Payment Stablecoin Issuer (PPSI)',def:'GENIUS Act \u00a7 2(23): Any person authorized to issue payment stablecoins under \u00a7 3 (federal license) or \u00a7 7 (state license). Must maintain 100% permissible reserves, comply with BSA, publish monthly attestations, and grant redemption rights.',source:'GENIUS Act \u00a7\u00a7 2(23), 3, 7, Pub. L. 119-27 (2025).'},
     'rehypothecation':{name:'Rehypothecation',def:'The practice of a financial institution using assets held on behalf of a client as collateral for the institution\'s own borrowings. GENIUS \u00a7 4 prohibits PPSIs from rehypothecating payment stablecoin reserves.',source:'GENIUS Act \u00a7 4(b)(3), Pub. L. 119-27 (2025).'},
-    'rule10b5':{name:'Rule 10b-5',def:'17 C.F.R. \u00a7 240.10b-5. SEC antifraud rule under Exchange Act \u00a7 10(b): prohibits material misrepresentations, omissions, or deceptive devices in connection with purchase or sale of a security. Payment stablecoins are carved out of securities law under GENIUS \u00a7 14(c), replacing Rule 10b-5 with a GENIUS-specific private right.',source:'17 C.F.R. \u00a7 240.10b-5; GENIUS Act \u00a7 14(c)-(d), Pub. L. 119-27 (2025).'},
-    'scienter':{name:'Scienter',def:'Knowledge of wrongdoing; in securities law, knowing or reckless conduct. Required element for private claims under Ernst & Ernst v. Hochfelder (1976) and under the GENIUS Act \u00a7 14(d) private right of action for stablecoin redemption failures.',source:'Ernst & Ernst v. Hochfelder, 425 U.S. 185 (1976); GENIUS Act \u00a7 14(d).'},
+    'rule10b5':{name:'Rule 10b-5',def:'17 C.F.R. \u00a7 240.10b-5. SEC antifraud rule under Exchange Act \u00a7 10(b): prohibits material misrepresentations, omissions, or deceptive devices in connection with purchase or sale of a security. Payment stablecoins are carved out of securities law under GENIUS \u00a7 17, so Rule 10b-5 no longer applies to them.',source:'17 C.F.R. \u00a7 240.10b-5; GENIUS Act \u00a7 17, Pub. L. 119-27 (2025).'},
+    'scienter':{name:'Scienter',def:'Knowledge of wrongdoing; in securities law, knowing or reckless conduct. Required element for private claims under Ernst & Ernst v. Hochfelder (1976). Under the GENIUS Act, willful violations of \u00a7 3(f) can trigger criminal penalties.',source:'Ernst & Ernst v. Hochfelder, 425 U.S. 185 (1976); GENIUS Act \u00a7 3(f).'},
     'prudential':{name:'Prudential Regulation',def:'Ex ante supervision focused on ensuring financial institution safety and soundness before problems occur, as opposed to ex post litigation after harm. GENIUS adopts a prudential model for stablecoin issuance, assigning licensing, examination, and capital requirement authority to banking regulators.',source:'Board of Governors of Federal Reserve System; OCC; see generally Basel Committee on Banking Supervision, Core Principles for Effective Banking Supervision (2012).'},
     'mica':{name:'MiCA (Markets in Crypto-Assets Regulation)',def:'EU Regulation 2023/1114, in force June 2023, fully applicable December 2024. Creates EU-wide licensing regime for asset-referenced tokens (ARTs), e-money tokens (EMTs), and other crypto-assets. EMTs are the EU analog to GENIUS payment stablecoins.',source:'Regulation (EU) 2023/1114 of the European Parliament and of the Council, OJ L 150, 9.6.2023.',link:'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R1114'},
     'dao':{name:'Decentralized Autonomous Organization (DAO)',def:'Under RSA 301-B:5(VIII): \u201ca smart contract enterprise\u201d organized under RSA 301-B, operating on a permissionless blockchain, with organizational rules encoded in smart contracts accessible by network participants.',source:'N.H. Rev. Stat. Ann. \u00a7 301-B:5(VIII).'},
     'decentralization':{name:'Decentralization (RSA 301-B)',def:'RSA 301-B:5(IX): A DAO is decentralized if (A) no person controls \u226520% of governance interests, (B) no person has unilateral control over assets or operations, and (C) source code is publicly available.',source:'N.H. Rev. Stat. Ann. \u00a7 301-B:5(IX).'},
     'decentralized-governance':{name:'Decentralized Governance',def:'RSA 301-B:5(IX)(a)(1)(C): Decision-making through consensus mechanisms encoded in smart contracts, without any single participant having unilateral authority. Critical element for RSA 301-B decentralization status.',source:'N.H. Rev. Stat. Ann. \u00a7 301-B:5(IX)(a)(1)(C).'},
-    'aml':{name:'AML/KYC (Anti-Money Laundering / Know Your Customer)',def:'Legal obligations under the Bank Secrecy Act (31 U.S.C. \u00a7\u00a7 5311-5336) and FinCEN regulations to identify customers, monitor transactions for suspicious activity, and file Suspicious Activity Reports (SARs). PPSIs under GENIUS \u00a7 22 are financial institutions subject to full BSA obligations.',source:'31 U.S.C. \u00a7\u00a7 5311-5336; 31 C.F.R. Chapter X; GENIUS Act \u00a7 22.'},
-    'narrow-bank':{name:'Narrow Bank',def:'A bank that accepts deposits but invests solely in safe, liquid government assets (typically Treasury bills or central bank reserves), paying no or minimal interest. GENIUS payment stablecoins function as a form of narrow bank\u2014100% government-asset reserves, no maturity transformation.',source:'John Kay, Narrow Banking: The Reform of Banking Regulation (2009); FDIC, Narrow Bank Proposal (2019).'},
+    'aml':{name:'AML/KYC (Anti-Money Laundering / Know Your Customer)',def:'Legal obligations under the Bank Secrecy Act (31 U.S.C. \u00a7\u00a7 5311-5336) and FinCEN regulations to identify customers, monitor transactions for suspicious activity, and file Suspicious Activity Reports (SARs). PPSIs under GENIUS \u00a7 8 are financial institutions subject to full BSA obligations.',source:'31 U.S.C. \u00a7\u00a7 5311-5336; 31 C.F.R. Chapter X; GENIUS Act \u00a7 8.'},
+    'narrow-bank':{name:'Narrow Bank',def:'A bank that accepts deposits but invests solely in safe, liquid government assets (typically Treasury bills or central bank reserves), paying no or minimal interest. GENIUS payment stablecoins function as a form of narrow bank \u2013100% government-asset reserves, no maturity transformation.',source:'John Kay, Narrow Banking: The Reform of Banking Regulation (2009); FDIC, Narrow Bank Proposal (2019).'},
     'genius-act':{name:'GENIUS Act',def:'Guiding and Establishing National Innovation for U.S. Stablecoins Act, Pub. L. 119-27, enacted July 18, 2025. The first comprehensive federal stablecoin law in U.S. history. Creates the PPSI licensing regime, 100% reserve requirement, securities carve-out, and BSA integration for payment stablecoin issuers.',source:'Pub. L. 119-27, 119th Cong. (2025), \u201cGuiding and Establishing National Innovation for U.S. Stablecoins Act.\u201d'},
-    'ex-ante-post':{name:'Ex Ante / Ex Post Regulation',def:'Ex ante: regulation before the fact\u2014licenses, capital requirements, ongoing supervision. Ex post: regulation after the fact\u2014enforcement actions, litigation, private suits. GENIUS shifts stablecoin oversight from ex post (SEC enforcement) to ex ante (banking-style prudential supervision by OCC/Fed).',source:'Oranburg, The Genius of the GENIUS Act, Stanford JBLP (2026).'}
+    'ex-ante-post':{name:'Ex Ante / Ex Post Regulation',def:'Ex ante: regulation before the fact \u2013licenses, capital requirements, ongoing supervision. Ex post: regulation after the fact \u2013enforcement actions, litigation, private suits. GENIUS shifts stablecoin oversight from ex post (SEC enforcement) to ex ante (banking-style prudential supervision by OCC/Fed).',source:'Oranburg, The Genius of the GENIUS Act, Stanford JBLP (2026).'}
   };
 
   var tooltip=document.getElementById('termTooltip');

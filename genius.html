@@ -174,14 +174,17 @@
       display: flex; align-items: center; justify-content: space-between; gap: var(--space-md);
     }
     .top-nav a {
-      color: #FFFFFF; font-family: var(--font-body); font-size: 0.95rem;
+      color: #FFFFFF; font-family: var(--font-body); font-size: 0.82rem;
       font-weight: 500; letter-spacing: 0.03em; text-transform: uppercase;
     }
     .top-nav a:hover { color: var(--accent-2); }
+    .top-nav a.nav-active { color: var(--accent-2); border-bottom: 2px solid var(--accent-2); padding-bottom: 2px; }
     .nav-title {
-      font-family: var(--font-headline); font-size: 1.1rem; font-weight: 600;
-      color: #FFFFFF; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      font-family: var(--font-headline); font-size: 0.95rem; font-weight: 600;
+      color: var(--accent-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      flex-shrink: 0;
     }
+    .nav-pages { display: flex; align-items: center; gap: var(--space-sm); flex-wrap: wrap; }
     .theme-toggle {
       background: none; border: none; cursor: pointer; color: #FFFFFF;
       padding: 0.25rem; display: flex; align-items: center; transition: color 0.2s;
@@ -545,6 +548,75 @@
     }
     .toast.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
 
+    /* ---------- Issuer Pathway Diagram ---------- */
+    .issuer-diagram {
+      max-width: 740px; margin: 0 auto var(--space-2xl);
+      padding: 0 var(--space-md);
+    }
+    .issuer-diagram-heading {
+      font-family: var(--font-headline); font-size: 1.1rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      color: var(--accent-2); margin: 0 0 var(--space-md); text-align: center;
+    }
+    .issuer-columns {
+      display: flex; gap: var(--space-md); justify-content: center;
+    }
+    .issuer-card {
+      flex: 1; max-width: 220px; background: var(--bg-secondary);
+      border: 1px solid var(--border); border-radius: var(--radius-md);
+      padding: var(--space-md); text-align: center;
+      display: flex; flex-direction: column; gap: var(--space-sm);
+    }
+    .issuer-card-icon {
+      font-size: 1.6rem; line-height: 1;
+    }
+    .issuer-card-title {
+      font-family: var(--font-headline); font-size: 0.9rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.04em; color: var(--accent);
+    }
+    .issuer-card-regulator {
+      font-family: var(--font-mono); font-size: 0.78rem;
+      color: var(--accent-2); background: var(--bg-soft);
+      border-radius: var(--radius-sm); padding: 0.15rem 0.4rem;
+      display: inline-block; margin: 0 auto;
+    }
+    .issuer-card-detail {
+      font-family: var(--font-accent); font-size: 0.88rem;
+      color: var(--muted); line-height: 1.5;
+    }
+    .issuer-arrow {
+      display: flex; align-items: center; color: var(--muted); font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    @media (max-width: 700px) {
+      .issuer-columns { flex-direction: column; align-items: center; }
+      .issuer-card { max-width: 100%; }
+      .issuer-arrow { transform: rotate(90deg); }
+    }
+
+    /* ---------- Reserve Composition Cards ---------- */
+    .reserve-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-sm); margin: var(--space-md) 0 var(--space-lg);
+    }
+    .reserve-card {
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      border-left: 3px solid var(--accent); border-radius: var(--radius-md);
+      padding: var(--space-sm) var(--space-md);
+    }
+    .reserve-card-title {
+      font-family: var(--font-headline); font-size: 0.82rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.04em; color: var(--accent);
+      margin: 0 0 0.2rem;
+    }
+    .reserve-card-desc {
+      font-family: var(--font-accent); font-size: 0.88rem;
+      color: var(--muted); line-height: 1.45; margin: 0;
+    }
+    @media (max-width: 600px) {
+      .reserve-grid { grid-template-columns: 1fr; }
+    }
+
     /* ---------- Footer ---------- */
     .site-footer {
       background: var(--bg-secondary); padding: var(--space-xl) var(--space-md);
@@ -594,15 +666,16 @@
   <!-- Top navigation -->
   <nav class="top-nav">
     <div class="top-nav-inner">
-      <div style="display:flex; align-items:center; gap:var(--space-md); flex-wrap:wrap;">
-        <a href="index.html">RSA 301-B</a>
+      <span class="nav-title">NH DAO Law</span>
+      <div class="nav-pages">
+        <a href="index.html">Statute</a>
         <a href="decentralization.html">Decentralization</a>
         <a href="registry.html">Registry</a>
+        <a href="comparison.html">Compare</a>
+        <a href="genius.html" class="nav-active">GENIUS</a>
         <a href="stable-tokens.html">Stable Tokens</a>
       </div>
-      <span class="nav-title">GENIUS Act &mdash; Pub. L. 119-27</span>
-      <div style="display:flex; align-items:center; gap:var(--space-md);">
-        <a href="https://github.com/Oranburg/NH-RSA-301-B">GitHub</a>
+      <div style="display:flex; align-items:center; gap:var(--space-sm);">
         <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
           <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
@@ -636,6 +709,31 @@
         </div>
       </div>
       <button class="banner-dismiss" onclick="dismissBanner()" title="Dismiss">&times;</button>
+    </div>
+  </div>
+
+  <!-- Issuer pathway diagram -->
+  <div class="issuer-diagram">
+    <p class="issuer-diagram-heading">Three-Tier Issuer Structure</p>
+    <div class="issuer-columns">
+      <div class="issuer-card">
+        <div class="issuer-card-icon">&#127970;</div>
+        <div class="issuer-card-title">Federal Qualified</div>
+        <span class="issuer-card-regulator">OCC</span>
+        <div class="issuer-card-detail">Nationwide issuance, no cap on outstanding stablecoins</div>
+      </div>
+      <div class="issuer-card">
+        <div class="issuer-card-icon">&#127963;</div>
+        <div class="issuer-card-title">State Qualified</div>
+        <span class="issuer-card-regulator">State Regulator</span>
+        <div class="issuer-card-detail">$10B cap; state regime certified by Treasury committee</div>
+      </div>
+      <div class="issuer-card">
+        <div class="issuer-card-icon">&#127974;</div>
+        <div class="issuer-card-title">IDI Subsidiary</div>
+        <span class="issuer-card-regulator">Parent Bank Regulator</span>
+        <div class="issuer-card-detail">Existing bank subsidiary, via parent&rsquo;s federal banking agency</div>
+      </div>
     </div>
   </div>
 
@@ -682,7 +780,9 @@
         <ul>
           <li><strong>&sect; 3</strong> &mdash; Prohibits unauthorized issuance of payment stablecoins; criminal penalties up to $1M per violation.</li>
           <li><strong>&sect; 4</strong> &mdash; Sets reserve, disclosure, audit, and BSA compliance requirements for permitted issuers.</li>
-          <li><strong>&sect; 5&ndash;7</strong> &mdash; Establishes approval pathways for federal qualified issuers (OCC), insured depository institution subsidiaries (FDIC/Fed), and state qualified issuers.</li>
+          <li><strong>&sect; 5</strong> &mdash; Approval of insured depository institution subsidiaries and Federal qualified issuers.</li>
+          <li><strong>&sect; 6</strong> &mdash; Supervision and enforcement.</li>
+          <li><strong>&sect; 7</strong> &mdash; State qualified payment stablecoin issuers.</li>
           <li><strong>&sect; 11</strong> &mdash; Payment stablecoin holders have senior claims over reserve assets in insolvency.</li>
           <li><strong>&sect; 17</strong> &mdash; Clarifies that payment stablecoins are not securities or commodities.</li>
           <li><strong>&sect; 18</strong> &mdash; Establishes reciprocity and conditions for foreign payment stablecoin issuers.</li>
@@ -805,6 +905,7 @@
         var html = marked.parse(md);
         document.getElementById('statuteContent').innerHTML = html;
         buildTOC();
+        injectReserveCards();
         setupScrollSpy();
         setupProgressBar();
         addSectionAnchors();
@@ -815,6 +916,41 @@
         document.getElementById('statuteContent').innerHTML =
           '<p style="color:var(--accent-2);text-align:center;padding:2rem;">Error loading statute text. Please try refreshing.</p>';
       });
+
+    // ========== Inject Reserve Composition Cards ==========
+    function injectReserveCards() {
+      var content = document.getElementById('statuteContent');
+      var headings = content.querySelectorAll('h2');
+      var sec4 = null;
+      headings.forEach(function(h) {
+        if (/Section\s+4\b/i.test(h.textContent)) sec4 = h;
+      });
+      if (!sec4) return;
+      // Find the first paragraph after the section-4 heading
+      var nextEl = sec4.nextElementSibling;
+      if (!nextEl) return;
+      var card = document.createElement('div');
+      card.className = 'reserve-grid';
+      card.innerHTML =
+        '<div class="reserve-card">' +
+          '<p class="reserve-card-title">Cash &amp; Deposits</p>' +
+          '<p class="reserve-card-desc">U.S. coins and currency; demand deposits at Federal Reserve Banks or insured depository institutions</p>' +
+        '</div>' +
+        '<div class="reserve-card">' +
+          '<p class="reserve-card-title">Treasury Bills</p>' +
+          '<p class="reserve-card-desc">Short-term U.S. Treasury bills with remaining maturity of 93 days or less</p>' +
+        '</div>' +
+        '<div class="reserve-card">' +
+          '<p class="reserve-card-title">Repurchase Agreements</p>' +
+          '<p class="reserve-card-desc">Overnight repurchase agreements fully collateralized by U.S. Treasuries</p>' +
+        '</div>' +
+        '<div class="reserve-card">' +
+          '<p class="reserve-card-title">Gov&rsquo;t Money Market Funds</p>' +
+          '<p class="reserve-card-desc">Government money market funds invested solely in qualifying reserve assets</p>' +
+        '</div>';
+      // Insert after the first paragraph following section 4 heading
+      nextEl.parentNode.insertBefore(card, nextEl.nextSibling);
+    }
 
     // ========== Build TOC ==========
     function buildTOC() {
@@ -974,21 +1110,21 @@
 
     // ========== Defined-Term Glossary (GENIUS Act § 2) ==========
     var defined_terms = {
-      "payment stablecoin": "A digital asset that is pegged to a fixed monetary value and is used primarily for payment, settlement, or as a store of value — not as an investment. Defined in GENIUS Act § 2(22).",
-      "permitted payment stablecoin issuer": "An entity — Federal qualified, State qualified, or insured depository institution — that has been approved to issue payment stablecoins under the GENIUS Act. Defined in § 2(23).",
+      "payment stablecoin": "A digital asset that is, or is designed to be, used as a means of payment or settlement; whose issuer is obligated to convert, redeem, or repurchase for a fixed amount of monetary value; and which represents stable value relative to that amount. GENIUS Act, Pub. L. 119-27, § 2(22).",
+      "permitted payment stablecoin issuer": "A person formed in the United States that is a subsidiary of an insured depository institution approved under § 5, a Federal qualified payment stablecoin issuer, or a State qualified payment stablecoin issuer. GENIUS Act, Pub. L. 119-27, § 2(23).",
       "digital asset": "Any digital representation of value that is recorded on a cryptographically secured distributed ledger. Defined in GENIUS Act § 2(6).",
       "distributed ledger": "Technology in which data is shared across a network to create a public digital ledger of verified transactions among network participants, linked by cryptography. Defined in GENIUS Act § 2(8).",
-      "digital asset service provider": "A person that, for compensation, exchanges digital assets for monetary value or other digital assets, transfers digital assets, acts as a custodian, or participates in digital asset issuance services. Excludes protocol developers, validators, and immutable self-custodial interfaces. Defined in GENIUS Act § 2(7).",
+      "digital asset service provider": "A person that engages in the business of exchanging, transferring, or custodying digital assets. Excludes a distributed ledger protocol, a self-custodial software interface, and a validator. GENIUS Act, Pub. L. 119-27, § 2(7).",
       "Federal qualified payment stablecoin issuer": "A nonbank entity or uninsured national bank approved by the Comptroller (OCC) to issue payment stablecoins. Defined in GENIUS Act § 2(11).",
       "State qualified payment stablecoin issuer": "An entity approved under a state-level regulatory regime certified as substantially similar to the federal framework. Defined in GENIUS Act § 2(30).",
       "foreign payment stablecoin issuer": "An issuer organized under foreign or territorial law that is not a permitted payment stablecoin issuer. Defined in GENIUS Act § 2(12).",
       "insured depository institution": "A federally insured bank, savings institution, or credit union as defined in the Federal Deposit Insurance Act. Defined in GENIUS Act § 2(15).",
       "Bank Secrecy Act": "A set of federal statutes requiring financial institutions to maintain records and file reports to help the government detect and prevent money laundering. The term under GENIUS Act encompasses 12 U.S.C. § 1829b, 12 U.S.C. §§ 1951 et seq., and 31 U.S.C. subchapter II of chapter 53. Defined in GENIUS Act § 2(2).",
-      "Stablecoin Certification Review Committee": "An interagency committee chaired by the Treasury Secretary with Fed, OCC, FDIC, and NCUA members, responsible for certifying state regulatory regimes as substantially similar to the federal framework. Defined in GENIUS Act § 2(31).",
-      "primary federal payment stablecoin regulator": "The federal agency — Treasury, Fed, or OCC — with supervisory authority over a given permitted payment stablecoin issuer. Defined in GENIUS Act § 2(25).",
-      "primary Federal payment stablecoin regulator": "The federal agency — Treasury, Fed, or OCC — with supervisory authority over a given permitted payment stablecoin issuer. Defined in GENIUS Act § 2(25).",
+      "Stablecoin Certification Review Committee": "An interagency committee chaired by the Treasury Secretary with Fed, OCC, FDIC, and NCUA members, responsible for certifying state regulatory regimes as substantially similar to the federal framework. Defined in GENIUS Act § 2(27).",
+      "primary federal payment stablecoin regulator": "With respect to subsidiaries of insured depository institutions, the appropriate Federal banking agency; with respect to insured credit unions, the NCUA; with respect to Federal qualified issuers, the Comptroller (OCC). GENIUS Act, Pub. L. 119-27, § 2(25).",
+      "primary Federal payment stablecoin regulator": "With respect to subsidiaries of insured depository institutions, the appropriate Federal banking agency; with respect to insured credit unions, the NCUA; with respect to Federal qualified issuers, the Comptroller (OCC). GENIUS Act, Pub. L. 119-27, § 2(25).",
       "reserve assets": "The high-quality liquid assets that a permitted payment stablecoin issuer must hold equal to 100% of outstanding payment stablecoins — limited to U.S. coins and currency, demand deposits at insured banks, Treasury bills with ≤93-day maturity, overnight repos backed by Treasuries, and central bank reserve deposits. Defined in GENIUS Act § 4.",
-      "algorithmic stablecoin": "A stablecoin that relies primarily on algorithms, smart contracts, or other digital assets (rather than fiat-backed reserves) to maintain its peg. The GENIUS Act prohibits new algorithmic stablecoin issuance. See GENIUS Act § 3.",
+      "algorithmic stablecoin": "A stablecoin that maintains its peg through algorithmic mechanisms rather than asset reserves. The GENIUS Act does not use this term; instead, its reserve requirements in § 4 effectively preclude algorithmic models because issuers must maintain reserves in qualifying assets. Derived from GENIUS Act, § 4(a).",
       "payment stablecoin regulator": "The federal or state agency responsible for licensing and supervising a permitted payment stablecoin issuer. See GENIUS Act §§ 5–7."
     };
 
