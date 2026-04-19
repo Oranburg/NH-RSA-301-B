@@ -874,7 +874,10 @@
       while (walker.nextNode()) textNodes.push(walker.currentNode);
 
       // Match "section(s) N" or "§ N" where N is 1-20 (GENIUS Act range),
-      // but NOT when followed by " of " (external statute reference)
+      // but NOT when followed by " of " that doesn't continue with "this Act".
+      // The negative lookahead (?!\s+of\s+(?!this\s+Act)) prevents linking external
+      // statute references like "section 3 of the Federal Deposit Insurance Act"
+      // while still linking internal references like "section 3 of this Act".
       var refRegex = /(?:\bsections?\s+(\d+)(?:\([^)]*\))*|§\s*(\d+)(?:\([^)]*\))*)(?!\s+of\s+(?!this\s+Act))/gi;
 
       textNodes.forEach(function(node) {
