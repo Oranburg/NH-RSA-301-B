@@ -8,7 +8,7 @@ Public Law 119-27
 
 ---
 
-### Enacting Clause
+## Enacting Clause
 
 Be it enacted by the Senate and House of Representatives of the United States of America in Congress assembled,
 
@@ -81,10 +81,8 @@ In this Act:
 **(A)** means a digital asset—
 **(i)** that is, or is designed to be, used as a means of payment or settlement; and
 **(ii)** the issuer of which—
-####### (I)
-is obligated to convert, redeem, or repurchase for a fixed amount of monetary value, not including a digital asset denominated in a fixed amount of monetary value; and
-####### (II)
-represents that such issuer will maintain, or create the reasonable expectation that it will maintain, a stable value relative to the value of a fixed amount of monetary value; and
+**(I)** is obligated to convert, redeem, or repurchase for a fixed amount of monetary value, not including a digital asset denominated in a fixed amount of monetary value; and
+**(II)** represents that such issuer will maintain, or create the reasonable expectation that it will maintain, a stable value relative to the value of a fixed amount of monetary value; and
 **(B)** does not include a digital asset that—
 **(i)** is a national currency;
 **(ii)** is a deposit (as defined in section 3 of the Federal Deposit Insurance Act (12 U.S.C. 1813)), including a deposit recorded using distributed ledger technology; or
@@ -156,211 +154,129 @@ represents that such issuer will maintain, or create the reasonable expectation 
 **(a)** Standards for the Issuance of Payment Stablecoins.—
 **(1)** In general.— A permitted payment stablecoin issuer shall—
 **(A)** maintain identifiable reserves backing the outstanding payment stablecoins of the permitted payment stablecoin issuer on an at least 1 to 1 basis, with reserves comprising—
-####### (i)
-United States coins and currency (including Federal Reserve notes) or money standing to the credit of an account with a Federal Reserve Bank;
-####### (ii)
-funds held as demand deposits (or other deposits that may be withdrawn upon request at any time) or insured shares at an insured depository institution (including any foreign branches or agents, including correspondent banks, of an insured depository institution), subject to limitations established by the Corporation and the National Credit Union Administration, as applicable, to address safety and soundness risks of such insured depository institution;
-####### (iii)
-Treasury bills, notes, or bonds—
-######## (I)
-with a remaining maturity of 93 days or less; or
-######## (II)
-issued with a maturity of 93 days or less;
-####### (iv)
-money received under repurchase agreements, with the permitted payment stablecoin issuer acting as a seller of securities and with an overnight maturity, that are backed by Treasury bills with a maturity of 93 days or less;
-####### (v)
-reverse repurchase agreements, with the permitted payment stablecoin issuer acting as a purchaser of securities and with an overnight maturity, that are collateralized by Treasury notes, bills, or bonds on an overnight basis, subject to overcollateralization in line with standard market terms, that are—
-######## (I)
-tri-party;
-######## (II)
-centrally cleared through a clearing agency registered with the Securities and Exchange Commission; or
-######## (III)
-bilateral with a counterparty that the issuer has determined to be adequately creditworthy even in the event of severe market stress;
-####### (vi)
-securities issued by an investment company registered under section 8(a) of the Investment Company Act of 1940 (15 U.S.C. 80a–8(a)), or other registered Government money market fund, and that are invested solely in underlying assets described in clauses (i) through (v);
-####### (vii)
-any other similarly liquid Federal Government-issued asset approved by the primary Federal payment stablecoin regulator, in consultation with the State payment stablecoin regulator, if applicable, of the permitted payment stablecoin issuer; or
-####### (viii)
-any reserve described in clause (i) through (iii) or clause (vi) through (vii) in tokenized form, provided that such reserves comply with all applicable laws and regulations;
+**(i)** United States coins and currency (including Federal Reserve notes) or money standing to the credit of an account with a Federal Reserve Bank;
+**(ii)** funds held as demand deposits (or other deposits that may be withdrawn upon request at any time) or insured shares at an insured depository institution (including any foreign branches or agents, including correspondent banks, of an insured depository institution), subject to limitations established by the Corporation and the National Credit Union Administration, as applicable, to address safety and soundness risks of such insured depository institution;
+**(iii)** Treasury bills, notes, or bonds—
+**(I)** with a remaining maturity of 93 days or less; or
+**(II)** issued with a maturity of 93 days or less;
+**(iv)** money received under repurchase agreements, with the permitted payment stablecoin issuer acting as a seller of securities and with an overnight maturity, that are backed by Treasury bills with a maturity of 93 days or less;
+**(v)** reverse repurchase agreements, with the permitted payment stablecoin issuer acting as a purchaser of securities and with an overnight maturity, that are collateralized by Treasury notes, bills, or bonds on an overnight basis, subject to overcollateralization in line with standard market terms, that are—
+**(I)** tri-party;
+**(II)** centrally cleared through a clearing agency registered with the Securities and Exchange Commission; or
+**(III)** bilateral with a counterparty that the issuer has determined to be adequately creditworthy even in the event of severe market stress;
+**(vi)** securities issued by an investment company registered under section 8(a) of the Investment Company Act of 1940 (15 U.S.C. 80a–8(a)), or other registered Government money market fund, and that are invested solely in underlying assets described in clauses (i) through (v);
+**(vii)** any other similarly liquid Federal Government-issued asset approved by the primary Federal payment stablecoin regulator, in consultation with the State payment stablecoin regulator, if applicable, of the permitted payment stablecoin issuer; or
+**(viii)** any reserve described in clause (i) through (iii) or clause (vi) through (vii) in tokenized form, provided that such reserves comply with all applicable laws and regulations;
 **(B)** publicly disclose the issuer’s redemption policy, which shall—
-####### (i)
-establish clear and conspicuous procedures for timely redemption of outstanding payment stablecoins, provided that any discretionary limitations on timely redemptions can only be imposed by a State qualified payment stablecoin regulator, the Corporation, the Comptroller, or the Board, consistent with section 7; and
-####### (ii)
-publicly, clearly, and conspicuously disclose in plain language all fees associated with purchasing or redeeming the payment stablecoins, provided that such fees can only be changed upon not less than 7 days’ prior notice to consumers; and
+**(i)** establish clear and conspicuous procedures for timely redemption of outstanding payment stablecoins, provided that any discretionary limitations on timely redemptions can only be imposed by a State qualified payment stablecoin regulator, the Corporation, the Comptroller, or the Board, consistent with section 7; and
+**(ii)** publicly, clearly, and conspicuously disclose in plain language all fees associated with purchasing or redeeming the payment stablecoins, provided that such fees can only be changed upon not less than 7 days’ prior notice to consumers; and
 **(C)** publish the monthly composition of the issuer’s reserves on the website of the issuer, containing—
-####### (i)
-the total number of outstanding payment stablecoins issued by the issuer; and
-####### (ii)
-the amount and composition of the reserves described in subparagraph (A), including the average tenor and geographic location of custody of each category of reserve instruments.
+**(i)** the total number of outstanding payment stablecoins issued by the issuer; and
+**(ii)** the amount and composition of the reserves described in subparagraph (A), including the average tenor and geographic location of custody of each category of reserve instruments.
 **(2)** Prohibition on rehypothecation.— Reserves required under paragraph (1)(A) may not be pledged, rehypothecated, or reused by the permitted payment stablecoin issuer, either directly or indirectly, except for the purpose of—
 **(A)** satisfying margin obligations in connection with investments in permitted reserves under clauses (iv) and (v) of paragraph (1)(A);
 **(B)** satisfying obligations associated with the use, receipt, or provision of standard custodial services; or
 **(C)** creating liquidity to meet reasonable expectations of requests to redeem payment stablecoins, such that reserves in the form of Treasury bills may be sold as purchased securities for repurchase agreements with a maturity of 93 days or less, provided that either—
-####### (i)
-the repurchase agreements are cleared by a clearing agency registered with the Securities and Exchange Commission; or
-####### (ii)
-the permitted payment stablecoin issuer receives the prior approval of its primary Federal payment stablecoin regulator or State payment stablecoin regulator, as applicable.
+**(i)** the repurchase agreements are cleared by a clearing agency registered with the Securities and Exchange Commission; or
+**(ii)** the permitted payment stablecoin issuer receives the prior approval of its primary Federal payment stablecoin regulator or State payment stablecoin regulator, as applicable.
 **(3)** Monthly certification; examination of reports by registered public accounting firm.—
 **(A)** In general.— A permitted payment stablecoin issuer shall, each month, have the information disclosed in the previous month-end report required under paragraph (1)(D) examined by a registered public accounting firm.
 **(B)** Certification.— Each month, the Chief Executive Officer and Chief Financial Officer of a permitted payment stablecoin issuer shall submit a certification as to the accuracy of the monthly report to, as applicable—
-####### (i)
-the primary Federal payment stablecoin regulator of the permitted payment stablecoin issuer; or
-####### (ii)
-the State payment stablecoin regulator of the permitted payment stablecoin issuer.
+**(i)** the primary Federal payment stablecoin regulator of the permitted payment stablecoin issuer; or
+**(ii)** the State payment stablecoin regulator of the permitted payment stablecoin issuer.
 **(C)** Criminal penalty.— Any person who submits a certification required under subparagraph (B) knowing that such certification is false shall be subject to the same criminal penalties as those set forth under section 1350(c) of title 18, United States Code.
 **(4)** Capital, liquidity, and risk management requirements.—
 **(A)** In general.— The primary Federal payment stablecoin regulators shall, or in the case of a State qualified payment stablecoin issuer, the State payment stablecoin regulator shall, consistent with section 13, issue regulations implementing—
-####### (i)
-capital requirements applicable to permitted payment stablecoin issuers that—
-######## (I)
-are tailored to the business model and risk profile of permitted payment stablecoin issuers;
-######## (II)
-do not exceed requirements that are sufficient to ensure the ongoing operations of permitted payment stablecoin issuers; and
-######## (III)
-in the case of the primary Federal payment stablecoin regulators, if the primary Federal payment stablecoin regulators determine that a capital buffer is necessary to ensure the ongoing operations of permitted payment stablecoin issuers, may include capital buffers that are tailored to the business model and risk profile of permitted payment stablecoin issuers;
-####### (ii)
-the liquidity standard under paragraph (1)(A);
-####### (iii)
-reserve asset diversification, including deposit concentration at banking institutions, and interest rate risk management standards applicable to permitted payment stablecoin issuers that—
-######## (I)
-are tailored to the business model and risk profile of permitted payment stablecoin issuers; and
-######## (II)
-do not exceed standards that are sufficient to ensure the ongoing operations of permitted payment stablecoin issuers; and
-####### (iv)
-appropriate operational, compliance, and information technology risk management principles-based requirements and standards, including Bank Secrecy Act and sanctions compliance standards, that—
-######## (I)
-are tailored to the business model and risk profile of permitted payment stablecoin issuers; and
-######## (II)
-are consistent with applicable law.
+**(i)** capital requirements applicable to permitted payment stablecoin issuers that—
+**(I)** are tailored to the business model and risk profile of permitted payment stablecoin issuers;
+**(II)** do not exceed requirements that are sufficient to ensure the ongoing operations of permitted payment stablecoin issuers; and
+**(III)** in the case of the primary Federal payment stablecoin regulators, if the primary Federal payment stablecoin regulators determine that a capital buffer is necessary to ensure the ongoing operations of permitted payment stablecoin issuers, may include capital buffers that are tailored to the business model and risk profile of permitted payment stablecoin issuers;
+**(ii)** the liquidity standard under paragraph (1)(A);
+**(iii)** reserve asset diversification, including deposit concentration at banking institutions, and interest rate risk management standards applicable to permitted payment stablecoin issuers that—
+**(I)** are tailored to the business model and risk profile of permitted payment stablecoin issuers; and
+**(II)** do not exceed standards that are sufficient to ensure the ongoing operations of permitted payment stablecoin issuers; and
+**(iv)** appropriate operational, compliance, and information technology risk management principles-based requirements and standards, including Bank Secrecy Act and sanctions compliance standards, that—
+**(I)** are tailored to the business model and risk profile of permitted payment stablecoin issuers; and
+**(II)** are consistent with applicable law.
 **(B)** Rule of construction.— Nothing in this paragraph shall be construed to limit—
-####### (i)
-the authority of the primary Federal payment stablecoin regulators, in prescribing standards under this paragraph, to tailor or differentiate among issuers on an individual basis or by category, taking into consideration the capital structure, business model risk profile, complexity, financial activities (including financial activities of subsidiaries), size, and any other risk-related factors of permitted payment stablecoin issuers that a primary Federal payment stablecoin regulator determines appropriate, provided that such tailoring or differentiation occurs without respect to whether a permitted payment stablecoin issuer is regulated by a State payment stablecoin regulator; or
-####### (ii)
-any supervisory, regulatory, or enforcement authority of a primary Federal payment stablecoin regulator to further the safe and sound operation of an institution for which the primary Federal payment stablecoin regulator is the appropriate regulator.
+**(i)** the authority of the primary Federal payment stablecoin regulators, in prescribing standards under this paragraph, to tailor or differentiate among issuers on an individual basis or by category, taking into consideration the capital structure, business model risk profile, complexity, financial activities (including financial activities of subsidiaries), size, and any other risk-related factors of permitted payment stablecoin issuers that a primary Federal payment stablecoin regulator determines appropriate, provided that such tailoring or differentiation occurs without respect to whether a permitted payment stablecoin issuer is regulated by a State payment stablecoin regulator; or
+**(ii)** any supervisory, regulatory, or enforcement authority of a primary Federal payment stablecoin regulator to further the safe and sound operation of an institution for which the primary Federal payment stablecoin regulator is the appropriate regulator.
 **(C)** Applicability of existing capital standards.—
-####### (i)
-Definition.— In this subparagraph, the term “depository institution holding company” has the meaning given that term under section 171(a)(3) of the Financial Stability Act of 2010 (12 U.S.C. 5371(a)(3)).
-####### (ii)
-Applicability of financial stability act.— With respect to the promulgation of rules under subparagraph (A) and clauses (iii) and (iv) of this subparagraph, section 171 of the Financial Stability Act of 2010 (12 U.S.C. 5371) shall not apply.
-####### (iii)
-Rules relating to leverage capital requirements or risk-based capital requirements.— Any rule issued by an appropriate Federal banking agency that imposes, on a consolidated basis, a leverage capital requirement or risk-based capital requirement with respect to an insured depository institution or depository institution holding company shall provide that, for purposes of such leverage capital requirement or risk-based capital requirement, any insured depository institution or depository institution holding company that includes, on a consolidated basis, a permitted payment stablecoin issuer, shall not be required to hold, with respect to such permitted payment stablecoin issuer and its assets and operations, any amount of regulatory capital in excess of the capital that such permitted payment stablecoin issuer must maintain under the capital requirements issued pursuant to subparagraph (A)(i).
-####### (iv)
-Modifications.— Not later than the earlier of the rulemaking deadline under section 13 or the date on which the Federal payment stablecoin regulators issue regulations to carry out this section, each appropriate Federal banking agency shall amend or otherwise modify any regulation of the appropriate Federal banking agency described in clause (iii) so that such regulation, as amended or otherwise modified, complies with clause (iii) of this subparagraph.
+**(i)** Definition.— In this subparagraph, the term “depository institution holding company” has the meaning given that term under section 171(a)(3) of the Financial Stability Act of 2010 (12 U.S.C. 5371(a)(3)).
+**(ii)** Applicability of financial stability act.— With respect to the promulgation of rules under subparagraph (A) and clauses (iii) and (iv) of this subparagraph, section 171 of the Financial Stability Act of 2010 (12 U.S.C. 5371) shall not apply.
+**(iii)** Rules relating to leverage capital requirements or risk-based capital requirements.— Any rule issued by an appropriate Federal banking agency that imposes, on a consolidated basis, a leverage capital requirement or risk-based capital requirement with respect to an insured depository institution or depository institution holding company shall provide that, for purposes of such leverage capital requirement or risk-based capital requirement, any insured depository institution or depository institution holding company that includes, on a consolidated basis, a permitted payment stablecoin issuer, shall not be required to hold, with respect to such permitted payment stablecoin issuer and its assets and operations, any amount of regulatory capital in excess of the capital that such permitted payment stablecoin issuer must maintain under the capital requirements issued pursuant to subparagraph (A)(i).
+**(iv)** Modifications.— Not later than the earlier of the rulemaking deadline under section 13 or the date on which the Federal payment stablecoin regulators issue regulations to carry out this section, each appropriate Federal banking agency shall amend or otherwise modify any regulation of the appropriate Federal banking agency described in clause (iii) so that such regulation, as amended or otherwise modified, complies with clause (iii) of this subparagraph.
 **(5)** Treatment under the bank secrecy act and sanctions laws.—
 **(A)** In general.— A permitted payment stablecoin issuer shall be treated as a financial institution for purposes of the Bank Secrecy Act, and as such, shall be subject to all Federal laws applicable to a financial institution located in the United States relating to economic sanctions, prevention of money laundering, customer identification, and due diligence, including—
-####### (i)
-maintenance of an effective anti-money laundering program, which shall include appropriate risk assessments and designation of an officer to supervise the program;
-####### (ii)
-retention of appropriate records;
-####### (iii)
-monitoring and reporting of any suspicious transaction relevant to a possible violation of law or regulation;
-####### (iv)
-technical capabilities, policies, and procedures to block, freeze, and reject specific or impermissible transactions that violate Federal or State laws, rules, or regulations;
-####### (v)
-maintenance of an effective customer identification program, including identification and verification of account holders with the permitted payment stablecoin issuer, high-value transactions, and appropriate enhanced due diligence; and
-####### (vi)
-maintenance of an effective economic sanctions compliance program, including verification of sanctions lists, consistent with Federal law.
+**(i)** maintenance of an effective anti-money laundering program, which shall include appropriate risk assessments and designation of an officer to supervise the program;
+**(ii)** retention of appropriate records;
+**(iii)** monitoring and reporting of any suspicious transaction relevant to a possible violation of law or regulation;
+**(iv)** technical capabilities, policies, and procedures to block, freeze, and reject specific or impermissible transactions that violate Federal or State laws, rules, or regulations;
+**(v)** maintenance of an effective customer identification program, including identification and verification of account holders with the permitted payment stablecoin issuer, high-value transactions, and appropriate enhanced due diligence; and
+**(vi)** maintenance of an effective economic sanctions compliance program, including verification of sanctions lists, consistent with Federal law.
 **(B)** Rulemaking.— The Secretary of the Treasury shall adopt rules, tailored to the size and complexity of permitted payment stablecoin issuers, to implement subparagraph (A).
 **(C)** Reservation of authority.— Nothing in this Act shall restrict the authority of the Secretary of the Treasury to implement, administer, and enforce the provisions of subchapter II of chapter 53 of title 31, United States Code.
 **(6)** Coordination with permitted payment stablecoin issuers with respect to blocking of property and technological capabilities to comply with lawful orders.—
 **(A)** In general.— The Secretary of the Treasury—
-####### (i)
-shall, to the best of the Secretary’s ability, coordinate with a permitted payment stablecoin issuer before taking any action to block and prohibit transactions in property and interests in property of a foreign person to ensure that the permitted payment stablecoin issuer is able to effectively block a payment stablecoin of the foreign person upon issuance of the payment stablecoin; and
-####### (ii)
-is not required to notify any permitted payment stablecoin issuer of any intended action described in clause (i) prior to taking such action.
+**(i)** shall, to the best of the Secretary’s ability, coordinate with a permitted payment stablecoin issuer before taking any action to block and prohibit transactions in property and interests in property of a foreign person to ensure that the permitted payment stablecoin issuer is able to effectively block a payment stablecoin of the foreign person upon issuance of the payment stablecoin; and
+**(ii)** is not required to notify any permitted payment stablecoin issuer of any intended action described in clause (i) prior to taking such action.
 **(B)** Compliance with lawful orders.— A permitted payment stablecoin issuer may issue payment stablecoins only if the issuer has the technological capability to comply, and will comply, with the terms of any lawful order.
 **(C)** Report required.— Not later than 1 year after the date of enactment of this Act, the Attorney General and the Secretary of the Treasury shall submit to the Committee on Banking, Housing, and Urban Affairs of the Senate and the Committee on Financial Services of the House of Representatives a report, which may include a classified annex if applicable, on the coordination with permitted payment stablecoin issuers required under subparagraph (A).
 **(D)** Rule of construction.— Nothing in this paragraph shall be construed to alter or affect the authority of State payment stablecoin regulators with respect to the offer of foreign-issued digital assets that are issued within a foreign jurisdiction.
 **(7)** Limitation on payment stablecoin activities.—
 **(A)** In general.— A permitted payment stablecoin issuer may only—
-####### (i)
-issue payment stablecoins;
-####### (ii)
-redeem payment stablecoins;
-####### (iii)
-manage related reserves, including purchasing, selling, and holding reserve assets or providing custodial services for reserve assets, consistent with State and Federal law;
-####### (iv)
-provide custodial or safekeeping services for payment stablecoins, required reserves, or private keys of payment stablecoins, consistent with this Act; and
-####### (v)
-undertake other activities that directly support any of the activities described in clauses (i) through (iv).
+**(i)** issue payment stablecoins;
+**(ii)** redeem payment stablecoins;
+**(iii)** manage related reserves, including purchasing, selling, and holding reserve assets or providing custodial services for reserve assets, consistent with State and Federal law;
+**(iv)** provide custodial or safekeeping services for payment stablecoins, required reserves, or private keys of payment stablecoins, consistent with this Act; and
+**(v)** undertake other activities that directly support any of the activities described in clauses (i) through (iv).
 **(B)** Rule of construction.— Nothing in subparagraph (A) shall limit a permitted payment stablecoin issuer from engaging in payment stablecoin activities or digital asset service provider activities specified by this Act, and activities incidental thereto, that are authorized by the primary Federal payment stablecoin regulator or the State payment stablecoin regulator, as applicable, consistent with all other Federal and State laws, provided that the claims of payment stablecoin holders rank senior to any potential claims of non-stablecoin creditors with respect to the reserve assets, consistent with section 11.
 **(8)** Prohibition on tying.—
 **(A)** In general.— A permitted payment stablecoin issuer may not provide services to a customer on the condition that the customer obtain an additional paid product or service from the permitted payment stablecoin issuer, or any of its subsidiaries, or agree to not obtain an additional product or service from a competitor.
 **(B)** Regulations.— The Board may issue such regulations as are necessary to carry out this paragraph, and, in consultation with other relevant primary Federal payment stablecoin regulators, may by regulation or order, permit such exceptions to subparagraph (A) as the Board considers will not be contrary to the purpose of this Act.
 **(9)** Prohibition on the use of deceptive names.—
 **(A)** In general.— A permitted payment stablecoin issuer may not—
-####### (i)
-use any combination of terms relating to the United States Government, including “United States”, “United States Government”, and “USG” in the name of a payment stablecoin; or
-####### (ii)
-market a payment stablecoin in such a way that a reasonable person would perceive the payment stablecoin to be—
-######## (I)
-legal tender, as described in section 5103 of title 31, United States Code;
-######## (II)
-issued by the United States; or
-######## (III)
-guaranteed or approved by the Government of the United States.
+**(i)** use any combination of terms relating to the United States Government, including “United States”, “United States Government”, and “USG” in the name of a payment stablecoin; or
+**(ii)** market a payment stablecoin in such a way that a reasonable person would perceive the payment stablecoin to be—
+**(I)** legal tender, as described in section 5103 of title 31, United States Code;
+**(II)** issued by the United States; or
+**(III)** guaranteed or approved by the Government of the United States.
 **(B)** Pegged stablecoins.— Abbreviations directly relating to the currency to which a payment stablecoin is pegged, such as “USD”, are not subject to the prohibitions in subparagraph (A).
 **(10)** Audits and reports.—
 **(A)** Annual financial statement.—
-####### (i)
-In general.— A permitted payment stablecoin issuer with more than $50,000,000,000 in consolidated total outstanding issuance, that is not subject to the reporting requirements under section 13(a) or 15(d) of the Securities and Exchange Act of 1934 (15 U.S.C. 78m, 78o(d)), shall prepare, in accordance with generally accepted accounting principles, an annual financial statement, which shall include the disclosure of any related party transactions, as defined by such generally accepted accounting principles.
-####### (ii)
-Auditor.— A registered public accounting firm shall perform an audit of the annual financial statements described in clause (i).
-####### (iii)
-Standards.— An audit described in clause (ii) shall be conducted in accordance with all applicable auditing standards established by the Public Company Accounting Oversight Board, including those relating to auditor independence, internal controls, and related party transactions.
-####### (iv)
-Rule of construction.— Nothing in this subparagraph shall be construed to limit, alter, or expand the jurisdiction of the Public Company Accounting Oversight Board over permitted payment stablecoin issuers or registered public accounting firms.
+**(i)** In general.— A permitted payment stablecoin issuer with more than $50,000,000,000 in consolidated total outstanding issuance, that is not subject to the reporting requirements under section 13(a) or 15(d) of the Securities and Exchange Act of 1934 (15 U.S.C. 78m, 78o(d)), shall prepare, in accordance with generally accepted accounting principles, an annual financial statement, which shall include the disclosure of any related party transactions, as defined by such generally accepted accounting principles.
+**(ii)** Auditor.— A registered public accounting firm shall perform an audit of the annual financial statements described in clause (i).
+**(iii)** Standards.— An audit described in clause (ii) shall be conducted in accordance with all applicable auditing standards established by the Public Company Accounting Oversight Board, including those relating to auditor independence, internal controls, and related party transactions.
+**(iv)** Rule of construction.— Nothing in this subparagraph shall be construed to limit, alter, or expand the jurisdiction of the Public Company Accounting Oversight Board over permitted payment stablecoin issuers or registered public accounting firms.
 **(B)** Public disclosure and submission to federal regulators.— Each permitted payment stablecoin issuer required to prepare an audited annual financial statement under subparagraph (A) shall—
-####### (i)
-make such audited financial statements publicly available on the website of the permitted payment stablecoin issuer; and
-####### (ii)
-submit such audited financial statements annually to their primary Federal payment stablecoin regulator.
+**(i)** make such audited financial statements publicly available on the website of the permitted payment stablecoin issuer; and
+**(ii)** submit such audited financial statements annually to their primary Federal payment stablecoin regulator.
 **(C)** Consultation.— The primary Federal payment stablecoin regulators may consult with the Public Company Accounting Oversight Board to determine best practices for determining audit oversight and to detect fraud, material misstatements, and other financial misrepresentations that could mislead permitted payment stablecoin holders.
 **(11)** Prohibition on interest.— No permitted payment stablecoin issuer or foreign payment stablecoin issuer shall pay the holder of any payment stablecoin any form of interest or yield (whether in cash, tokens, or other consideration) solely in connection with the holding, use, or retention of such payment stablecoin.
 **(12)** Non-financial services public companies.—
 **(A)** Definitions.— In this paragraph:
-####### (i)
-Financial activities.— The term “financial activities”—
-######## (I)
-has the meaning given that term in section 4(k) of the Bank Holding Company Act of 1956 (12 U.S.C. 1843(k)); and
-######## (II)
-for the avoidance of doubt, includes those activities described in subparagraphs (A) and (B) of section 2(7) and section 4(a)(7)(A) of this Act.
-####### (ii)
-Public company.— The term “public company” means an issuer that is required to file reports under section 13(a) or 15(d) of the Securities Exchange Act of 1934 (15 U.S.C. 78m(a), 78o(d)).
+**(i)** Financial activities.— The term “financial activities”—
+**(I)** has the meaning given that term in section 4(k) of the Bank Holding Company Act of 1956 (12 U.S.C. 1843(k)); and
+**(II)** for the avoidance of doubt, includes those activities described in subparagraphs (A) and (B) of section 2(7) and section 4(a)(7)(A) of this Act.
+**(ii)** Public company.— The term “public company” means an issuer that is required to file reports under section 13(a) or 15(d) of the Securities Exchange Act of 1934 (15 U.S.C. 78m(a), 78o(d)).
 **(B)** Prohibition.—
-####### (i)
-In general.— A public company that is not predominantly engaged in 1 or more financial activities, and its wholly or majority owned subsidiaries or affiliates, may not issue a payment stablecoin unless the public company obtains a unanimous vote of the Stablecoin Certification Review Committee finding that—
-######## (I)
-it will not pose a material risk to the safety and soundness of the United States banking system, the financial stability of the United States, or the Deposit Insurance Fund;
-######## (II)
-the public company will comply with data use limitations providing that, unless the public company receives consent from the consumer, nonpublic personal information obtained from stablecoin transaction data may not be—
-######## (III)
-the public company and the affiliates of the public company will comply with the tying prohibitions under paragraph (8).
-####### (ii)
-Exception.— The prohibition under clause (i) against the sharing of consumer information shall not apply to sharing of such information—
-######## (I)
-to comply with Federal, State, or local laws, rules, and other applicable legal requirements;
-######## (II)
-to comply with a properly authorized civil, criminal, or regulatory investigation, subpoena, or summons by a Federal, State, or local authority; or
-######## (III)
-to respond to judicial process or a government regulatory authority having jurisdiction over the public company.
+**(i)** In general.— A public company that is not predominantly engaged in 1 or more financial activities, and its wholly or majority owned subsidiaries or affiliates, may not issue a payment stablecoin unless the public company obtains a unanimous vote of the Stablecoin Certification Review Committee finding that—
+**(I)** it will not pose a material risk to the safety and soundness of the United States banking system, the financial stability of the United States, or the Deposit Insurance Fund;
+**(II)** the public company will comply with data use limitations providing that, unless the public company receives consent from the consumer, nonpublic personal information obtained from stablecoin transaction data may not be—
+**(III)** the public company and the affiliates of the public company will comply with the tying prohibitions under paragraph (8).
+**(ii)** Exception.— The prohibition under clause (i) against the sharing of consumer information shall not apply to sharing of such information—
+**(I)** to comply with Federal, State, or local laws, rules, and other applicable legal requirements;
+**(II)** to comply with a properly authorized civil, criminal, or regulatory investigation, subpoena, or summons by a Federal, State, or local authority; or
+**(III)** to respond to judicial process or a government regulatory authority having jurisdiction over the public company.
 **(C)** Extension of prohibition.—
-####### (i)
-In general.— Any company not domiciled in the United States or its Territories that is not predominantly engaged in 1 or more financial activities, may not issue a payment stablecoin unless the public company obtains a unanimous vote of the Stablecoin Certification Review Committee finding that—
-######## (I)
-it will not pose a material risk to the safety and soundness of the United States banking system, the financial stability of the United States, or the Deposit Insurance Fund;
-######## (II)
-the public company will comply with data use limitations providing that, unless the public company receives consent from the consumer, nonpublic personal information obtained from stablecoin transaction data may not be—
-######## (III)
-the public company and the affiliates of the public company will comply with the tying prohibitions under paragraph (8).
-####### (ii)
-Exception.— The prohibition under clause (i) against the sharing of consumer information shall not apply to sharing of such information—
-######## (I)
-to comply with Federal, State, or local laws, rules, and other applicable legal requirements;
-######## (II)
-to comply with a properly authorized civil, criminal, or regulatory investigation, subpoena, or summons by a Federal, State, or local authority; or
-######## (III)
-to respond to judicial process or a government regulatory authority having jurisdiction over the public company.
+**(i)** In general.— Any company not domiciled in the United States or its Territories that is not predominantly engaged in 1 or more financial activities, may not issue a payment stablecoin unless the public company obtains a unanimous vote of the Stablecoin Certification Review Committee finding that—
+**(I)** it will not pose a material risk to the safety and soundness of the United States banking system, the financial stability of the United States, or the Deposit Insurance Fund;
+**(II)** the public company will comply with data use limitations providing that, unless the public company receives consent from the consumer, nonpublic personal information obtained from stablecoin transaction data may not be—
+**(III)** the public company and the affiliates of the public company will comply with the tying prohibitions under paragraph (8).
+**(ii)** Exception.— The prohibition under clause (i) against the sharing of consumer information shall not apply to sharing of such information—
+**(I)** to comply with Federal, State, or local laws, rules, and other applicable legal requirements;
+**(II)** to comply with a properly authorized civil, criminal, or regulatory investigation, subpoena, or summons by a Federal, State, or local authority; or
+**(III)** to respond to judicial process or a government regulatory authority having jurisdiction over the public company.
 **(D)** Rulemaking.— Not later than 1 year after the date of enactment of this Act, the Stablecoin Certification Review Committee shall issue an interpretive rule clarifying the application of this paragraph.
 **(13)** Eligibility.— Nothing in this Act shall be construed as expanding or contracting legal eligibility to receive services available from a Federal Reserve bank or to make deposits with a Federal Reserve bank, in each case pursuant to the Federal Reserve Act.
 **(14)** Rule of construction.— Compliance with this section does not alter or affect any additional requirement of a State payment stablecoin regulator that may apply relating to the offering of payment stablecoins.
@@ -377,24 +293,16 @@ to respond to judicial process or a government regulatory authority having juris
 **(C)** Annual recertification.— Not later than a date to be determined by the Secretary of the Treasury each year, a State payment stablecoin regulator shall submit to the Stablecoin Certification Review Committee an additional certification that confirms the accuracy of the initial certification submitted under subparagraph (A).
 **(5)** Certification review.—
 **(A)** In general.— Not later than 30 days after the date on which a State payment stablecoin regulator submits an initial certification or a recertification under paragraph (4), the Stablecoin Certification Review Committee shall—
-####### (i)
-approve such certification if the Committee unanimously determines that the State-level regulatory regime meets or exceeds the standards and requirements described in subsection (a); or
-####### (ii)
-deny such certification and provide the State payment stablecoin regulator with a written explanation of the denial, describing the reasoned basis for the denial with sufficient detail to enable the State payment stablecoin regulator and State-level regulatory regime to make any changes necessary to meet or exceed the standards and requirements described in subsection (a).
+**(i)** approve such certification if the Committee unanimously determines that the State-level regulatory regime meets or exceeds the standards and requirements described in subsection (a); or
+**(ii)** deny such certification and provide the State payment stablecoin regulator with a written explanation of the denial, describing the reasoned basis for the denial with sufficient detail to enable the State payment stablecoin regulator and State-level regulatory regime to make any changes necessary to meet or exceed the standards and requirements described in subsection (a).
 **(B)** Recertifications.— With respect to any recertification certification submitted by a State payment stablecoin regulator under paragraph (4), the Stablecoin Certification Review Committee shall only deny the recertification if—
-####### (i)
-the State-level regulatory regime has materially changed from the prior certification or there has been a significant change in circumstances; and
-####### (ii)
-the material change in the regime or significant change in circumstances described in clause (i) is such that the State-level regulatory regime will not promote the safe and sound operation of State qualified payment stablecoin issuers under its supervision.
+**(i)** the State-level regulatory regime has materially changed from the prior certification or there has been a significant change in circumstances; and
+**(ii)** the material change in the regime or significant change in circumstances described in clause (i) is such that the State-level regulatory regime will not promote the safe and sound operation of State qualified payment stablecoin issuers under its supervision.
 **(C)** Opportunity to cure.—
-####### (i)
-In general.— With respect to a denial described under subparagraph (A) or (B), the Stablecoin Certification Review Committee shall provide the State payment stablecoin regulator with not less than 180 days from the date on which the State payment stablecoin regulator is notified of such denial to—
-######## (I)
-make such changes as may be necessary to ensure the State-level regulatory regime meets or exceeds the standards described in subsection (a); and
-######## (II)
-resubmit the initial certification or recertification.
-####### (ii)
-Denial.— If, after a State payment stablecoin regulator resubmits an initial certification or recertification under clause (i), the Stablecoin Certification Review Committee again determines that the initial certification or recertification shall result in a denial, the Stablecoin Certification Review Committee shall, not later than 30 days after such determination, provide the State payment stablecoin regulator with a written explanation for the determination.
+**(i)** In general.— With respect to a denial described under subparagraph (A) or (B), the Stablecoin Certification Review Committee shall provide the State payment stablecoin regulator with not less than 180 days from the date on which the State payment stablecoin regulator is notified of such denial to—
+**(I)** make such changes as may be necessary to ensure the State-level regulatory regime meets or exceeds the standards described in subsection (a); and
+**(II)** resubmit the initial certification or recertification.
+**(ii)** Denial.— If, after a State payment stablecoin regulator resubmits an initial certification or recertification under clause (i), the Stablecoin Certification Review Committee again determines that the initial certification or recertification shall result in a denial, the Stablecoin Certification Review Committee shall, not later than 30 days after such determination, provide the State payment stablecoin regulator with a written explanation for the determination.
 **(D)** Appeal of denial.— A State payment stablecoin regulator in receipt of a denial under subparagraph (C)(ii) may appeal the denial to the United States Court of Appeals for the District of Columbia Circuit.
 **(E)** Right to resubmit.— A State payment stablecoin regulator in receipt of a denial under this paragraph shall not be prohibited from resubmitting a new certification under paragraph (4).
 **(6)** List.— The Secretary of the Treasury shall publish and maintain in the Federal Register and on the website of the Department of the Treasury a list of States that have submitted initial certifications and recertifications under paragraph (4).
@@ -409,19 +317,13 @@ Denial.— If, after a State payment stablecoin regulator resubmits an initial c
 **(3)** Waiver.—
 **(A)** In general.— Notwithstanding paragraphs (1) and (2), the applicable primary Federal payment stablecoin regulator may permit a State qualified payment stablecoin issuer with a payment stablecoin with a consolidated total outstanding issuance of more than $10,000,000,000 to remain solely supervised by a State payment stablecoin regulator.
 **(B)** Criteria for waiver.— The primary Federal payment stablecoin regulator shall consider the following exclusive criteria in determining whether to issue a waiver under this paragraph:
-####### (i)
-The capital maintained by the State qualified payment stablecoin issuer.
-####### (ii)
-The past operations and examination history of the State qualified payment stablecoin issuer.
-####### (iii)
-The experience of the State payment stablecoin regulator in supervising payment stablecoin and digital asset activities.
-####### (iv)
-The supervisory framework, including regulations and guidance, of the State qualified payment stablecoin issuer with respect to payment stablecoins and digital assets.
+**(i)** The capital maintained by the State qualified payment stablecoin issuer.
+**(ii)** The past operations and examination history of the State qualified payment stablecoin issuer.
+**(iii)** The experience of the State payment stablecoin regulator in supervising payment stablecoin and digital asset activities.
+**(iv)** The supervisory framework, including regulations and guidance, of the State qualified payment stablecoin issuer with respect to payment stablecoins and digital assets.
 **(C)** Rule of construction.—
-####### (i)
-Federal oversight.— A State qualified payment stablecoin issuer subject to Federal oversight under paragraph (1) or (2) of this subsection that does not receive a waiver under this paragraph shall continue to be supervised by the State payment stablecoin regulator of the State qualified payment stablecoin issuer jointly with the primary Federal payment stablecoin regulator. Nothing in this subsection shall require the State qualified payment stablecoin issuer to convert to a Federal charter.
-####### (ii)
-State oversight.— A State qualified payment stablecoin issuer supervised by a State payment stablecoin regulator that has established a prudential regulatory regime (including regulations and guidance) for the supervision of digital assets or payment stablecoins before the 90-day period ending on the date of enactment of this Act that has been certified pursuant to subsection (c) and has approved 1 or more issuers to issue payment stablecoins under the supervision of such State payment stablecoin regulator, shall be presumptively approved for a waiver under this paragraph, unless the Federal payment stablecoin regulator finds, by clear and convincing evidence, that the requirements of subparagraph (B) are not substantially met with respect to that issuer or that the issuer poses significant safety and soundness risks to the financial system of the United States.
+**(i)** Federal oversight.— A State qualified payment stablecoin issuer subject to Federal oversight under paragraph (1) or (2) of this subsection that does not receive a waiver under this paragraph shall continue to be supervised by the State payment stablecoin regulator of the State qualified payment stablecoin issuer jointly with the primary Federal payment stablecoin regulator. Nothing in this subsection shall require the State qualified payment stablecoin issuer to convert to a Federal charter.
+**(ii)** State oversight.— A State qualified payment stablecoin issuer supervised by a State payment stablecoin regulator that has established a prudential regulatory regime (including regulations and guidance) for the supervision of digital assets or payment stablecoins before the 90-day period ending on the date of enactment of this Act that has been certified pursuant to subsection (c) and has approved 1 or more issuers to issue payment stablecoins under the supervision of such State payment stablecoin regulator, shall be presumptively approved for a waiver under this paragraph, unless the Federal payment stablecoin regulator finds, by clear and convincing evidence, that the requirements of subparagraph (B) are not substantially met with respect to that issuer or that the issuer poses significant safety and soundness risks to the financial system of the United States.
 **(e)** Misrepresentation of Insured Status.—
 **(1)** In general.— Payment stablecoins shall not be backed by the full faith and credit of the United States, guaranteed by the United States Government, subject to deposit insurance by the Federal Deposit Insurance Corporation, or subject to share insurance by the National Credit Union Administration.
 **(2)** Misrepresentation of insured status.—
@@ -431,10 +333,8 @@ State oversight.— A State qualified payment stablecoin issuer supervised by a 
 **(A)** In general.— It shall be unlawful to market a product in the United States as a payment stablecoin unless the product is issued pursuant to this Act.
 **(B)** Penalty.— Whoever knowingly and willfully participates in a violation of subparagraph (A) shall be fined by the Department of the Treasury not more than $500,000 for each such violation.
 **(C)** Determination of the number of violations.— For purposes of determining the number of violations for which to impose penalties under subparagraph (B), separate acts of noncompliance are a single violation when the acts are the result of—
-####### (i)
-a common or substantially overlapping originating cause; or
-####### (ii)
-the same statement or publication.
+**(i)** a common or substantially overlapping originating cause; or
+**(ii)** the same statement or publication.
 **(D)** Referral to secretary of the treasury.— If a Federal payment stablecoin regulator has reason to believe that any person has knowingly and willfully violated subparagraph (A), the Federal payment stablecoin regulator shall refer the matter to the Secretary of the Treasury.
 **(f)** Officers or Directors Convicted of Certain Felonies.—
 **(1)** In general.— No individual who has been convicted of a felony offense involving insider trading, embezzlement, cybercrime, money laundering, financing of terrorism, or financial fraud may serve as—
@@ -476,28 +376,19 @@ the same statement or publication.
 **(1)** Timing for decisions on applications.—
 **(A)** In general.— Not later than 120 days after receiving a substantially complete application under subsection (a), a primary Federal payment stablecoin regulator shall render a decision on the application.
 **(B)** Substantially complete.—
-####### (i)
-In general.— For purposes of subparagraph (A), an application shall be considered substantially complete if the application contains sufficient information for the primary Federal payment stablecoin regulator to render a decision on whether the applicant satisfies the factors described in subsection (c).
-####### (ii)
-Notification.— Not later than 30 days after receiving an application under subsection (a), a primary Federal payment stablecoin regulator shall notify the applicant as to whether the primary Federal payment stablecoin regulator considers the application to be substantially complete and, if the application is not substantially complete, the additional information the applicant shall provide in order for the application to be considered substantially complete.
-####### (iii)
-Material change in circumstances.— An application considered substantially complete under this subparagraph remains substantially complete unless there is a material change in circumstances that requires the primary Federal payment stablecoin regulator to treat the application as a new application.
+**(i)** In general.— For purposes of subparagraph (A), an application shall be considered substantially complete if the application contains sufficient information for the primary Federal payment stablecoin regulator to render a decision on whether the applicant satisfies the factors described in subsection (c).
+**(ii)** Notification.— Not later than 30 days after receiving an application under subsection (a), a primary Federal payment stablecoin regulator shall notify the applicant as to whether the primary Federal payment stablecoin regulator considers the application to be substantially complete and, if the application is not substantially complete, the additional information the applicant shall provide in order for the application to be considered substantially complete.
+**(iii)** Material change in circumstances.— An application considered substantially complete under this subparagraph remains substantially complete unless there is a material change in circumstances that requires the primary Federal payment stablecoin regulator to treat the application as a new application.
 **(2)** Denial of application.—
 **(A)** Grounds for denial.—
-####### (i)
-In general.— A primary Federal payment stablecoin regulator shall only deny a substantially complete application received under subsection (a) if the regulator determines that the activities of the applicant would be unsafe or unsound based on the factors described in subsection (c).
-####### (ii)
-Issuance on open, public, or decentralized network not ground for denial.— The issuance of a payment stablecoin on an open, public, or decentralized network shall not be a valid ground for denial of an application received under subsection (a).
+**(i)** In general.— A primary Federal payment stablecoin regulator shall only deny a substantially complete application received under subsection (a) if the regulator determines that the activities of the applicant would be unsafe or unsound based on the factors described in subsection (c).
+**(ii)** Issuance on open, public, or decentralized network not ground for denial.— The issuance of a payment stablecoin on an open, public, or decentralized network shall not be a valid ground for denial of an application received under subsection (a).
 **(B)** Explanation required.— If a primary Federal payment stablecoin regulator denies a complete application received under subsection (a), not later than 30 days after the date of such denial, the regulator shall provide the applicant with written notice explaining the denial with specificity, including all findings made by the regulator with respect to all identified material shortcomings in the application, including actionable recommendations on how the applicant could address the identified material shortcomings.
 **(C)** Opportunity for hearing; final determination.—
-####### (i)
-In general.— Not later than 30 days after the date of receipt of any notice of the denial of an application under this section, the applicant may request, in writing, an opportunity for a written or oral hearing before the primary Federal payment stablecoin regulator to appeal the denial.
-####### (ii)
-Timing.— Upon receipt of a timely request under clause (i), the primary Federal payment stablecoin regulator shall notice a time (not later than 30 days after the date of receipt of the request) and place at which the applicant may appear, personally or through counsel, to submit written materials or provide oral testimony and oral argument.
-####### (iii)
-Final determination.— Not later than 60 days after the date of a hearing under this subparagraph, the applicable primary Federal payment stablecoin regulator shall notify the applicant of a final determination, which shall contain a statement of the basis for that determination, with specific findings.
-####### (iv)
-Notice if no hearing.— If an applicant does not make a timely request for a hearing under this subparagraph, the primary Federal payment stablecoin regulator shall notify the applicant, not later than 10 days after the date by which the applicant may request a hearing under this subparagraph, in writing, that the denial of the application is a final determination of the primary Federal payment stablecoin regulator.
+**(i)** In general.— Not later than 30 days after the date of receipt of any notice of the denial of an application under this section, the applicant may request, in writing, an opportunity for a written or oral hearing before the primary Federal payment stablecoin regulator to appeal the denial.
+**(ii)** Timing.— Upon receipt of a timely request under clause (i), the primary Federal payment stablecoin regulator shall notice a time (not later than 30 days after the date of receipt of the request) and place at which the applicant may appear, personally or through counsel, to submit written materials or provide oral testimony and oral argument.
+**(iii)** Final determination.— Not later than 60 days after the date of a hearing under this subparagraph, the applicable primary Federal payment stablecoin regulator shall notify the applicant of a final determination, which shall contain a statement of the basis for that determination, with specific findings.
+**(iv)** Notice if no hearing.— If an applicant does not make a timely request for a hearing under this subparagraph, the primary Federal payment stablecoin regulator shall notify the applicant, not later than 10 days after the date by which the applicant may request a hearing under this subparagraph, in writing, that the denial of the application is a final determination of the primary Federal payment stablecoin regulator.
 **(3)** Failure to render a decision.— If a primary Federal payment stablecoin regulator fails to render a decision on a complete application within the time period specified in paragraph (1), the application shall be deemed approved.
 **(4)** Right to reapply.— The denial of an application under this section shall not prohibit the applicant from filing a subsequent application.
 **(e)** Reports on Pending Applications.— Each primary Federal payment stablecoin regulator shall—
@@ -514,10 +405,8 @@ Notice if no hearing.— If an applicant does not make a timely request for a he
 **(3)** Penalties.—
 **(A)** Approval revocation.— The primary Federal payment stablecoin regulator or State payment stablecoin regulator of a permitted payment stablecoin issuer that does not submit a certification pursuant to paragraph (1) may revoke the approval of the payment stablecoin issuer under this section.
 **(B)** Criminal penalty.—
-####### (i)
-In general.— Any person that knowingly submits a certification pursuant to paragraph (1) that is false shall be subject to the criminal penalties set forth under section 1001 of title 18, United States Code.
-####### (ii)
-Referral to attorney general.— If a Federal payment stablecoin regulator or State payment stablecoin regulator has reason to believe that any person has knowingly violated paragraph (1), the applicable regulator may refer the matter to the Attorney General or to the attorney general of the payment stablecoin issuer’s host State.
+**(i)** In general.— Any person that knowingly submits a certification pursuant to paragraph (1) that is false shall be subject to the criminal penalties set forth under section 1001 of title 18, United States Code.
+**(ii)** Referral to attorney general.— If a Federal payment stablecoin regulator or State payment stablecoin regulator has reason to believe that any person has knowingly violated paragraph (1), the applicable regulator may refer the matter to the Attorney General or to the attorney general of the payment stablecoin issuer’s host State.
 
 ---
 
@@ -533,10 +422,8 @@ Referral to attorney general.— If a Federal payment stablecoin regulator or St
 **(3)** Examinations.— The appropriate primary Federal payment stablecoin regulator shall examine a permitted payment stablecoin issuer described in paragraph (1) in order to assess—
 **(A)** the nature of the operations and financial condition of the permitted payment stablecoin issuer;
 **(B)** the financial, operational, technological, and other risks associated within the permitted payment stablecoin issuer that may pose a threat to—
-####### (i)
-the safety and soundness of the permitted payment stablecoin issuer; or
-####### (ii)
-the stability of the financial system of the United States; and
+**(i)** the safety and soundness of the permitted payment stablecoin issuer; or
+**(ii)** the stability of the financial system of the United States; and
 **(C)** the systems of the permitted payment stablecoin issuer for monitoring and controlling the risks described in subparagraph (B).
 **(4)** Requirements for efficiency.—
 **(A)** Use of existing reports.— In supervising and examining a permitted payment stablecoin issuer under this subsection, a primary Federal payment stablecoin regulator shall, to the fullest extent possible, use existing reports and other supervisory information.
@@ -579,44 +466,28 @@ the stability of the financial system of the United States; and
 **(A)** In general.— Subject to subparagraph (C), under unusual and exigent circumstances that the Board determines to exist, the Board may, after not less than 48 hours’ prior written notice to the applicable State payment stablecoin regulator, take an enforcement action against a State qualified payment stablecoin issuer or an institution-affiliated party of such issuer for violations of this Act during such unusual and exigent circumstances.
 **(B)** Rulemaking.— Consistent with section 13, the Board shall issue rules to set forth the unusual and exigent circumstances in which the Board may act under this paragraph.
 **(C)** Limitations.— If, after unusual and exigent circumstances are determined to exist pursuant to subparagraph (A), the Board determines that there is reasonable cause to believe that the continuation by a State qualified payment stablecoin issuer of any activity constitutes a serious risk to the financial safety, soundness, or stability of the State qualified payment stablecoin issuer, the Board may impose such restrictions as the Board determines to be necessary to address such risk during such unusual and exigent circumstances, which may include limitations on redemptions of payment stablecoins, and which shall be issued in the form of a directive, with the effect of a cease and desist order that has become final, to the State qualified payment stablecoin issuer and any of its affiliates, limiting—
-####### (i)
-transactions between the State qualified payment stablecoin issuer, a holding company, and the subsidiaries or affiliates of either the State qualified payment stablecoin issuer or the holding company; and
-####### (ii)
-any activities of the State qualified payment stablecoin issuer that might create a serious risk that the liabilities of a holding company and the affiliates of the holding company may be imposed on the State qualified payment stablecoin issuer.
+**(i)** transactions between the State qualified payment stablecoin issuer, a holding company, and the subsidiaries or affiliates of either the State qualified payment stablecoin issuer or the holding company; and
+**(ii)** any activities of the State qualified payment stablecoin issuer that might create a serious risk that the liabilities of a holding company and the affiliates of the holding company may be imposed on the State qualified payment stablecoin issuer.
 **(D)** Review of directive.—
-####### (i)
-Administrative review.—
-######## (I)
-In general.— After a directive described in subparagraph (C) is issued, the applicable State qualified payment stablecoin issuer, or any institution-affiliated party of the State qualified payment stablecoin issuer subject to the directive, may object and present to the Board, in writing, the reasons why the directive should be modified or rescinded.
-######## (II)
-Automatic lapse of directive.— If, after 10 days after the receipt of a response described in subclause (I), the Board does not affirm, modify, or rescind the directive, the directive shall automatically lapse.
-####### (ii)
-Judicial review.—
-######## (I)
-In general.— If the Board affirms or modifies a directive pursuant to clause (i), any affected party may immediately thereafter petition the United States district court for the district in which the main office of the affected party is located, or in the United States District Court for the District of Columbia, to stay, modify, terminate, or set aside the directive.
-######## (II)
-Relief for extraordinary cause.— Upon a showing of extraordinary cause, an affected party may petition for relief under subclause (I) without first pursuing or exhausting the administrative remedies under clause (i).
+**(i)** Administrative review.—
+**(I)** In general.— After a directive described in subparagraph (C) is issued, the applicable State qualified payment stablecoin issuer, or any institution-affiliated party of the State qualified payment stablecoin issuer subject to the directive, may object and present to the Board, in writing, the reasons why the directive should be modified or rescinded.
+**(II)** Automatic lapse of directive.— If, after 10 days after the receipt of a response described in subclause (I), the Board does not affirm, modify, or rescind the directive, the directive shall automatically lapse.
+**(ii)** Judicial review.—
+**(I)** In general.— If the Board affirms or modifies a directive pursuant to clause (i), any affected party may immediately thereafter petition the United States district court for the district in which the main office of the affected party is located, or in the United States District Court for the District of Columbia, to stay, modify, terminate, or set aside the directive.
+**(II)** Relief for extraordinary cause.— Upon a showing of extraordinary cause, an affected party may petition for relief under subclause (I) without first pursuing or exhausting the administrative remedies under clause (i).
 **(2)** Comptroller.—
 **(A)** In general.— Subject to subparagraph (C), under unusual and exigent circumstances determined to exist by the Comptroller, the Comptroller shall, after not less than 48 hours’ prior written notice to the applicable State payment stablecoin regulator, take an enforcement action against a State qualified payment stablecoin issuer that is a nonbank entity for violations of this Act.
 **(B)** Rulemaking.— Consistent with section 13, the Comptroller shall issue rules to set forth the unusual and exigent circumstances in which the Comptroller may act under this paragraph.
 **(C)** Limitations.— If, after unusual and exigent circumstances are determined to exist under subparagraph (A), the Comptroller determines that there is reasonable cause to believe that the continuation of any activity by a State qualified payment stablecoin issuer that is a nonbank entity constitutes a serious risk to the financial safety, soundness, or stability of the State qualified payment stablecoin issuer that is a nonbank entity, the Comptroller shall impose such restrictions as the Comptroller determines to be necessary to address such risk during such unusual and exigent circumstances, which may include limitations on redemption of payment stablecoins, and which shall be issued in the form of a directive, with the effect of a cease and desist order that has become final, to the State qualified payment stablecoin issuer that is a nonbank entity and any of its affiliates, limiting—
-####### (i)
-transactions between the State qualified payment stablecoin issuer, a holding company, and the subsidiaries or affiliates of either the State qualified payment stablecoin issuer or the holding company; and
-####### (ii)
-any activities of the State qualified payment stablecoin issuer that might create a serious risk that the liabilities of a holding company and the affiliates of the holding company may be imposed on the State qualified payment stablecoin issuer.
+**(i)** transactions between the State qualified payment stablecoin issuer, a holding company, and the subsidiaries or affiliates of either the State qualified payment stablecoin issuer or the holding company; and
+**(ii)** any activities of the State qualified payment stablecoin issuer that might create a serious risk that the liabilities of a holding company and the affiliates of the holding company may be imposed on the State qualified payment stablecoin issuer.
 **(D)** Review of directive.—
-####### (i)
-Administrative review.—
-######## (I)
-In general.— After a directive described in subparagraph (C) is issued, the applicable Federal qualified payment stablecoin issuer, or any institution-affiliated party of the Federal qualified payment stablecoin issuer subject to the directive, may object and present to the Comptroller, in writing, the reasons that the directive should be modified or rescinded.
-######## (II)
-Automatic lapse of directive.— If, after 10 days after the receipt of a response described in subclause (I), the Comptroller does not affirm, modify, or rescind the directive, the directive shall automatically lapse.
-####### (ii)
-Judicial review.—
-######## (I)
-In general.— If the Comptroller affirms or modifies a directive pursuant to clause (i), any affected party may immediately thereafter petition the United States district court for the district in which the main office of the affected party is located, or in the United States District Court for the District of Columbia, to stay, modify, terminate, or set aside the directive.
-######## (II)
-Relief for extraordinary cause.— Upon a showing of extraordinary cause, an affected party may petition for relief under subclause (I) without first pursuing or exhausting the administrative remedies under clause (i).
+**(i)** Administrative review.—
+**(I)** In general.— After a directive described in subparagraph (C) is issued, the applicable Federal qualified payment stablecoin issuer, or any institution-affiliated party of the Federal qualified payment stablecoin issuer subject to the directive, may object and present to the Comptroller, in writing, the reasons that the directive should be modified or rescinded.
+**(II)** Automatic lapse of directive.— If, after 10 days after the receipt of a response described in subclause (I), the Comptroller does not affirm, modify, or rescind the directive, the directive shall automatically lapse.
+**(ii)** Judicial review.—
+**(I)** In general.— If the Comptroller affirms or modifies a directive pursuant to clause (i), any affected party may immediately thereafter petition the United States district court for the district in which the main office of the affected party is located, or in the United States District Court for the District of Columbia, to stay, modify, terminate, or set aside the directive.
+**(II)** Relief for extraordinary cause.— Upon a showing of extraordinary cause, an affected party may petition for relief under subclause (I) without first pursuing or exhausting the administrative remedies under clause (i).
 **(f)** Effect on State Law.—
 **(1)** Host state law.— Notwithstanding any other provision of law, the laws of a host State, including laws relating to consumer protection, shall only apply to the activities conducted in the host State by an out-of-State State qualified payment stablecoin issuer to the same extent as such laws apply to the activities conducted in the host State by an out-of-State Federal qualified payment stablecoin issuer.
 **(2)** Home state law.— If any host State law is determined not to apply under paragraph (1), the laws of the home State of the State qualified payment stablecoin issuer shall govern the activities of the permitted payment stablecoin issuer conducted in the host State.
@@ -649,12 +520,9 @@ Relief for extraordinary cause.— Upon a showing of extraordinary cause, an aff
 **(B)** Foreign payment stablecoin issuers.— Any foreign payment stablecoin issuer that knowingly continues to publicly offer a payment stablecoin in the United States after publication of the determination of noncompliance under paragraph (1)(A) shall be subject to a civil monetary penalty of not more than $1,000,000 per violation per day, and the Secretary of the Treasury may seek an injunction in a district court of the United States to bar the foreign payment stablecoin issuer from engaging in financial transactions in the United States or with United States persons.
 **(C)** Determination of the number of violations.— For purposes of determining the number of violations for which to impose a penalty under subparagraph (A) or (B), separate acts of noncompliance are a single violation when the acts are the result of a common or substantially overlapping originating cause. Notwithstanding the foregoing, the Secretary of Treasury may determine that multiple acts of noncompliance constitute separate violations if such acts were the result of gross negligence, a reckless disregard for, or a pattern of indifference to, money laundering, financing of terrorism, or sanctions evasion requirements.
 **(D)** Commencement of civil actions.— The Secretary of the Treasury may commence a civil action against a foreign payment stablecoin issuer in a district court of the United States to—
-####### (i)
-recover a civil monetary penalty assessed under subparagraph (A) or (B);
-####### (ii)
-seek an injunction to bar the foreign payment stablecoin issuer from engaging in financial transactions in the United States or with United States persons; or
-####### (iii)
-seek an injunction to stop a digital asset service provider from offering on the platform of the digital asset service provider payment stablecoins issued by the foreign payment stablecoin issuer.
+**(i)** recover a civil monetary penalty assessed under subparagraph (A) or (B);
+**(ii)** seek an injunction to bar the foreign payment stablecoin issuer from engaging in financial transactions in the United States or with United States persons; or
+**(iii)** seek an injunction to stop a digital asset service provider from offering on the platform of the digital asset service provider payment stablecoins issued by the foreign payment stablecoin issuer.
 **(c)** Waiver and Licensing Authority Exemptions.—
 **(1)** In general.— The Secretary of the Treasury may offer a waiver, general license, or specific license to any United States person engaging in secondary trading described in subsection (b)(1)(B) on a case-by-case basis if the Secretary determines that—
 **(A)** prohibiting secondary trading would adversely affect the financial system of the United States; or
@@ -871,16 +739,11 @@ TheAssessment. primary Federal payment stablecoin regulators, in consultation wi
 **(A)** In general.— A foreign payment stablecoin issuer may offer or sell payment stablecoins using a digital asset service provider if the foreign payment stablecoin issuer is registered with the Comptroller.
 **(B)** Registration approval.— A registration of a foreign payment stablecoin issuer filed in accordance with this section shall be deemed approved on the date that is 30 days after the date the Comptroller receives the registration, unless the Comptroller notifies the foreign payment stablecoin issuer in writing that such registration has been rejected.
 **(C)** Standards for rejection.— In determining whether to reject a foreign payment stablecoin issuer’s registration, the Comptroller shall consider
-####### (i)
-the final determination of the Secretary of the Treasury under this section;
-####### (ii)
-the financial and managerial resources of the United States operations of the foreign payment stablecoin issuer;
-####### (iii)
-whether the foreign payment stablecoin issuer will provide adequate information to the Comptroller as the Comptroller determines is necessary to determine compliance with this Act;
-####### (iv)
-whether the foreign payment stablecoin presents a risk to the financial stability of the United States; and
-####### (v)
-whether the foreign payment stablecoin issuer presents illicit finance risks to the United States.
+**(i)** the final determination of the Secretary of the Treasury under this section;
+**(ii)** the financial and managerial resources of the United States operations of the foreign payment stablecoin issuer;
+**(iii)** whether the foreign payment stablecoin issuer will provide adequate information to the Comptroller as the Comptroller determines is necessary to determine compliance with this Act;
+**(iv)** whether the foreign payment stablecoin presents a risk to the financial stability of the United States; and
+**(v)** whether the foreign payment stablecoin issuer presents illicit finance risks to the United States.
 **(D)** Procedure for appeal.— If the Comptroller rejects a registration, not later than 30 days after the date of receipt of such rejection, the foreign payment stablecoin issuer may appeal the rejection by notifying the Comptroller of the request to appeal.
 **(E)** Rulemaking.— Pursuant to section 13 of this Act, the Comptroller shall issue rules relating to the standards for approval of registration requests and the process for appealing denials of such registration requests.
 **(F)** Public notice.— The Comptroller shall keep and make publicly available a current list of foreign payment stablecoin issuer registrations that have been approved.
