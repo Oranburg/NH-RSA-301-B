@@ -4,7 +4,93 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Measuring Decentralization | NH DAO Law Explorer</title>
-  <meta name="description" content="What decentralization means in DAO law, why it matters, and how to measure it — including New Hampshire's three-part statutory test, the Nakamoto coefficient, the Gini coefficient, and a comparison across state jurisdictions.">
+  <meta name="description" content="How to calculate whether a DAO meets New Hampshire's statutory decentralization requirements under RSA 301-B. Covers the Nakamoto coefficient, Gini coefficient, the 20% bright-line threshold, interactive calculator, and a comparison of DAO statutes across New Hampshire, Wyoming, Utah, Tennessee, and Vermont.">
+  <meta name="author" content="Seth C. Oranburg">
+  <meta name="keywords" content="decentralization, Nakamoto coefficient, Gini coefficient, DAO, RSA 301-B, New Hampshire, blockchain governance, decentralized network, 20 percent threshold, Wyoming DAO, Utah DAO, Tennessee DAO, HHI, Herfindahl-Hirschman Index, Lorenz curve, governance concentration, antitrust, GENIUS Act, smart contract">
+  <link rel="canonical" href="https://oranburg.law/NH-RSA-301-B/decentralization.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Measuring Decentralization in DAO Law: Nakamoto Coefficient, Gini, and the 20% Test">
+  <meta property="og:description" content="Interactive tools and legal analysis for calculating DAO decentralization under New Hampshire's RSA 301-B. Includes a calculator for Nakamoto coefficient, Gini coefficient, and NH compliance, plus comparison across five state jurisdictions.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://oranburg.law/NH-RSA-301-B/decentralization.html">
+  <meta property="og:site_name" content="NH DAO Law Explorer">
+  <meta property="article:author" content="Seth C. Oranburg">
+  <meta property="article:published_time" content="2026-04-18">
+  <meta property="article:section" content="Law">
+  <meta property="article:tag" content="Nakamoto coefficient">
+  <meta property="article:tag" content="Gini coefficient">
+  <meta property="article:tag" content="DAO decentralization">
+  <meta property="article:tag" content="blockchain governance">
+  <meta property="article:tag" content="antitrust">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Measuring Decentralization in DAO Law">
+  <meta name="twitter:description" content="Interactive calculator for Nakamoto coefficient, Gini coefficient, and NH's 20% test. Comparative analysis across 5 state DAO statutes.">
+
+  <!-- Structured Data (Schema.org) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "name": "Measuring Decentralization in DAO Law",
+    "headline": "Understanding Decentralization in DAO Law",
+    "description": "Legal and mathematical analysis of how to measure DAO decentralization under New Hampshire RSA 301-B, including the Nakamoto coefficient, Gini coefficient, and a comparison of five state DAO statutes.",
+    "url": "https://oranburg.law/NH-RSA-301-B/decentralization.html",
+    "datePublished": "2026-04-18",
+    "author": {
+      "@type": "Person",
+      "name": "Seth C. Oranburg",
+      "url": "https://oranburg.law",
+      "jobTitle": "Professor of Law",
+      "affiliation": {
+        "@type": "EducationalOrganization",
+        "name": "University of New Hampshire Franklin Pierce School of Law"
+      },
+      "sameAs": [
+        "https://github.com/Oranburg",
+        "https://orcid.org/0000-0002-5698-7962"
+      ]
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Seth C. Oranburg",
+      "url": "https://oranburg.law"
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "NH DAO Law Explorer",
+      "url": "https://oranburg.law/NH-RSA-301-B/"
+    },
+    "about": [
+      { "@type": "Thing", "name": "Nakamoto coefficient" },
+      { "@type": "Thing", "name": "Gini coefficient" },
+      { "@type": "Thing", "name": "Decentralized Autonomous Organization" },
+      { "@type": "Thing", "name": "Blockchain governance measurement" }
+    ],
+    "citation": [
+      {
+        "@type": "ScholarlyArticle",
+        "name": "Market Power and Governance Power: New Tools for Antitrust Enforcement in the Decentralized Gig Economy",
+        "author": { "@type": "Person", "name": "Seth C. Oranburg" },
+        "datePublished": "2025-11-11",
+        "publisher": { "@type": "Organization", "name": "Competition Policy International" }
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "name": "Analyzing Voting Power in Decentralized Governance: Who Controls DAOs?",
+        "author": [
+          { "@type": "Person", "name": "Robin Fritsch" },
+          { "@type": "Person", "name": "Marino M\u00fcller" },
+          { "@type": "Person", "name": "Roger Wattenhofer" }
+        ],
+        "datePublished": "2022-04-03"
+      }
+    ]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
