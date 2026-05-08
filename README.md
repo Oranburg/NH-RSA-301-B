@@ -26,7 +26,7 @@ A single-page statute reader built with vanilla HTML/CSS/JS and [marked.js](http
 
 ## Contributing
 
-Open an [issue](https://github.com/Oranburg/NH-RSA-301-B/issues) to:
+Open an [issue](https://github.com/Oranburg/blockchain-law/issues) to:
 
 - Report errors in the statutory text
 - Suggest annotations or cross-references
