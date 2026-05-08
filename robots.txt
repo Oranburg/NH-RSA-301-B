@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://oranburg.law/NH-RSA-301-B/sitemap.xml
+Sitemap: https://oranburg.law/blockchain-law/sitemap.xml

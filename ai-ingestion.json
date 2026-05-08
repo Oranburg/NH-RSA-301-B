@@ -1,0 +1,64 @@
+{
+  "name": "blockchain-law",
+  "description": "Machine-readable ingestion manifest for Blockchain Law Explorer covering blockchain law and digital asset markets law.",
+  "version": "1.0.0",
+  "canonical_base_url": "https://oranburg.law/blockchain-law/",
+  "entrypoints": {
+    "homepage": "https://oranburg.law/blockchain-law/",
+    "sitemap": "https://oranburg.law/blockchain-law/sitemap.xml",
+    "repository": "https://github.com/Oranburg/blockchain-law"
+  },
+  "content": [
+    {
+      "id": "rsa-301b",
+      "type": "state_statute",
+      "title": "N.H. Rev. Stat. Ann. ch. 301-B",
+      "html": "index.html",
+      "source_markdown": "rsa-301b.md",
+      "structured_data": "enrichment.json",
+      "jurisdiction": "US-NH",
+      "topics": ["dao", "blockchain law", "digital asset markets"]
+    },
+    {
+      "id": "genius-act",
+      "type": "federal_statute",
+      "title": "GENIUS Act (Pub. L. 119-27)",
+      "html": "genius.html",
+      "source_markdown": "genius.md",
+      "jurisdiction": "US",
+      "topics": ["stablecoin", "digital asset markets", "federal law"]
+    },
+    {
+      "id": "state-comparison",
+      "type": "analysis",
+      "title": "State DAO Statute Comparison",
+      "html": "comparison.html",
+      "jurisdiction": "US",
+      "topics": ["comparative law", "dao", "blockchain law"]
+    },
+    {
+      "id": "decentralization-analysis",
+      "type": "analysis",
+      "title": "Measuring Decentralization",
+      "html": "decentralization.html",
+      "jurisdiction": "US",
+      "topics": ["decentralization", "governance", "digital asset markets"]
+    },
+    {
+      "id": "registry-requirements",
+      "type": "analysis",
+      "title": "Registry Requirements",
+      "html": "registry.html",
+      "jurisdiction": "US-NH",
+      "topics": ["compliance", "registry", "blockchain law"]
+    },
+    {
+      "id": "stable-token-analysis",
+      "type": "analysis",
+      "title": "Stable Tokens and Blockchain Law",
+      "html": "stable-tokens.html",
+      "jurisdiction": "US",
+      "topics": ["stablecoin", "digital asset markets", "blockchain law"]
+    }
+  ]
+}
